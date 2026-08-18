@@ -69,6 +69,7 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
   <button class="card" onclick="scrollToSection('study')">📚<br><b>Study</b></button>
   <button class="card" onclick="scrollToSection('answerKeys')">🔑<br><b>Answer Key</b></button>
   <button class="card" onclick="scrollToSection('calendar')">📅<br><b>Calendar</b></button>
+  <button class="card" onclick="scrollToSection('currentAffairs')">📰<br><b>Current Affairs</b></button>
   <button class="card" onclick="scrollToSection('exams')">🎯<br><b>Exams</b></button>
   <button class="card" onclick="scrollToSection('studentTools')">🛠️<br><b>Tools</b></button>
 </nav>
@@ -458,6 +459,78 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
   </div>
 </section>
 
+
+<section id="currentAffairs" class="portal-section">
+  <h2>📰 Current Affairs & Daily Quiz</h2>
+  <div class="card" style="margin-bottom:14px">
+    <p><b>Daily update:</b> 18 August 2026</p>
+    <div class="info">Exam-focused current affairs are summarized from official government releases. For the complete release, open the official source.</div>
+  </div>
+  <div style="margin-bottom:14px"><input id="currentAffairsSearch" type="text" placeholder="Search current affairs: AI, economy, education, sports..."></div>
+  <div class="grid" id="currentAffairsGrid">
+    <div class="card current-card" data-current="ai research education iitgn iit bhu adobe memories photographs text video 18 august 2026">
+      <span class="badge">SCIENCE & TECH</span>
+      <h3>🤖 AI Research: IITs & Adobe</h3>
+      <p>IIT Gandhinagar and IIT-BHU researchers are working on AI approaches for recovering damaged photo details and generating consistent videos from text descriptions.</p>
+      <div class="actions"><a class="btn secondary" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2300719" target="_blank" rel="noopener">PIB Source</a></div>
+    </div>
+    <div class="card current-card" data-current="semiconductor india biggest semiconductor event yasho bhoomi september 2026 electronics manufacturing">
+      <span class="badge">ECONOMY / TECH</span>
+      <h3>💻 Semiconductor Sector</h3>
+      <p>PIB announced that India's biggest semiconductor event is scheduled at Yashobhoomi, New Delhi, from 17–19 September 2026.</p>
+      <div class="actions"><a class="btn secondary" href="https://www.pib.gov.in/allrelease.aspx?lang=1&reg=3" target="_blank" rel="noopener">PIB Releases</a></div>
+    </div>
+    <div class="card current-card" data-current="aadhaar uidai mandatory biometric updates school children 2 crore 1.6 lakh schools august 2026">
+      <span class="badge">GOVERNANCE</span>
+      <h3>🪪 Aadhaar Biometric Updates</h3>
+      <p>UIDAI reported that a special drive completed more than 2 crore mandatory biometric updates for school children, covering around 1.6 lakh schools.</p>
+      <div class="actions"><a class="btn secondary" href="https://www.pib.gov.in/allrelease.aspx?lang=1&reg=3" target="_blank" rel="noopener">PIB Releases</a></div>
+    </div>
+    <div class="card current-card" data-current="mm dr amendment bill 2026 mines minerals development regulation amendment bill august 18 2026">
+      <span class="badge">POLITY</span>
+      <h3>⚖️ MMDR Amendment Bill 2026</h3>
+      <p>The PIB current-releases page lists the MMDR Amendment Bill, 2026 as an 18 August 2026 backgrounder topic.</p>
+      <div class="actions"><a class="btn secondary" href="https://www.pib.gov.in/allrelease.aspx?lang=1&reg=3" target="_blank" rel="noopener">PIB Releases</a></div>
+    </div>
+    <div class="card current-card" data-current="coconut sector india agriculture coconut august 18 2026 pib">
+      <span class="badge">AGRICULTURE</span>
+      <h3>🥥 India's Coconut Sector</h3>
+      <p>PIB published an 18 August 2026 backgrounder on India's coconut sector, making it a useful topic for agriculture and economy revision.</p>
+      <div class="actions"><a class="btn secondary" href="https://www.pib.gov.in/allrelease.aspx?lang=1&reg=3" target="_blank" rel="noopener">PIB Releases</a></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:24px">🧠 Daily Quiz — 5 Questions</h3>
+  <div id="dailyQuiz" class="grid">
+    <div class="card quiz-card" data-answer="IIT Gandhinagar">
+      <h3>Q1. Which IIT is mentioned in the 18 Aug 2026 PIB AI research update?</h3>
+      <div class="actions"><button class="btn secondary quiz-option">IIT Delhi</button><button class="btn secondary quiz-option">IIT Gandhinagar</button><button class="btn secondary quiz-option">IIT Madras</button></div>
+      <div class="quiz-result info"></div>
+    </div>
+    <div class="card quiz-card" data-answer="Yashobhoomi">
+      <h3>Q2. Where is India's biggest semiconductor event scheduled?</h3>
+      <div class="actions"><button class="btn secondary quiz-option">Yashobhoomi</button><button class="btn secondary quiz-option">Pragati Maidan</button><button class="btn secondary quiz-option">Bharat Mandapam</button></div>
+      <div class="quiz-result info"></div>
+    </div>
+    <div class="card quiz-card" data-answer="UIDAI">
+      <h3>Q3. Which organisation reported the school-children biometric update drive?</h3>
+      <div class="actions"><button class="btn secondary quiz-option">UIDAI</button><button class="btn secondary quiz-option">NTA</button><button class="btn secondary quiz-option">UPSC</button></div>
+      <div class="quiz-result info"></div>
+    </div>
+    <div class="card quiz-card" data-answer="MMDR Amendment Bill, 2026">
+      <h3>Q4. Which bill is listed as a PIB backgrounder topic on 18 Aug 2026?</h3>
+      <div class="actions"><button class="btn secondary quiz-option">Education Reform Bill</button><button class="btn secondary quiz-option">MMDR Amendment Bill, 2026</button><button class="btn secondary quiz-option">Digital India Bill</button></div>
+      <div class="quiz-result info"></div>
+    </div>
+    <div class="card quiz-card" data-answer="Coconut sector">
+      <h3>Q5. Which agricultural sector is featured in a PIB backgrounder dated 18 Aug 2026?</h3>
+      <div class="actions"><button class="btn secondary quiz-option">Tea sector</button><button class="btn secondary quiz-option">Coconut sector</button><button class="btn secondary quiz-option">Wheat sector</button></div>
+      <div class="quiz-result info"></div>
+    </div>
+  </div>
+  <div class="actions"><button class="btn green" onclick="resetQuiz()">Reset Quiz</button><a class="btn secondary" href="https://www.pib.gov.in/allrelease.aspx?lang=1&reg=3" target="_blank" rel="noopener">Open PIB Releases</a></div>
+</section>
+
 <section id="exams" class="portal-section">
   <h2>🎯 Government Exam Directory</h2>
   <div class="card" style="margin-bottom:14px">
@@ -769,6 +842,34 @@ if(calendarSearch){
   });
 }
 
+const currentAffairsSearch = $('currentAffairsSearch');
+if(currentAffairsSearch){
+  currentAffairsSearch.addEventListener('input',()=>{
+    const q=currentAffairsSearch.value.toLowerCase().trim();
+    document.querySelectorAll('.current-card').forEach(card=>{
+      card.style.display=(!q || (card.dataset.current||'').includes(q))?'block':'none';
+    });
+  });
+}
+
+document.querySelectorAll('.quiz-card').forEach(card=>{
+  card.querySelectorAll('.quiz-option').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const result=card.querySelector('.quiz-result');
+      const answer=card.dataset.answer;
+      const correct=btn.textContent.trim()===answer;
+      result.textContent=correct?'✅ Correct!':'❌ Incorrect. Correct answer: '+answer;
+      card.querySelectorAll('.quiz-option').forEach(b=>b.disabled=true);
+    });
+  });
+});
+function resetQuiz(){
+  document.querySelectorAll('.quiz-card').forEach(card=>{
+    card.querySelectorAll('.quiz-option').forEach(b=>b.disabled=false);
+    const r=card.querySelector('.quiz-result'); if(r) r.textContent='';
+  });
+}
+
 const answerKeySearch = $('answerKeySearch');
 if(answerKeySearch){
   answerKeySearch.addEventListener('input',()=>{
@@ -846,4 +947,4 @@ function buildPDF(canvases){
 }
 </script>
 </body>
-                                                                                                                                                                                                                                                                                                   </html>
+  </html>
