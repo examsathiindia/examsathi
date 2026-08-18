@@ -93,15 +93,10 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       cursor: pointer;
       transition: 0.2s;
-      user-select: none;
     }
 
     .card:hover {
       transform: translateY(-2px);
-    }
-
-    .card:active {
-      transform: scale(0.98);
     }
 
     .icon {
@@ -181,7 +176,6 @@
       color: #666;
       font-size: 13px;
       margin-bottom: 18px;
-      line-height: 1.5;
     }
 
     .file-input {
@@ -196,43 +190,30 @@
       cursor: pointer;
     }
 
-    .controls {
-      display: grid;
-      gap: 12px;
-      max-width: 500px;
-      margin: 15px auto;
-      text-align: left;
-    }
-
     .control-box {
-      background: #f8fafc;
-      padding: 12px;
-      border-radius: 10px;
+      margin: 12px 0;
     }
 
     .control-box label {
       display: block;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: bold;
       margin-bottom: 7px;
     }
 
-    .control-box select,
-    .control-box input[type="range"] {
-      width: 100%;
-    }
-
     .control-box select {
-      padding: 9px;
-      border: 1px solid #d1d5db;
+      width: 100%;
+      max-width: 300px;
+      padding: 10px;
+      border: 1px solid #ddd;
       border-radius: 8px;
       background: white;
+      font-size: 14px;
     }
 
-    .zoom-value {
-      font-size: 12px;
-      color: #666;
-      margin-top: 5px;
+    .zoom-control {
+      width: 100%;
+      max-width: 300px;
     }
 
     .preview-area {
@@ -297,15 +278,6 @@
       font-size: 12px;
       margin-top: 15px;
       text-align: left;
-      line-height: 1.5;
-    }
-
-    .status {
-      margin: 10px auto;
-      max-width: 500px;
-      font-size: 13px;
-      color: #2563eb;
-      min-height: 20px;
     }
 
     footer {
@@ -335,8 +307,6 @@
 
 <body>
 
-  <!-- HEADER -->
-
   <header>
     <div class="logo">ExamSathi</div>
     <div class="tagline">
@@ -344,11 +314,7 @@
     </div>
   </header>
 
-
-  <!-- HERO -->
-
   <section class="hero">
-
     <h1>Your Complete Student Portal</h1>
 
     <p>
@@ -361,17 +327,11 @@
       placeholder="Search jobs, results, exams..."
       id="searchBox"
     >
-
   </section>
-
 
   <main class="container">
 
-    <!-- LATEST UPDATES -->
-
-    <h2 class="section-title">
-      📢 Latest Updates
-    </h2>
+    <h2 class="section-title">📢 Latest Updates</h2>
 
     <div class="cards">
 
@@ -402,21 +362,16 @@
     </div>
 
 
-    <!-- STUDENT TOOLS -->
-
-    <h2 class="section-title">
-      🛠️ Student Tools
-    </h2>
+    <h2 class="section-title">🛠️ Student Tools</h2>
 
     <div class="cards">
 
-      <!-- PASSPORT PHOTO -->
+      <!-- PASSPORT PHOTO CARD -->
 
       <div
         class="card"
         onclick="openPassportTool()"
       >
-
         <div class="icon">📸</div>
 
         <h3>Passport Photo</h3>
@@ -424,7 +379,6 @@
         <p>
           Create passport size photos
         </p>
-
       </div>
 
 
@@ -486,155 +440,140 @@
       id="passportTool"
     >
 
-      <h2>
-        📸 Passport Photo Maker
-      </h2>
+      <h2>📸 Passport Photo Maker</h2>
 
       <p class="tool-description">
-        Upload a photo, choose the required size,
-        adjust the crop with zoom, select your target
-        file size and download the final JPG.
+        Create a passport-size photo with custom size,
+        background and file-size controls.
       </p>
 
 
-      <!-- PHOTO UPLOAD -->
+      <!-- UPLOAD -->
 
       <input
         type="file"
         id="photoInput"
         class="file-input"
-        accept="image/jpeg,image/png,image/webp"
+        accept="image/*"
       >
 
 
-      <!-- CONTROLS -->
+      <!-- PHOTO SIZE -->
 
-      <div class="controls">
+      <div class="control-box">
 
-        <div class="control-box">
+        <label for="photoSize">
+          📏 Photo Size
+        </label>
 
-          <label for="photoSize">
-            📏 Photo Size
-          </label>
+        <select id="photoSize">
 
-          <select id="photoSize">
+          <option value="35x45">
+            35 × 45 mm
+          </option>
 
-            <option value="35x45">
-              35 × 45 mm — 413 × 531 px
-            </option>
+          <option value="25x35">
+            25 × 35 mm
+          </option>
 
-            <option value="25x35">
-              25 × 35 mm — 295 × 413 px
-            </option>
+          <option value="2x2">
+            2 × 2 inch
+          </option>
 
-            <option value="2x2">
-              2 × 2 inch — 600 × 600 px
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="control-box">
-
-          <label for="backgroundColor">
-            🎨 Background Color
-          </label>
-
-          <select id="backgroundColor">
-
-            <option value="#ffffff">
-              White
-            </option>
-
-            <option value="#eaf4ff">
-              Light Blue
-            </option>
-
-            <option value="#f2f2f2">
-              Light Gray
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="control-box">
-
-          <label for="targetSize">
-            📦 Target File Size
-          </label>
-
-          <select id="targetSize">
-
-            <option value="20">
-              20 KB
-            </option>
-
-            <option value="50">
-              50 KB
-            </option>
-
-            <option value="100" selected>
-              100 KB
-            </option>
-
-            <option value="200">
-              200 KB
-            </option>
-
-            <option value="500">
-              500 KB
-            </option>
-
-            <option value="1024">
-              1 MB
-            </option>
-
-            <option value="2048">
-              2 MB
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="control-box">
-
-          <label for="cropZoom">
-            🔍 Manual Crop / Zoom
-          </label>
-
-          <input
-            type="range"
-            id="cropZoom"
-            min="1"
-            max="3"
-            step="0.05"
-            value="1"
-          >
-
-          <div
-            class="zoom-value"
-            id="zoomValue"
-          >
-            Zoom: 1.00×
-          </div>
-
-        </div>
+        </select>
 
       </div>
 
 
-      <!-- STATUS -->
+      <!-- BACKGROUND -->
 
-      <div
-        class="status"
-        id="toolStatus"
-      ></div>
+      <div class="control-box">
+
+        <label for="backgroundColor">
+          🎨 Background
+        </label>
+
+        <select id="backgroundColor">
+
+          <option value="#ffffff">
+            White
+          </option>
+
+          <option value="#eaf3ff">
+            Light Blue
+          </option>
+
+          <option value="#dbeafe">
+            Blue
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- ZOOM / CROP -->
+
+      <div class="control-box">
+
+        <label for="cropZoom">
+          🔍 Zoom / Crop
+        </label>
+
+        <input
+          type="range"
+          id="cropZoom"
+          class="zoom-control"
+          min="1"
+          max="3"
+          step="0.01"
+          value="1"
+        >
+
+      </div>
+
+
+      <!-- TARGET FILE SIZE -->
+
+      <div class="control-box">
+
+        <label for="targetSize">
+          📦 Target File Size
+        </label>
+
+        <select id="targetSize">
+
+          <option value="20">
+            20 KB
+          </option>
+
+          <option value="50">
+            50 KB
+          </option>
+
+          <option value="100" selected>
+            100 KB
+          </option>
+
+          <option value="200">
+            200 KB
+          </option>
+
+          <option value="500">
+            500 KB
+          </option>
+
+          <option value="1024">
+            1 MB
+          </option>
+
+          <option value="2048">
+            2 MB
+          </option>
+
+        </select>
+
+      </div>
 
 
       <!-- PREVIEW -->
@@ -661,7 +600,7 @@
           class="photo-info"
           id="fileSizeText"
         >
-          Estimated size: —
+          File size: —
         </div>
 
 
@@ -689,15 +628,14 @@
 
       <div class="notice">
 
-        🔒 Your uploaded photo is processed inside
-        your browser by this tool. It is not sent to
-        our server.
+        🔒 Your photo is processed directly in your
+        browser. It is not uploaded to a server by
+        this tool.
 
         <br><br>
 
-        ℹ️ The background-color option creates the
-        selected canvas background. Automatic AI
-        background removal will be added separately.
+        ℹ️ Zoom slider allows you to adjust the crop.
+        Background color changes the canvas background.
 
       </div>
 
@@ -767,8 +705,6 @@
   </main>
 
 
-  <!-- FOOTER -->
-
   <footer>
 
     <h3>
@@ -822,7 +758,7 @@
     };
 
 
-    /* OPEN PASSPORT TOOL */
+    /* OPEN TOOL */
 
     function openPassportTool() {
 
@@ -834,6 +770,8 @@
       }
 
       tool.classList.add("active");
+
+      tool.style.display = "block";
 
       setTimeout(function() {
 
@@ -847,7 +785,7 @@
     }
 
 
-    /* CLOSE PASSPORT TOOL */
+    /* CLOSE TOOL */
 
     function closePassportTool() {
 
@@ -858,7 +796,10 @@
 
         tool.classList.remove("active");
 
+        tool.style.display = "none";
+
       }
+
 
       originalImage = null;
 
@@ -913,56 +854,27 @@
       }
 
 
-      const zoomValue =
-        document.getElementById("zoomValue");
-
-      if (zoomValue) {
-
-        zoomValue.textContent =
-          "Zoom: 1.00×";
-
-      }
-
-
       const fileSize =
         document.getElementById("fileSizeText");
 
       if (fileSize) {
 
         fileSize.textContent =
-          "Estimated size: —";
-
-      }
-
-
-      const dimensions =
-        document.getElementById("outputDimensions");
-
-      if (dimensions) {
-
-        dimensions.textContent =
-          "Output: —";
-
-      }
-
-
-      const status =
-        document.getElementById("toolStatus");
-
-      if (status) {
-
-        status.textContent = "";
+          "File size: —";
 
       }
 
     }
 
 
-    /* IMAGE UPLOAD */
+    /* PAGE LOAD */
 
     document.addEventListener(
       "DOMContentLoaded",
       function() {
+
+
+        /* PHOTO UPLOAD */
 
         const photoInput =
           document.getElementById("photoInput");
@@ -974,6 +886,7 @@
             "change",
             function(event) {
 
+
               const file =
                 event.target.files[0];
 
@@ -983,24 +896,15 @@
               }
 
 
-              if (!file.type.startsWith("image/")) {
+              if (
+                !file.type.startsWith("image/")
+              ) {
 
                 alert(
-                  "Please select a valid image."
+                  "Please select an image file."
                 );
 
                 return;
-
-              }
-
-
-              const status =
-                document.getElementById("toolStatus");
-
-              if (status) {
-
-                status.textContent =
-                  "Loading photo...";
 
               }
 
@@ -1012,6 +916,7 @@
               reader.onload =
                 function(e) {
 
+
                   const img =
                     new Image();
 
@@ -1019,7 +924,9 @@
                   img.onload =
                     function() {
 
-                      originalImage = img;
+
+                      originalImage =
+                        img;
 
                       zoomLevel = 1;
 
@@ -1029,22 +936,10 @@
                           "cropZoom"
                         );
 
+
                       if (zoom) {
 
                         zoom.value = "1";
-
-                      }
-
-
-                      const zoomValue =
-                        document.getElementById(
-                          "zoomValue"
-                        );
-
-                      if (zoomValue) {
-
-                        zoomValue.textContent =
-                          "Zoom: 1.00×";
 
                       }
 
@@ -1054,19 +949,12 @@
                           "previewArea"
                         );
 
+
                       if (preview) {
 
                         preview.classList.add(
                           "active"
                         );
-
-                      }
-
-
-                      if (status) {
-
-                        status.textContent =
-                          "Photo loaded successfully.";
 
                       }
 
@@ -1100,10 +988,12 @@
         }
 
 
-        /* SIZE CHANGE */
+        /* PHOTO SIZE */
 
         const sizeSelect =
-          document.getElementById("photoSize");
+          document.getElementById(
+            "photoSize"
+          );
 
 
         if (sizeSelect) {
@@ -1120,7 +1010,7 @@
         }
 
 
-        /* BACKGROUND CHANGE */
+        /* BACKGROUND */
 
         const backgroundSelect =
           document.getElementById(
@@ -1145,7 +1035,9 @@
         /* ZOOM */
 
         const zoomControl =
-          document.getElementById("cropZoom");
+          document.getElementById(
+            "cropZoom"
+          );
 
 
         if (zoomControl) {
@@ -1156,23 +1048,6 @@
 
               zoomLevel =
                 parseFloat(this.value) || 1;
-
-
-              const zoomValue =
-                document.getElementById(
-                  "zoomValue"
-                );
-
-
-              if (zoomValue) {
-
-                zoomValue.textContent =
-                  "Zoom: " +
-                  zoomLevel.toFixed(2) +
-                  "×";
-
-              }
-
 
               drawPassportPhoto();
 
@@ -1218,6 +1093,7 @@
             "input",
             function() {
 
+
               const query =
                 this.value
                   .toLowerCase()
@@ -1232,6 +1108,7 @@
 
               cards.forEach(
                 function(card) {
+
 
                   const text =
                     card.innerText
@@ -1301,11 +1178,6 @@
         photoSizes[selectedSize];
 
 
-      if (!size) {
-        return;
-      }
-
-
       const canvas =
         document.getElementById(
           "passportCanvas"
@@ -1341,7 +1213,7 @@
       );
 
 
-      /* IMAGE RATIO */
+      /* IMAGE CROP */
 
       const canvasRatio =
         canvas.width /
@@ -1359,31 +1231,29 @@
       let sourceY;
 
 
-      /*
-        Crop the image to the
-        selected passport ratio.
-      */
-
-      if (imageRatio > canvasRatio) {
+      if (
+        imageRatio > canvasRatio
+      ) {
 
         sourceHeight =
           originalImage.height /
           zoomLevel;
 
-
         sourceWidth =
           sourceHeight *
           canvasRatio;
 
-
         sourceX =
-          (originalImage.width -
-            sourceWidth) / 2;
-
+          (
+            originalImage.width -
+            sourceWidth
+          ) / 2;
 
         sourceY =
-          (originalImage.height -
-            sourceHeight) / 2;
+          (
+            originalImage.height -
+            sourceHeight
+          ) / 2;
 
       } else {
 
@@ -1391,49 +1261,26 @@
           originalImage.width /
           zoomLevel;
 
-
         sourceHeight =
           sourceWidth /
           canvasRatio;
 
-
         sourceX =
-          (originalImage.width -
-            sourceWidth) / 2;
-
+          (
+            originalImage.width -
+            sourceWidth
+          ) / 2;
 
         sourceY =
-          (originalImage.height -
-            sourceHeight) / 2;
+          (
+            originalImage.height -
+            sourceHeight
+          ) / 2;
 
       }
 
 
-      /* SAFETY LIMITS */
-
-      sourceX =
-        Math.max(
-          0,
-          Math.min(
-            sourceX,
-            originalImage.width -
-            sourceWidth
-          )
-        );
-
-
-      sourceY =
-        Math.max(
-          0,
-          Math.min(
-            sourceY,
-            originalImage.height -
-            sourceHeight
-          )
-        );
-
-
-      /* DRAW */
+      /* DRAW IMAGE */
 
       ctx.drawImage(
 
@@ -1441,11 +1288,13 @@
 
         sourceX,
         sourceY,
+
         sourceWidth,
         sourceHeight,
 
         0,
         0,
+
         canvas.width,
         canvas.height
 
@@ -1457,7 +1306,7 @@
     }
 
 
-    /* UPDATE INFORMATION */
+    /* PHOTO INFORMATION */
 
     function updatePhotoInfo() {
 
@@ -1472,17 +1321,10 @@
       }
 
 
-      const selectedSize =
-        sizeSelect.value;
-
-
       const size =
-        photoSizes[selectedSize];
-
-
-      if (!size) {
-        return;
-      }
+        photoSizes[
+          sizeSelect.value
+        ];
 
 
       const dimensions =
@@ -1510,7 +1352,7 @@
     }
 
 
-    /* ESTIMATE FILE SIZE */
+    /* ESTIMATED FILE SIZE */
 
     function updateEstimatedFileSize() {
 
@@ -1520,7 +1362,10 @@
         );
 
 
-      if (!canvas || !originalImage) {
+      if (
+        !canvas ||
+        !originalImage
+      ) {
         return;
       }
 
@@ -1554,13 +1399,13 @@
         );
 
 
-      const base64 =
-        dataURL.split(",")[1];
-
-
       const bytes =
         Math.round(
-          base64.length * 0.75
+          (
+            dataURL.length -
+            dataURL.indexOf(",") -
+            1
+          ) * 3 / 4
         );
 
 
@@ -1599,17 +1444,13 @@
         function(resolve) {
 
           canvas.toBlob(
-
             function(blob) {
 
               resolve(blob);
 
             },
-
             "image/jpeg",
-
             quality
-
           );
 
         }
@@ -1618,7 +1459,7 @@
     }
 
 
-    /* COMPRESS TO TARGET */
+    /* COMPRESS PHOTO */
 
     async function createCompressedPhoto(
       canvas,
@@ -1629,7 +1470,8 @@
         targetKB * 1024;
 
 
-      let quality = 0.95;
+      let quality =
+        0.95;
 
 
       let blob =
@@ -1638,11 +1480,6 @@
           quality
         );
 
-
-      /*
-        Reduce JPEG quality until
-        target size is reached.
-      */
 
       while (
         blob.size > targetBytes &&
@@ -1693,11 +1530,10 @@
         );
 
 
-      if (!canvas || !targetSelect) {
-
-        alert(
-          "Passport photo tool is not ready."
-        );
+      if (
+        !canvas ||
+        !targetSelect
+      ) {
 
         return;
 
@@ -1727,26 +1563,12 @@
         );
 
 
-      const status =
-        document.getElementById(
-          "toolStatus"
-        );
-
-
       if (button) {
 
         button.disabled = true;
 
         button.textContent =
           "⏳ Preparing...";
-
-      }
-
-
-      if (status) {
-
-        status.textContent =
-          "Creating your passport photo...";
 
       }
 
@@ -1758,15 +1580,6 @@
             canvas,
             targetKB
           );
-
-
-        if (!blob) {
-
-          throw new Error(
-            "Could not create image."
-          );
-
-        }
 
 
         const url =
@@ -1784,17 +1597,13 @@
           "ExamSathi-Passport-Photo.jpg";
 
 
-        document.body.appendChild(
-          link
-        );
+        document.body.appendChild(link);
 
 
         link.click();
 
 
-        document.body.removeChild(
-          link
-        );
+        document.body.removeChild(link);
 
 
         setTimeout(
@@ -1807,10 +1616,6 @@
         );
 
 
-        const finalKB =
-          blob.size / 1024;
-
-
         const fileSizeText =
           document.getElementById(
             "fileSizeText"
@@ -1821,18 +1626,10 @@
 
           fileSizeText.textContent =
             "Final size: " +
-            finalKB.toFixed(1) +
-            " KB • Target: " +
-            targetKB +
+            (
+              blob.size / 1024
+            ).toFixed(1) +
             " KB";
-
-        }
-
-
-        if (status) {
-
-          status.textContent =
-            "✅ Photo created successfully.";
 
         }
 
@@ -1840,18 +1637,9 @@
 
         console.error(error);
 
-
         alert(
           "Could not create the photo. Please try again."
         );
-
-
-        if (status) {
-
-          status.textContent =
-            "❌ Something went wrong.";
-
-        }
 
       } finally {
 
