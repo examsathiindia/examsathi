@@ -36,6 +36,8 @@ input[type=range]{width:100%}
 .status{margin-top:12px;font-size:13px;font-weight:700}
 .hidden{display:none!important}
 footer{text-align:center;color:#667085;padding:25px;font-size:12px}
+.portal-section{margin:24px 0}.portal-section h2{margin-bottom:14px}
+.portal-section .card{cursor:default}.portal-section .card:hover{transform:none}
 .tool-note{background:#fff8e6;border:1px solid #ffe3a3;border-radius:10px;padding:10px;font-size:12px;color:#6b4b00;margin-top:12px}
 </style>
 </head>
@@ -47,7 +49,63 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
 </div></header>
 
 <main class="container">
-<h2>Student Tools</h2>
+
+<section class="hero" style="background:linear-gradient(135deg,#eff6ff,#ffffff);border:1px solid #dbeafe;border-radius:20px;padding:22px;margin-bottom:18px">
+  <div style="font-size:13px;font-weight:800;color:#2563eb;text-transform:uppercase;letter-spacing:.5px">ExamSathi Student Portal</div>
+  <h1 style="margin:7px 0 8px;font-size:30px">Your Exam Journey, In One Place</h1>
+  <p style="margin:0;color:#667085;line-height:1.55">Jobs, exam notifications, admit cards, results and useful student tools — simple and mobile friendly.</p>
+  <div class="actions" style="margin-top:16px">
+    <button class="btn" onclick="document.getElementById('jobs').scrollIntoView({behavior:'smooth'})">Latest Jobs</button>
+    <button class="btn secondary" onclick="document.getElementById('studentTools').scrollIntoView({behavior:'smooth'})">Student Tools</button>
+  </div>
+</section>
+
+<nav class="grid" style="grid-template-columns:repeat(auto-fit,minmax(135px,1fr));margin-bottom:22px">
+  <button class="card" onclick="scrollToSection('home')">🏠<br><b>Home</b></button>
+  <button class="card" onclick="scrollToSection('jobs')">💼<br><b>Jobs</b></button>
+  <button class="card" onclick="scrollToSection('notifications')">🔔<br><b>Notifications</b></button>
+  <button class="card" onclick="scrollToSection('admit')">🎫<br><b>Admit Card</b></button>
+  <button class="card" onclick="scrollToSection('results')">📊<br><b>Results</b></button>
+  <button class="card" onclick="scrollToSection('studentTools')">🛠️<br><b>Tools</b></button>
+</nav>
+
+<section id="home" style="display:none"></section>
+
+<section id="jobs" class="portal-section">
+  <h2>💼 Latest Jobs</h2>
+  <div class="grid">
+    <div class="card"><h3>SSC Recruitment</h3><p>Latest SSC vacancy details, eligibility and official application link will appear here.</p><button class="btn secondary" onclick="showPortalMessage('SSC Jobs')">View Details</button></div>
+    <div class="card"><h3>Banking Jobs</h3><p>Banking recruitment updates and important application information.</p><button class="btn secondary" onclick="showPortalMessage('Banking Jobs')">View Details</button></div>
+    <div class="card"><h3>Railway Jobs</h3><p>Railway recruitment updates, notices and application information.</p><button class="btn secondary" onclick="showPortalMessage('Railway Jobs')">View Details</button></div>
+  </div>
+</section>
+
+<section id="notifications" class="portal-section">
+  <h2>🔔 Exam Notifications</h2>
+  <div class="card">
+    <p><b>Important:</b> Official exam notices, application dates, correction windows and other updates can be listed here.</p>
+    <div class="actions"><button class="btn secondary" onclick="showPortalMessage('Exam Notifications')">Open Notifications</button></div>
+  </div>
+</section>
+
+<section id="admit" class="portal-section">
+  <h2>🎫 Admit Cards</h2>
+  <div class="card">
+    <p>Keep admit-card links organised by exam so students can quickly find the official download page.</p>
+    <div class="actions"><button class="btn secondary" onclick="showPortalMessage('Admit Cards')">View Admit Cards</button></div>
+  </div>
+</section>
+
+<section id="results" class="portal-section">
+  <h2>📊 Results</h2>
+  <div class="card">
+    <p>Result links can be organised here with exam name, result date and official result page.</p>
+    <div class="actions"><button class="btn secondary" onclick="showPortalMessage('Results')">View Results</button></div>
+  </div>
+</section>
+
+<section id="studentTools">
+<h2>🛠️ Student Tools</h2>
 <div id="toolGrid" class="grid">
 <div class="card tool-card" data-name="passport photo" onclick="openTool('passport')"><div class="icon">🪪</div><h3>Passport Photo</h3><p>Create a fixed-size passport photo with crop, background colour and KB/MB control.</p></div>
 <div class="card tool-card" data-name="image resize resize image" onclick="openTool('resize')"><div class="icon">📐</div><h3>Image Resize</h3><p>Resize an image by width and height and download it as JPG or PNG.</p></div>
@@ -189,6 +247,13 @@ function downloadCanvas(id,name){
   c.toBlob(b=>downloadBlob(b,name),'image/jpeg',.92);
 }
 
+function scrollToSection(id){
+  const el=$(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function showPortalMessage(name){
+  alert(name + ' section is ready. Official links/data can be added here next.');
+}
+
 $('searchBox').addEventListener('input',e=>{
   const q=e.target.value.toLowerCase().trim();
   document.querySelectorAll('.tool-card').forEach(c=>c.style.display=c.dataset.name.includes(q)?'block':'none');
@@ -315,4 +380,4 @@ function buildPDF(canvases){
 }
 </script>
 </body>
-  </html>
+</html>
