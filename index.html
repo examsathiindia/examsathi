@@ -1,1662 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>ExamSathi - Jobs, Results & Student Tools</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      color: #172033;
-    }
-
-    header {
-      background: #ffffff;
-      padding: 18px 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo {
-      font-size: 26px;
-      font-weight: 800;
-      color: #2563eb;
-    }
-
-    .tagline {
-      font-size: 13px;
-      color: #666;
-      margin-top: 3px;
-    }
-
-    .hero {
-      padding: 35px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #2563eb, #4f46e5);
-      color: white;
-    }
-
-    .hero h1 {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-
-    .search {
-      width: 100%;
-      max-width: 500px;
-      padding: 14px 18px;
-      border: none;
-      border-radius: 30px;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 25px 18px;
-    }
-
-    .section-title {
-      font-size: 22px;
-      margin-bottom: 15px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 30px;
-    }
-
-    .card {
-      background: white;
-      padding: 18px 12px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-    }
-
-    .icon {
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .card h3 {
-      font-size: 15px;
-      margin-bottom: 5px;
-    }
-
-    .card p {
-      font-size: 12px;
-      color: #777;
-    }
-
-    .updates {
-      background: white;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-
-    .update {
-      padding: 16px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .update:last-child {
-      border-bottom: none;
-    }
-
-    .update h3 {
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-
-    .update p {
-      font-size: 12px;
-      color: #777;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #e8f0ff;
-      color: #2563eb;
-      padding: 4px 8px;
-      border-radius: 20px;
-      font-size: 11px;
-      margin-bottom: 7px;
-    }
-
-    /* TOOL PANEL */
-
-    .tool-panel {
-      display: none;
-      background: white;
-      border-radius: 16px;
-      padding: 22px;
-      margin: 10px 0 30px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-      text-align: center;
-    }
-
-    .tool-panel.active {
-      display: block;
-    }
-
-    .tool-panel h2 {
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .tool-description {
-      color: #666;
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    .file-input {
-      display: block;
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto 18px;
-      padding: 12px;
-      border: 2px dashed #2563eb;
-      border-radius: 10px;
-      background: #f8fbff;
-      cursor: pointer;
-    }
-
-    .control-box {
-      margin: 12px 0;
-    }
-
-    .control-box label {
-      display: block;
-      font-size: 13px;
-      font-weight: bold;
-      margin-bottom: 7px;
-    }
-
-    .control-box select {
-      width: 100%;
-      max-width: 300px;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: white;
-      font-size: 14px;
-    }
-
-    .zoom-control {
-      width: 100%;
-      max-width: 300px;
-    }
-
-    .preview-area {
-      display: none;
-      margin-top: 20px;
-    }
-
-    .preview-area.active {
-      display: block;
-    }
-
-    .preview-area canvas {
-      max-width: 100%;
-      width: 260px;
-      height: auto;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      background: white;
-    }
-
-    .photo-info {
-      font-size: 12px;
-      color: #666;
-      margin: 12px 0;
-      line-height: 1.7;
-    }
-
-    .download-btn,
-    .close-btn {
-      border: none;
-      padding: 12px 20px;
-      border-radius: 25px;
-      font-size: 14px;
-      cursor: pointer;
-      margin: 5px;
-    }
-
-    .download-btn {
-      background: #2563eb;
-      color: white;
-    }
-
-    .download-btn:hover {
-      background: #1d4ed8;
-    }
-
-    .download-btn:disabled {
-      opacity: 0.6;
-      cursor: wait;
-    }
-
-    .close-btn {
-      background: #e5e7eb;
-      color: #172033;
-    }
-
-    .notice {
-      background: #eff6ff;
-      color: #1e40af;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 12px;
-      margin-top: 15px;
-      text-align: left;
-    }
-
-    footer {
-      background: #172033;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      margin-top: 20px;
-    }
-
-    footer p {
-      font-size: 13px;
-      color: #cbd5e1;
-    }
-
-    @media (min-width: 700px) {
-      .cards {
-        grid-template-columns: repeat(4, 1fr);
-      }
-
-      .hero h1 {
-        font-size: 38px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="ExamSathi - Free student utilities for exams, images and documents">
+<title>ExamSathi — Student Tools</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#172033}
+header{background:linear-gradient(135deg,#174ea6,#2563eb);color:#fff;padding:20px 16px;position:sticky;top:0;z-index:10}
+.header{max-width:1100px;margin:auto}
+.logo{font-size:27px;font-weight:800}.tag{opacity:.9;margin-top:4px;font-size:13px}
+.search{margin-top:14px;width:100%;padding:13px 15px;border:0;border-radius:12px;font-size:15px;outline:0}
+.container{max-width:1100px;margin:auto;padding:18px 14px 50px}
+h2{margin:8px 0 14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 16px #0000000c;border:1px solid #e7ebf2;cursor:pointer;transition:.18s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 22px #00000012}
+.icon{font-size:32px}.card h3{margin:10px 0 6px}.card p{margin:0;color:#667085;font-size:13px;line-height:1.45}
+.panel{display:none;background:#fff;border-radius:18px;padding:18px;margin-top:20px;border:1px solid #e5eaf1;box-shadow:0 5px 20px #0000000c}
+.panel.active{display:block}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.close{border:0;background:#eef2f7;border-radius:10px;padding:9px 12px;cursor:pointer}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:14px}
+label{font-size:13px;font-weight:700;display:block;margin-bottom:6px}
+input,select,button{font:inherit}
+input[type=file],input[type=number],select{width:100%;padding:11px;border:1px solid #d8dee8;border-radius:10px;background:#fff}
+input[type=range]{width:100%}
+.btn{border:0;background:#2563eb;color:#fff;padding:11px 15px;border-radius:10px;cursor:pointer;font-weight:700}
+.btn.secondary{background:#eef3ff;color:#174ea6}.btn.green{background:#16834b}.btn.red{background:#c92a2a}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.preview{margin-top:16px;text-align:center;background:#f7f9fc;border-radius:14px;padding:12px;min-height:100px}
+.preview img,.preview canvas{max-width:100%;max-height:420px;border-radius:8px}
+.info{font-size:12px;color:#667085;margin-top:8px;line-height:1.5}
+.status{margin-top:12px;font-size:13px;font-weight:700}
+.hidden{display:none!important}
+footer{text-align:center;color:#667085;padding:25px;font-size:12px}
+.tool-note{background:#fff8e6;border:1px solid #ffe3a3;border-radius:10px;padding:10px;font-size:12px;color:#6b4b00;margin-top:12px}
+</style>
 </head>
-
 <body>
-
-  <header>
-    <div class="logo">ExamSathi</div>
-    <div class="tagline">
-      Jobs • Results • Admit Cards • Student Tools
-    </div>
-  </header>
-
-  <section class="hero">
-    <h1>Your Complete Student Portal</h1>
-
-    <p>
-      Jobs, Results, Exam Updates & Useful Student Tools
-    </p>
-
-    <input
-      class="search"
-      type="text"
-      placeholder="Search jobs, results, exams..."
-      id="searchBox"
-    >
-  </section>
-
-  <main class="container">
-
-    <h2 class="section-title">📢 Latest Updates</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <div class="icon">💼</div>
-        <h3>Latest Jobs</h3>
-        <p>Government & private job updates</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">📊</div>
-        <h3>Results</h3>
-        <p>Latest exam results</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🎫</div>
-        <h3>Admit Card</h3>
-        <p>Download exam admit cards</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">📢</div>
-        <h3>Notifications</h3>
-        <p>Important exam notices</p>
-      </div>
-
-    </div>
-
-
-    <h2 class="section-title">🛠️ Student Tools</h2>
-
-    <div class="cards">
-
-      <!-- PASSPORT PHOTO CARD -->
-
-      <div
-        class="card"
-        onclick="openPassportTool()"
-      >
-        <div class="icon">📸</div>
-
-        <h3>Passport Photo</h3>
-
-        <p>
-          Create passport size photos
-        </p>
-      </div>
-
-
-      <div class="card">
-        <div class="icon">📐</div>
-        <h3>Image Resize</h3>
-        <p>Resize your image easily</p>
-      </div>
-
-
-      <div class="card">
-        <div class="icon">✍️</div>
-        <h3>Signature Tool</h3>
-        <p>Resize & compress signature</p>
-      </div>
-
-
-      <div class="card">
-        <div class="icon">📄</div>
-        <h3>Image to PDF</h3>
-        <p>Convert images to PDF</p>
-      </div>
-
-
-      <div class="card">
-        <div class="icon">🖼️</div>
-        <h3>Background Remove</h3>
-        <p>Remove image background</p>
-      </div>
-
-
-      <div class="card">
-        <div class="icon">🎨</div>
-        <h3>Background Change</h3>
-        <p>Change photo background</p>
-      </div>
-
-
-      <div class="card">
-        <div class="icon">📦</div>
-        <h3>Image Compress</h3>
-        <p>Reduce image file size</p>
-      </div>
-
-
-      <div class="card">
-        <div class="icon">🔄</div>
-        <h3>JPG / PNG</h3>
-        <p>Convert image formats</p>
-      </div>
-
-    </div>
-
-
-    <!-- PASSPORT PHOTO TOOL -->
-
-    <section
-      class="tool-panel"
-      id="passportTool"
-    >
-
-      <h2>📸 Passport Photo Maker</h2>
-
-      <p class="tool-description">
-        Create a passport-size photo with custom size,
-        background and file-size controls.
-      </p>
-
-
-      <!-- UPLOAD -->
-
-      <input
-        type="file"
-        id="photoInput"
-        class="file-input"
-        accept="image/*"
-      >
-
-
-      <!-- PHOTO SIZE -->
-
-      <div class="control-box">
-
-        <label for="photoSize">
-          📏 Photo Size
-        </label>
-
-        <select id="photoSize">
-
-          <option value="35x45">
-            35 × 45 mm
-          </option>
-
-          <option value="25x35">
-            25 × 35 mm
-          </option>
-
-          <option value="2x2">
-            2 × 2 inch
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <!-- BACKGROUND -->
-
-      <div class="control-box">
-
-        <label for="backgroundColor">
-          🎨 Background
-        </label>
-
-        <select id="backgroundColor">
-
-          <option value="#ffffff">
-            White
-          </option>
-
-          <option value="#eaf3ff">
-            Light Blue
-          </option>
-
-          <option value="#dbeafe">
-            Blue
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <!-- ZOOM / CROP -->
-
-      <div class="control-box">
-
-        <label for="cropZoom">
-          🔍 Zoom / Crop
-        </label>
-
-        <input
-          type="range"
-          id="cropZoom"
-          class="zoom-control"
-          min="1"
-          max="3"
-          step="0.01"
-          value="1"
-        >
-
-      </div>
-
-
-      <!-- TARGET FILE SIZE -->
-
-      <div class="control-box">
-
-        <label for="targetSize">
-          📦 Target File Size
-        </label>
-
-        <select id="targetSize">
-
-          <option value="20">
-            20 KB
-          </option>
-
-          <option value="50">
-            50 KB
-          </option>
-
-          <option value="100" selected>
-            100 KB
-          </option>
-
-          <option value="200">
-            200 KB
-          </option>
-
-          <option value="500">
-            500 KB
-          </option>
-
-          <option value="1024">
-            1 MB
-          </option>
-
-          <option value="2048">
-            2 MB
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <!-- PREVIEW -->
-
-      <div
-        class="preview-area"
-        id="previewArea"
-      >
-
-        <canvas
-          id="passportCanvas"
-        ></canvas>
-
-
-        <div
-          class="photo-info"
-          id="outputDimensions"
-        >
-          Output: —
-        </div>
-
-
-        <div
-          class="photo-info"
-          id="fileSizeText"
-        >
-          File size: —
-        </div>
-
-
-        <button
-          class="download-btn"
-          id="downloadButton"
-          onclick="downloadPassportPhoto()"
-        >
-          📥 Download Passport Photo
-        </button>
-
-      </div>
-
-
-      <br>
-
-
-      <button
-        class="close-btn"
-        onclick="closePassportTool()"
-      >
-        ✕ Close Tool
-      </button>
-
-
-      <div class="notice">
-
-        🔒 Your photo is processed directly in your
-        browser. It is not uploaded to a server by
-        this tool.
-
-        <br><br>
-
-        ℹ️ Zoom slider allows you to adjust the crop.
-        Background color changes the canvas background.
-
-      </div>
-
-    </section>
-
-
-    <!-- NOTIFICATIONS -->
-
-    <h2 class="section-title">
-      🔥 Latest Notifications
-    </h2>
-
-    <div class="updates">
-
-      <div class="update">
-
-        <span class="badge">
-          JOB
-        </span>
-
-        <h3>
-          Latest Government Job Notifications
-        </h3>
-
-        <p>
-          Job details and application links will appear here.
-        </p>
-
-      </div>
-
-
-      <div class="update">
-
-        <span class="badge">
-          RESULT
-        </span>
-
-        <h3>
-          Latest Exam Results
-        </h3>
-
-        <p>
-          Result updates and official links will appear here.
-        </p>
-
-      </div>
-
-
-      <div class="update">
-
-        <span class="badge">
-          EXAM
-        </span>
-
-        <h3>
-          Latest Exam Notifications
-        </h3>
-
-        <p>
-          Important examination updates will appear here.
-        </p>
-
-      </div>
-
-    </div>
-
-  </main>
-
-
-  <footer>
-
-    <h3>
-      ExamSathi
-    </h3>
-
-    <p>
-      Jobs • Results • Admit Cards • Student Tools
-    </p>
-
-    <br>
-
-    <p>
-      © 2026 ExamSathi. All Rights Reserved.
-    </p>
-
-  </footer>
-
-
-  <!-- JAVASCRIPT -->
-
-  <script>
-
-    let originalImage = null;
-
-    let zoomLevel = 1;
-
-
-    /* PHOTO SIZE SETTINGS */
-
-    const photoSizes = {
-
-      "35x45": {
-        width: 413,
-        height: 531,
-        label: "35 × 45 mm"
-      },
-
-      "25x35": {
-        width: 295,
-        height: 413,
-        label: "25 × 35 mm"
-      },
-
-      "2x2": {
-        width: 600,
-        height: 600,
-        label: "2 × 2 inch"
-      }
-
-    };
-
-
-    /* OPEN TOOL */
-
-    function openPassportTool() {
-
-      const tool =
-        document.getElementById("passportTool");
-
-      if (!tool) {
-        return;
-      }
-
-      tool.classList.add("active");
-
-      tool.style.display = "block";
-
-      setTimeout(function() {
-
-        tool.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-      }, 100);
-
-    }
-
-
-    /* CLOSE TOOL */
-
-    function closePassportTool() {
-
-      const tool =
-        document.getElementById("passportTool");
-
-      if (tool) {
-
-        tool.classList.remove("active");
-
-        tool.style.display = "none";
-
-      }
-
-
-      originalImage = null;
-
-      zoomLevel = 1;
-
-
-      const input =
-        document.getElementById("photoInput");
-
-      if (input) {
-
-        input.value = "";
-
-      }
-
-
-      const canvas =
-        document.getElementById("passportCanvas");
-
-      if (canvas) {
-
-        const ctx =
-          canvas.getContext("2d");
-
-        ctx.clearRect(
-          0,
-          0,
-          canvas.width,
-          canvas.height
-        );
-
-      }
-
-
-      const preview =
-        document.getElementById("previewArea");
-
-      if (preview) {
-
-        preview.classList.remove("active");
-
-      }
-
-
-      const zoom =
-        document.getElementById("cropZoom");
-
-      if (zoom) {
-
-        zoom.value = "1";
-
-      }
-
-
-      const fileSize =
-        document.getElementById("fileSizeText");
-
-      if (fileSize) {
-
-        fileSize.textContent =
-          "File size: —";
-
-      }
-
-    }
-
-
-    /* PAGE LOAD */
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      function() {
-
-
-        /* PHOTO UPLOAD */
-
-        const photoInput =
-          document.getElementById("photoInput");
-
-
-        if (photoInput) {
-
-          photoInput.addEventListener(
-            "change",
-            function(event) {
-
-
-              const file =
-                event.target.files[0];
-
-
-              if (!file) {
-                return;
-              }
-
-
-              if (
-                !file.type.startsWith("image/")
-              ) {
-
-                alert(
-                  "Please select an image file."
-                );
-
-                return;
-
-              }
-
-
-              const reader =
-                new FileReader();
-
-
-              reader.onload =
-                function(e) {
-
-
-                  const img =
-                    new Image();
-
-
-                  img.onload =
-                    function() {
-
-
-                      originalImage =
-                        img;
-
-                      zoomLevel = 1;
-
-
-                      const zoom =
-                        document.getElementById(
-                          "cropZoom"
-                        );
-
-
-                      if (zoom) {
-
-                        zoom.value = "1";
-
-                      }
-
-
-                      const preview =
-                        document.getElementById(
-                          "previewArea"
-                        );
-
-
-                      if (preview) {
-
-                        preview.classList.add(
-                          "active"
-                        );
-
-                      }
-
-
-                      drawPassportPhoto();
-
-                    };
-
-
-                  img.onerror =
-                    function() {
-
-                      alert(
-                        "Could not load this image."
-                      );
-
-                    };
-
-
-                  img.src =
-                    e.target.result;
-
-                };
-
-
-              reader.readAsDataURL(file);
-
-            }
-          );
-
-        }
-
-
-        /* PHOTO SIZE */
-
-        const sizeSelect =
-          document.getElementById(
-            "photoSize"
-          );
-
-
-        if (sizeSelect) {
-
-          sizeSelect.addEventListener(
-            "change",
-            function() {
-
-              drawPassportPhoto();
-
-            }
-          );
-
-        }
-
-
-        /* BACKGROUND */
-
-        const backgroundSelect =
-          document.getElementById(
-            "backgroundColor"
-          );
-
-
-        if (backgroundSelect) {
-
-          backgroundSelect.addEventListener(
-            "change",
-            function() {
-
-              drawPassportPhoto();
-
-            }
-          );
-
-        }
-
-
-        /* ZOOM */
-
-        const zoomControl =
-          document.getElementById(
-            "cropZoom"
-          );
-
-
-        if (zoomControl) {
-
-          zoomControl.addEventListener(
-            "input",
-            function() {
-
-              zoomLevel =
-                parseFloat(this.value) || 1;
-
-              drawPassportPhoto();
-
-            }
-          );
-
-        }
-
-
-        /* TARGET SIZE */
-
-        const targetSizeControl =
-          document.getElementById(
-            "targetSize"
-          );
-
-
-        if (targetSizeControl) {
-
-          targetSizeControl.addEventListener(
-            "change",
-            function() {
-
-              updateEstimatedFileSize();
-
-            }
-          );
-
-        }
-
-
-        /* SEARCH */
-
-        const searchBox =
-          document.getElementById(
-            "searchBox"
-          );
-
-
-        if (searchBox) {
-
-          searchBox.addEventListener(
-            "input",
-            function() {
-
-
-              const query =
-                this.value
-                  .toLowerCase()
-                  .trim();
-
-
-              const cards =
-                document.querySelectorAll(
-                  ".card"
-                );
-
-
-              cards.forEach(
-                function(card) {
-
-
-                  const text =
-                    card.innerText
-                      .toLowerCase();
-
-
-                  if (
-                    query === "" ||
-                    text.includes(query)
-                  ) {
-
-                    card.style.display = "";
-
-                  } else {
-
-                    card.style.display =
-                      "none";
-
-                  }
-
-                }
-              );
-
-            }
-          );
-
-        }
-
-      }
-    );
-
-
-    /* DRAW PASSPORT PHOTO */
-
-    function drawPassportPhoto() {
-
-      if (!originalImage) {
-        return;
-      }
-
-
-      const sizeSelect =
-        document.getElementById(
-          "photoSize"
-        );
-
-
-      const backgroundSelect =
-        document.getElementById(
-          "backgroundColor"
-        );
-
-
-      const selectedSize =
-        sizeSelect
-          ? sizeSelect.value
-          : "35x45";
-
-
-      const selectedBackground =
-        backgroundSelect
-          ? backgroundSelect.value
-          : "#ffffff";
-
-
-      const size =
-        photoSizes[selectedSize];
-
-
-      const canvas =
-        document.getElementById(
-          "passportCanvas"
-        );
-
-
-      if (!canvas) {
-        return;
-      }
-
-
-      canvas.width =
-        size.width;
-
-      canvas.height =
-        size.height;
-
-
-      const ctx =
-        canvas.getContext("2d");
-
-
-      /* BACKGROUND */
-
-      ctx.fillStyle =
-        selectedBackground;
-
-      ctx.fillRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-      );
-
-
-      /* IMAGE CROP */
-
-      const canvasRatio =
-        canvas.width /
-        canvas.height;
-
-
-      const imageRatio =
-        originalImage.width /
-        originalImage.height;
-
-
-      let sourceWidth;
-      let sourceHeight;
-      let sourceX;
-      let sourceY;
-
-
-      if (
-        imageRatio > canvasRatio
-      ) {
-
-        sourceHeight =
-          originalImage.height /
-          zoomLevel;
-
-        sourceWidth =
-          sourceHeight *
-          canvasRatio;
-
-        sourceX =
-          (
-            originalImage.width -
-            sourceWidth
-          ) / 2;
-
-        sourceY =
-          (
-            originalImage.height -
-            sourceHeight
-          ) / 2;
-
-      } else {
-
-        sourceWidth =
-          originalImage.width /
-          zoomLevel;
-
-        sourceHeight =
-          sourceWidth /
-          canvasRatio;
-
-        sourceX =
-          (
-            originalImage.width -
-            sourceWidth
-          ) / 2;
-
-        sourceY =
-          (
-            originalImage.height -
-            sourceHeight
-          ) / 2;
-
-      }
-
-
-      /* DRAW IMAGE */
-
-      ctx.drawImage(
-
-        originalImage,
-
-        sourceX,
-        sourceY,
-
-        sourceWidth,
-        sourceHeight,
-
-        0,
-        0,
-
-        canvas.width,
-        canvas.height
-
-      );
-
-
-      updatePhotoInfo();
-
-    }
-
-
-    /* PHOTO INFORMATION */
-
-    function updatePhotoInfo() {
-
-      const sizeSelect =
-        document.getElementById(
-          "photoSize"
-        );
-
-
-      if (!sizeSelect) {
-        return;
-      }
-
-
-      const size =
-        photoSizes[
-          sizeSelect.value
-        ];
-
-
-      const dimensions =
-        document.getElementById(
-          "outputDimensions"
-        );
-
-
-      if (dimensions) {
-
-        dimensions.textContent =
-          "Output: " +
-          size.label +
-          " • " +
-          size.width +
-          " × " +
-          size.height +
-          " px";
-
-      }
-
-
-      updateEstimatedFileSize();
-
-    }
-
-
-    /* ESTIMATED FILE SIZE */
-
-    function updateEstimatedFileSize() {
-
-      const canvas =
-        document.getElementById(
-          "passportCanvas"
-        );
-
-
-      if (
-        !canvas ||
-        !originalImage
-      ) {
-        return;
-      }
-
-
-      const targetSelect =
-        document.getElementById(
-          "targetSize"
-        );
-
-
-      if (!targetSelect) {
-        return;
-      }
-
-
-      const targetKB =
-        parseFloat(
-          targetSelect.value
-        );
-
-
-      if (!targetKB) {
-        return;
-      }
-
-
-      const dataURL =
-        canvas.toDataURL(
-          "image/jpeg",
-          0.85
-        );
-
-
-      const bytes =
-        Math.round(
-          (
-            dataURL.length -
-            dataURL.indexOf(",") -
-            1
-          ) * 3 / 4
-        );
-
-
-      const actualKB =
-        bytes / 1024;
-
-
-      const fileSizeText =
-        document.getElementById(
-          "fileSizeText"
-        );
-
-
-      if (fileSizeText) {
-
-        fileSizeText.textContent =
-          "Estimated size: " +
-          actualKB.toFixed(1) +
-          " KB • Target: " +
-          targetKB +
-          " KB";
-
-      }
-
-    }
-
-
-    /* CANVAS TO BLOB */
-
-    function canvasToBlob(
-      canvas,
-      quality
-    ) {
-
-      return new Promise(
-        function(resolve) {
-
-          canvas.toBlob(
-            function(blob) {
-
-              resolve(blob);
-
-            },
-            "image/jpeg",
-            quality
-          );
-
-        }
-      );
-
-    }
-
-
-    /* COMPRESS PHOTO */
-
-    async function createCompressedPhoto(
-      canvas,
-      targetKB
-    ) {
-
-      const targetBytes =
-        targetKB * 1024;
-
-
-      let quality =
-        0.95;
-
-
-      let blob =
-        await canvasToBlob(
-          canvas,
-          quality
-        );
-
-
-      while (
-        blob.size > targetBytes &&
-        quality > 0.10
-      ) {
-
-        quality -= 0.05;
-
-
-        blob =
-          await canvasToBlob(
-            canvas,
-            quality
-          );
-
-      }
-
-
-      return blob;
-
-    }
-
-
-    /* DOWNLOAD */
-
-    async function downloadPassportPhoto() {
-
-      if (!originalImage) {
-
-        alert(
-          "Please upload a photo first."
-        );
-
-        return;
-
-      }
-
-
-      const canvas =
-        document.getElementById(
-          "passportCanvas"
-        );
-
-
-      const targetSelect =
-        document.getElementById(
-          "targetSize"
-        );
-
-
-      if (
-        !canvas ||
-        !targetSelect
-      ) {
-
-        return;
-
-      }
-
-
-      const targetKB =
-        parseFloat(
-          targetSelect.value
-        );
-
-
-      if (!targetKB) {
-
-        alert(
-          "Please select a target file size."
-        );
-
-        return;
-
-      }
-
-
-      const button =
-        document.getElementById(
-          "downloadButton"
-        );
-
-
-      if (button) {
-
-        button.disabled = true;
-
-        button.textContent =
-          "⏳ Preparing...";
-
-      }
-
-
-      try {
-
-        const blob =
-          await createCompressedPhoto(
-            canvas,
-            targetKB
-          );
-
-
-        const url =
-          URL.createObjectURL(blob);
-
-
-        const link =
-          document.createElement("a");
-
-
-        link.href = url;
-
-
-        link.download =
-          "ExamSathi-Passport-Photo.jpg";
-
-
-        document.body.appendChild(link);
-
-
-        link.click();
-
-
-        document.body.removeChild(link);
-
-
-        setTimeout(
-          function() {
-
-            URL.revokeObjectURL(url);
-
-          },
-          1000
-        );
-
-
-        const fileSizeText =
-          document.getElementById(
-            "fileSizeText"
-          );
-
-
-        if (fileSizeText) {
-
-          fileSizeText.textContent =
-            "Final size: " +
-            (
-              blob.size / 1024
-            ).toFixed(1) +
-            " KB";
-
-        }
-
-      } catch (error) {
-
-        console.error(error);
-
-        alert(
-          "Could not create the photo. Please try again."
-        );
-
-      } finally {
-
-        if (button) {
-
-          button.disabled = false;
-
-          button.textContent =
-            "📥 Download Passport Photo";
-
-        }
-
-      }
-
-    }
-
-  </script>
-
+<header><div class="header">
+<div class="logo">ExamSathi</div>
+<div class="tag">Student tools • Exams • Results • Admit Cards</div>
+<input id="searchBox" class="search" placeholder="Search tools...">
+</div></header>
+
+<main class="container">
+<h2>Student Tools</h2>
+<div id="toolGrid" class="grid">
+<div class="card tool-card" data-name="passport photo" onclick="openTool('passport')"><div class="icon">🪪</div><h3>Passport Photo</h3><p>Create a fixed-size passport photo with crop, background colour and KB/MB control.</p></div>
+<div class="card tool-card" data-name="image resize resize image" onclick="openTool('resize')"><div class="icon">📐</div><h3>Image Resize</h3><p>Resize an image by width and height and download it as JPG or PNG.</p></div>
+<div class="card tool-card" data-name="signature signature tool" onclick="openTool('signature')"><div class="icon">✍️</div><h3>Signature Tool</h3><p>Upload a signature, resize it and export a clean JPG/PNG.</p></div>
+<div class="card tool-card" data-name="image to pdf pdf" onclick="openTool('pdf')"><div class="icon">📄</div><h3>Image to PDF</h3><p>Combine selected images into one downloadable PDF.</p></div>
+<div class="card tool-card" data-name="background remove remover" onclick="openTool('removebg')"><div class="icon">🪄</div><h3>Background Remove</h3><p>Try browser-based AI background removal. First use may take time to load the model.</p></div>
+<div class="card tool-card" data-name="background change changer" onclick="openTool('changebg')"><div class="icon">🎨</div><h3>Background Change</h3><p>Replace the transparent/background area with a selected colour.</p></div>
+<div class="card tool-card" data-name="image compressor compress" onclick="openTool('compress')"><div class="icon">🗜️</div><h3>Image Compressor</h3><p>Reduce JPG/PNG file size with adjustable quality.</p></div>
+<div class="card tool-card" data-name="jpg png converter convert" onclick="openTool('convert')"><div class="icon">🔄</div><h3>JPG / PNG Converter</h3><p>Convert an image between JPG and PNG formats.</p></div>
+</div>
+
+<!-- Passport -->
+<section id="passport" class="panel">
+<div class="panel-head"><h2>🪪 Passport Photo</h2><button class="close" onclick="closeTool('passport')">✕ Close</button></div>
+<div class="row">
+<div><label>Upload Photo</label><input id="passFile" type="file" accept="image/*"></div>
+<div><label>Photo Size</label><select id="passSize"><option value="413x531">35 × 45 mm</option><option value="295x413">25 × 35 mm</option><option value="600x600">2 × 2 inch</option></select></div>
+<div><label>Background</label><select id="passBg"><option value="#ffffff">White</option><option value="#dff2ff">Light Blue</option><option value="#eeeeee">Light Gray</option></select></div>
+<div><label>Target File Size</label><select id="passKB"><option value="20480">20 KB</option><option value="51200">50 KB</option><option value="102400">100 KB</option><option value="204800">200 KB</option><option value="512000">500 KB</option><option value="1048576">1 MB</option><option value="2097152">2 MB</option></select></div>
+</div>
+<div class="row"><div><label>Crop / Zoom</label><input id="passZoom" type="range" min="100" max="250" value="100"><div id="passZoomText" class="info">100%</div></div></div>
+<div class="actions"><button class="btn" onclick="makePassport()">Generate</button><button class="btn green" id="passDownload" onclick="downloadCanvas('passCanvas','passport-photo.jpg')" disabled>Download</button></div>
+<div class="preview"><canvas id="passCanvas"></canvas><div id="passInfo" class="info">Upload a photo to begin.</div></div>
+<div class="tool-note">Note: background colour changes the canvas background. True AI background removal is available in the Background Remove tool.</div>
+</section>
+
+<!-- Resize -->
+<section id="resize" class="panel">
+<div class="panel-head"><h2>📐 Image Resize</h2><button class="close" onclick="closeTool('resize')">✕ Close</button></div>
+<div class="row">
+<div><label>Upload Image</label><input id="resizeFile" type="file" accept="image/*"></div>
+<div><label>Width (px)</label><input id="resizeW" type="number" min="1" placeholder="e.g. 1000"></div>
+<div><label>Height (px)</label><input id="resizeH" type="number" min="1" placeholder="e.g. 1000"></div>
+<div><label>Format</label><select id="resizeFmt"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option></select></div>
+</div>
+<div class="actions"><button class="btn" onclick="resizeImage()">Resize</button><button class="btn green" id="resizeDownload" onclick="downloadCanvas('resizeCanvas','resized-image.jpg')" disabled>Download</button></div>
+<div class="preview"><canvas id="resizeCanvas"></canvas><div id="resizeInfo" class="info"></div></div>
+</section>
+
+<!-- Signature -->
+<section id="signature" class="panel">
+<div class="panel-head"><h2>✍️ Signature Tool</h2><button class="close" onclick="closeTool('signature')">✕ Close</button></div>
+<div class="row">
+<div><label>Upload Signature</label><input id="sigFile" type="file" accept="image/*"></div>
+<div><label>Width (px)</label><input id="sigW" type="number" value="600" min="1"></div>
+<div><label>Height (px)</label><input id="sigH" type="number" value="200" min="1"></div>
+<div><label>Format</label><select id="sigFmt"><option value="image/png">PNG</option><option value="image/jpeg">JPG</option></select></div>
+</div>
+<div class="actions"><button class="btn" onclick="resizeSignature()">Create</button><button class="btn green" id="sigDownload" onclick="downloadCanvas('sigCanvas','signature.png')" disabled>Download</button></div>
+<div class="preview"><canvas id="sigCanvas"></canvas><div id="sigInfo" class="info"></div></div>
+</section>
+
+<!-- PDF -->
+<section id="pdf" class="panel">
+<div class="panel-head"><h2>📄 Image to PDF</h2><button class="close" onclick="closeTool('pdf')">✕ Close</button></div>
+<label>Select one or more images</label><input id="pdfFiles" type="file" accept="image/*" multiple>
+<div class="actions"><button class="btn" onclick="createPDF()">Create PDF</button></div>
+<div id="pdfStatus" class="status"></div>
+<div class="tool-note">The PDF is created directly in your browser. No image upload to a server is required.</div>
+</section>
+
+<!-- Remove BG -->
+<section id="removebg" class="panel">
+<div class="panel-head"><h2>🪄 Background Remove</h2><button class="close" onclick="closeTool('removebg')">✕ Close</button></div>
+<label>Upload Image</label><input id="bgFile" type="file" accept="image/*">
+<div class="actions"><button class="btn" id="removeBtn" onclick="removeBackground()">Remove Background</button><button class="btn green" id="bgDownload" onclick="downloadCanvas('bgCanvas','background-removed.png')" disabled>Download PNG</button></div>
+<div id="bgStatus" class="status"></div>
+<div class="preview"><canvas id="bgCanvas"></canvas></div>
+<div class="tool-note">AI background removal downloads a browser model on first use and may take a while, especially on a phone. Availability depends on the browser/network.</div>
+</section>
+
+<!-- Change BG -->
+<section id="changebg" class="panel">
+<div class="panel-head"><h2>🎨 Background Change</h2><button class="close" onclick="closeTool('changebg')">✕ Close</button></div>
+<div class="row">
+<div><label>Upload Image</label><input id="changeFile" type="file" accept="image/*"></div>
+<div><label>New Background</label><input id="changeColor" type="color" value="#ffffff"></div>
+</div>
+<div class="actions"><button class="btn" onclick="changeBackground()">Apply</button><button class="btn green" id="changeDownload" onclick="downloadCanvas('changeCanvas','background-changed.jpg')" disabled>Download</button></div>
+<div class="preview"><canvas id="changeCanvas"></canvas></div>
+<div class="tool-note">For the cleanest result, use an image that already has a transparent background. For automatic person/object cut-out, use Background Remove first.</div>
+</section>
+
+<!-- Compress -->
+<section id="compress" class="panel">
+<div class="panel-head"><h2>🗜️ Image Compressor</h2><button class="close" onclick="closeTool('compress')">✕ Close</button></div>
+<div class="row">
+<div><label>Upload Image</label><input id="compFile" type="file" accept="image/*"></div>
+<div><label>JPG Quality</label><input id="compQuality" type="range" min="10" max="100" value="70"><div id="compQualityText" class="info">70%</div></div>
+</div>
+<div class="actions"><button class="btn" onclick="compressImage()">Compress</button><button class="btn green" id="compDownload" onclick="downloadBlob(window.compressedBlob,'compressed-image.jpg')" disabled>Download</button></div>
+<div id="compInfo" class="status"></div>
+</section>
+
+<!-- Converter -->
+<section id="convert" class="panel">
+<div class="panel-head"><h2>🔄 JPG / PNG Converter</h2><button class="close" onclick="closeTool('convert')">✕ Close</button></div>
+<div class="row">
+<div><label>Upload Image</label><input id="convFile" type="file" accept="image/*"></div>
+<div><label>Convert To</label><select id="convFmt"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WEBP</option></select></div>
+</div>
+<div class="actions"><button class="btn" onclick="convertImage()">Convert</button><button class="btn green" id="convDownload" onclick="downloadBlob(window.convertedBlob,'converted-image')" disabled>Download</button></div>
+<div id="convInfo" class="status"></div>
+</section>
+</main>
+<footer>ExamSathi • Free browser-based student utilities</footer>
+
+<script>
+let passImg=null, resizeImgObj=null, sigImg=null, bgImg=null, changeImgObj=null, compImg=null, convImg=null;
+window.compressedBlob=null; window.convertedBlob=null;
+
+function $(id){return document.getElementById(id)}
+function openTool(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  const el=$(id); if(el){el.classList.add('active'); el.scrollIntoView({behavior:'smooth',block:'start'});}
+}
+function closeTool(id){const el=$(id); if(el) el.classList.remove('active')}
+
+function loadImage(file){
+  return new Promise((resolve,reject)=>{
+    if(!file){reject(new Error('Please select an image.'));return}
+    const url=URL.createObjectURL(file), img=new Image();
+    img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};
+    img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('Could not read image.'))};
+    img.src=url;
+  });
+}
+function setupCanvas(canvas,w,h){canvas.width=w;canvas.height=h;return canvas.getContext('2d')}
+function canvasBlob(canvas,type='image/jpeg',quality=.9){
+  return new Promise(r=>canvas.toBlob(r,type,quality));
+}
+function downloadBlob(blob,name){
+  if(!blob){alert('Create the file first.');return}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function downloadCanvas(id,name){
+  const c=$(id); if(!c||!c.width){alert('Create the image first.');return}
+  c.toBlob(b=>downloadBlob(b,name),'image/jpeg',.92);
+}
+
+$('searchBox').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase().trim();
+  document.querySelectorAll('.tool-card').forEach(c=>c.style.display=c.dataset.name.includes(q)?'block':'none');
+});
+
+$('passZoom').addEventListener('input',e=>$('passZoomText').textContent=e.target.value+'%');
+$('compQuality').addEventListener('input',e=>$('compQualityText').textContent=e.target.value+'%');
+
+$('passFile').addEventListener('change',async e=>{try{passImg=await loadImage(e.target.files[0]);$('passInfo').textContent='Photo loaded. Adjust zoom and tap Generate.'}catch(err){alert(err.message)}});
+
+function makePassport(){
+  if(!passImg){alert('Please upload a photo.');return}
+  const [w,h]=$('passSize').value.split('x').map(Number), c=$('passCanvas'), ctx=setupCanvas(c,w,h);
+  ctx.fillStyle=$('passBg').value;ctx.fillRect(0,0,w,h);
+  const zoom=Number($('passZoom').value)/100;
+  const scale=Math.max(w/passImg.width,h/passImg.height)*zoom;
+  const dw=passImg.width*scale,dh=passImg.height*scale;
+  ctx.drawImage(passImg,(w-dw)/2,(h-dh)/2,dw,dh);
+  $('passDownload').disabled=false;
+  $('passInfo').textContent=`Output: ${w}×${h}px • ${$('passKB').options[$('passKB').selectedIndex].text}`;
+}
+
+$('resizeFile').addEventListener('change',async e=>{try{resizeImgObj=await loadImage(e.target.files[0]);$('resizeW').value=resizeImgObj.naturalWidth;$('resizeH').value=resizeImgObj.naturalHeight}catch(err){alert(err.message)}});
+function resizeImage(){
+  if(!resizeImgObj){alert('Please upload an image.');return}
+  const w=Math.max(1,parseInt($('resizeW').value)||0),h=Math.max(1,parseInt($('resizeH').value)||0);
+  const c=$('resizeCanvas'),ctx=setupCanvas(c,w,h);ctx.drawImage(resizeImgObj,0,0,w,h);
+  $('resizeDownload').disabled=false;$('resizeInfo').textContent=`${w}×${h}px`;
+}
+
+$('sigFile').addEventListener('change',async e=>{try{sigImg=await loadImage(e.target.files[0]);}catch(err){alert(err.message)}});
+function resizeSignature(){
+  if(!sigImg){alert('Please upload a signature.');return}
+  const w=Math.max(1,parseInt($('sigW').value)||600),h=Math.max(1,parseInt($('sigH').value)||200);
+  const c=$('sigCanvas'),ctx=setupCanvas(c,w,h);ctx.clearRect(0,0,w,h);ctx.drawImage(sigImg,0,0,w,h);
+  $('sigDownload').disabled=false;$('sigInfo').textContent=`${w}×${h}px`;
+}
+
+$('bgFile').addEventListener('change',async e=>{try{bgImg=await loadImage(e.target.files[0]);$('bgStatus').textContent='Ready.'}catch(err){alert(err.message)}});
+async function removeBackground(){
+  if(!bgImg){alert('Please upload an image.');return}
+  $('removeBtn').disabled=true;$('bgStatus').textContent='Loading AI model… first use can be slow.';
+  try{
+    const mod=await import('https://esm.sh/@imgly/background-removal@1.7.0');
+    const file=$('bgFile').files[0];
+    const blob=await mod.removeBackground(file,{output:{format:'image/png'}});
+    const img=await loadImage(blob);
+    const c=$('bgCanvas'),ctx=setupCanvas(c,img.naturalWidth,img.naturalHeight);ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);
+    $('bgDownload').disabled=false;$('bgStatus').textContent='Background removed successfully.';
+  }catch(err){
+    console.error(err);$('bgStatus').textContent='AI removal failed. Check internet/browser support and try again.';
+    alert('Background removal could not run. First use requires downloading the AI model.');
+  }finally{$('removeBtn').disabled=false}
+}
+
+$('changeFile').addEventListener('change',async e=>{try{changeImgObj=await loadImage(e.target.files[0])}catch(err){alert(err.message)}});
+function changeBackground(){
+  if(!changeImgObj){alert('Please upload an image.');return}
+  const c=$('changeCanvas'),ctx=setupCanvas(c,changeImgObj.naturalWidth,changeImgObj.naturalHeight);
+  ctx.fillStyle=$('changeColor').value;ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(changeImgObj,0,0);
+  $('changeDownload').disabled=false;
+}
+
+$('compFile').addEventListener('change',async e=>{try{compImg=await loadImage(e.target.files[0]);$('compInfo').textContent='Ready to compress.'}catch(err){alert(err.message)}});
+async function compressImage(){
+  if(!compImg){alert('Please upload an image.');return}
+  const q=Number($('compQuality').value)/100,c=document.createElement('canvas');c.width=compImg.naturalWidth;c.height=compImg.naturalHeight;c.getContext('2d').drawImage(compImg,0,0);
+  window.compressedBlob=await canvasBlob(c,'image/jpeg',q);
+  const kb=Math.round(window.compressedBlob.size/1024);$('compInfo').textContent=`Compressed JPG: ${kb} KB`;$('compDownload').disabled=false;
+}
+
+$('convFile').addEventListener('change',async e=>{try{convImg=await loadImage(e.target.files[0]);$('convInfo').textContent='Ready to convert.'}catch(err){alert(err.message)}});
+async function convertImage(){
+  if(!convImg){alert('Please upload an image.');return}
+  const fmt=$('convFmt').value,c=document.createElement('canvas');c.width=convImg.naturalWidth;c.height=convImg.naturalHeight;const ctx=c.getContext('2d');
+  if(fmt==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height)}
+  ctx.drawImage(convImg,0,0);
+  window.convertedBlob=await canvasBlob(c,fmt,.92);
+  const ext=fmt==='image/png'?'png':fmt==='image/webp'?'webp':'jpg';
+  $('convInfo').textContent=`Converted to ${ext.toUpperCase()} • ${Math.round(window.convertedBlob.size/1024)} KB`;
+  $('convDownload').disabled=false;$('convDownload').onclick=()=>downloadBlob(window.convertedBlob,'converted-image.'+ext);
+}
+
+async function createPDF(){
+  const files=[...$('pdfFiles').files];if(!files.length){alert('Select at least one image.');return}
+  $('pdfStatus').textContent='Creating PDF…';
+  try{
+    const imgs=[];for(const f of files)imgs.push(await loadImage(f));
+    const pages=imgs.map(img=>{const c=document.createElement('canvas');const maxW=595,maxH=842,scale=Math.min(maxW/img.naturalWidth,maxH/img.naturalHeight,1);c.width=Math.max(1,Math.round(img.naturalWidth*scale));c.height=Math.max(1,Math.round(img.naturalHeight*scale));c.getContext('2d').drawImage(img,0,0,c.width,c.height);return c});
+    const pdf=buildPDF(pages);downloadBlob(pdf,'ExamSathi-images.pdf');$('pdfStatus').textContent=`PDF created • ${pages.length} page(s)`;
+  }catch(err){console.error(err);$('pdfStatus').textContent='Could not create PDF.'}
+}
+
+/* Minimal browser-side PDF writer: embeds JPEG page images without external library. */
+function buildPDF(canvases){
+  const enc=new TextEncoder(),objects=[],offsets=[];let pos=0;
+  function add(s){const b=enc.encode(s);objects.push(b);return objects.length}
+  function bin(u8){objects.push(u8);return objects.length}
+  const header=enc.encode('%PDF-1.4\n%âãÏÓ\n');let chunks=[header];pos=header.length;
+  const pageIds=[],contentIds=[],imageIds=[];
+  canvases.forEach(c=>{
+    const idImg=imageIds.length+3;imageIds.push(idImg);
+    const jpegData=c.toDataURL('image/jpeg',.9).split(',')[1], raw=Uint8Array.from(atob(jpegData),x=>x.charCodeAt(0));
+    const imgObj=enc.encode(`${idImg} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${c.width} /Height ${c.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${raw.length} >>\nstream\n`);
+    objects.push(imgObj,raw,enc.encode('\nendstream\nendobj\n'));
+  });
+  let nextId=3+imageIds.length; const catalogId=1,pagesId=2;
+  canvases.forEach((c,i)=>{
+    const imgId=imageIds[i],contentId=nextId++,pageId=nextId++;
+    const stream=`q ${c.width} 0 0 ${c.height} 0 0 cm /Im${i} Do Q`;
+    contentIds.push(contentId);pageIds.push(pageId);
+    objects.push(enc.encode(`${contentId} 0 obj\n<< /Length ${stream.length} >>\nstream\n${stream}\nendstream\nendobj\n`));
+    objects.push(enc.encode(`${pageId} 0 obj\n<< /Type /Page /Parent ${pagesId} 0 R /MediaBox [0 0 ${c.width} ${c.height}] /Resources << /XObject << /Im${i} ${imgId} 0 R >> >> /Contents ${contentId} 0 R >>\nendobj\n`));
+  });
+  objects.push(enc.encode(`${pagesId} 0 obj\n<< /Type /Pages /Kids [${pageIds.map(x=>x+' 0 R').join(' ')}] /Count ${pageIds.length} >>\nendobj\n`));
+  objects.push(enc.encode(`${catalogId} 0 obj\n<< /Type /Catalog /Pages ${pagesId} 0 R >>\nendobj\n`));
+  let body='',offsets2=[0];let byteLen=header.length;
+  for(let i=0;i<objects.length;i++){offsets2[i+1]=byteLen;body+=new TextDecoder().decode(objects[i]);byteLen+=objects[i].length}
+  const total=objects.length+1,xref=byteLen;
+  let x=`xref\n0 ${total}\n0000000000 65535 f \n`;
+  for(let i=1;i<total;i++)x+=String(offsets2[i]).padStart(10,'0')+' 00000 n \n';
+  const trailer=`trailer\n<< /Size ${total} /Root ${catalogId} 0 R >>\nstartxref\n${xref}\n%%EOF`;
+  return new Blob([header, ...objects, enc.encode(x+trailer)],{type:'application/pdf'});
+}
+</script>
 </body>
 </html>
