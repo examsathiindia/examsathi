@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +70,7 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
   <button class="card" onclick="scrollToSection('studentTools')">🛠️<br><b>Tools</b></button>
 </nav>
 
-<section id="home" style="display:none"></section>
+<div id="home"></div>
 
 <section id="jobs" class="portal-section">
   <h2>💼 Latest Jobs</h2>
@@ -210,8 +211,51 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
 <div class="actions"><button class="btn" onclick="convertImage()">Convert</button><button class="btn green" id="convDownload" onclick="downloadBlob(window.convertedBlob,'converted-image')" disabled>Download</button></div>
 <div id="convInfo" class="status"></div>
 </section>
+
+<section id="about" class="portal-section">
+  <h2>ℹ️ About ExamSathi</h2>
+  <div class="card">
+    <p><b>ExamSathi</b> is a student-focused portal designed to keep exam-related information and useful online tools together in one simple place.</p>
+    <p class="info">Always verify important dates, eligibility, fees and application details on the concerned official website before taking action.</p>
+  </div>
+</section>
+
+<section id="contact" class="portal-section">
+  <h2>📞 Contact</h2>
+  <div class="card">
+    <p>For website feedback, corrections or tool-related issues, contact details can be added here.</p>
+    <div class="actions">
+      <button class="btn secondary" onclick="showPortalMessage('Contact')">Contact ExamSathi</button>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" class="portal-section">
+  <h2>🔐 Privacy Policy</h2>
+  <div class="card">
+    <p>Most image tools on this version process files directly in your browser. Images are not intentionally sent to an ExamSathi server by these tools.</p>
+    <p class="info">Third-party browser libraries may have their own network/model-loading behaviour. Review their terms before using sensitive documents.</p>
+  </div>
+</section>
+
+<section id="disclaimer" class="portal-section">
+  <h2>📄 Disclaimer</h2>
+  <div class="card">
+    <p>ExamSathi is an informational student portal. Information should be verified against the relevant official authority before relying on it.</p>
+    <p class="info">ExamSathi does not guarantee the accuracy, completeness or continued availability of third-party notices, links or schedules.</p>
+  </div>
+</section>
+
 </main>
-<footer>ExamSathi • Free browser-based student utilities</footer>
+<footer>
+  <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:10px">
+    <button class="close" onclick="scrollToSection('about')">About</button>
+    <button class="close" onclick="scrollToSection('contact')">Contact</button>
+    <button class="close" onclick="scrollToSection('privacy')">Privacy</button>
+    <button class="close" onclick="scrollToSection('disclaimer')">Disclaimer</button>
+  </div>
+  ExamSathi • Free browser-based student utilities
+</footer>
 
 <script>
 let passImg=null, resizeImgObj=null, sigImg=null, bgImg=null, changeImgObj=null, compImg=null, convImg=null;
@@ -380,4 +424,4 @@ function buildPDF(canvases){
 }
 </script>
 </body>
-</html>
+  </html>
