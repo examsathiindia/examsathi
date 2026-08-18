@@ -1,8 +1,9 @@
-,<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ExamSathi - Jobs, Results & Student Tools</title>
 
   <style>
@@ -92,10 +93,15 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       cursor: pointer;
       transition: 0.2s;
+      user-select: none;
     }
 
     .card:hover {
       transform: translateY(-2px);
+    }
+
+    .card:active {
+      transform: scale(0.98);
     }
 
     .icon {
@@ -175,6 +181,7 @@
       color: #666;
       font-size: 13px;
       margin-bottom: 18px;
+      line-height: 1.5;
     }
 
     .file-input {
@@ -187,6 +194,45 @@
       border-radius: 10px;
       background: #f8fbff;
       cursor: pointer;
+    }
+
+    .controls {
+      display: grid;
+      gap: 12px;
+      max-width: 500px;
+      margin: 15px auto;
+      text-align: left;
+    }
+
+    .control-box {
+      background: #f8fafc;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .control-box label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    .control-box select,
+    .control-box input[type="range"] {
+      width: 100%;
+    }
+
+    .control-box select {
+      padding: 9px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: white;
+    }
+
+    .zoom-value {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
     }
 
     .preview-area {
@@ -211,6 +257,7 @@
       font-size: 12px;
       color: #666;
       margin: 12px 0;
+      line-height: 1.7;
     }
 
     .download-btn,
@@ -232,24 +279,14 @@
       background: #1d4ed8;
     }
 
+    .download-btn:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
     .close-btn {
       background: #e5e7eb;
       color: #172033;
-    }
-
-    .quality-box {
-      margin: 15px 0;
-    }
-
-    .quality-box label {
-      font-size: 13px;
-      margin-right: 8px;
-    }
-
-    .quality-box select {
-      padding: 8px 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
     }
 
     .notice {
@@ -260,6 +297,15 @@
       font-size: 12px;
       margin-top: 15px;
       text-align: left;
+      line-height: 1.5;
+    }
+
+    .status {
+      margin: 10px auto;
+      max-width: 500px;
+      font-size: 13px;
+      color: #2563eb;
+      min-height: 20px;
     }
 
     footer {
@@ -289,14 +335,25 @@
 
 <body>
 
+  <!-- HEADER -->
+
   <header>
     <div class="logo">ExamSathi</div>
-    <div class="tagline">Jobs • Results • Admit Cards • Student Tools</div>
+    <div class="tagline">
+      Jobs • Results • Admit Cards • Student Tools
+    </div>
   </header>
 
+
+  <!-- HERO -->
+
   <section class="hero">
+
     <h1>Your Complete Student Portal</h1>
-    <p>Jobs, Results, Exam Updates & Useful Student Tools</p>
+
+    <p>
+      Jobs, Results, Exam Updates & Useful Student Tools
+    </p>
 
     <input
       class="search"
@@ -304,11 +361,17 @@
       placeholder="Search jobs, results, exams..."
       id="searchBox"
     >
+
   </section>
+
 
   <main class="container">
 
-    <h2 class="section-title">📢 Latest Updates</h2>
+    <!-- LATEST UPDATES -->
+
+    <h2 class="section-title">
+      📢 Latest Updates
+    </h2>
 
     <div class="cards">
 
@@ -338,16 +401,32 @@
 
     </div>
 
-    <h2 class="section-title">🛠️ Student Tools</h2>
+
+    <!-- STUDENT TOOLS -->
+
+    <h2 class="section-title">
+      🛠️ Student Tools
+    </h2>
 
     <div class="cards">
 
       <!-- PASSPORT PHOTO -->
-      <div class="card" onclick="openPassportTool()">
-  <div class="icon">📸</div>
-  <h3>Passport Photo</h3>
-  <p>Create passport size photos</p>
+
+      <div
+        class="card"
+        onclick="openPassportTool()"
+      >
+
+        <div class="icon">📸</div>
+
+        <h3>Passport Photo</h3>
+
+        <p>
+          Create passport size photos
+        </p>
+
       </div>
+
 
       <div class="card">
         <div class="icon">📐</div>
@@ -355,11 +434,13 @@
         <p>Resize your image easily</p>
       </div>
 
+
       <div class="card">
         <div class="icon">✍️</div>
         <h3>Signature Tool</h3>
         <p>Resize & compress signature</p>
       </div>
+
 
       <div class="card">
         <div class="icon">📄</div>
@@ -367,11 +448,13 @@
         <p>Convert images to PDF</p>
       </div>
 
+
       <div class="card">
         <div class="icon">🖼️</div>
         <h3>Background Remove</h3>
         <p>Remove image background</p>
       </div>
+
 
       <div class="card">
         <div class="icon">🎨</div>
@@ -379,11 +462,13 @@
         <p>Change photo background</p>
       </div>
 
+
       <div class="card">
         <div class="icon">📦</div>
         <h3>Image Compress</h3>
         <p>Reduce image file size</p>
       </div>
+
 
       <div class="card">
         <div class="icon">🔄</div>
@@ -393,52 +478,206 @@
 
     </div>
 
+
     <!-- PASSPORT PHOTO TOOL -->
 
-    <section class="tool-panel" id="passportTool">
+    <section
+      class="tool-panel"
+      id="passportTool"
+    >
 
-      <h2>📸 Passport Photo Maker</h2>
+      <h2>
+        📸 Passport Photo Maker
+      </h2>
 
       <p class="tool-description">
-        Upload your photo and create a standard 35 × 45 mm passport-size photo.
+        Upload a photo, choose the required size,
+        adjust the crop with zoom, select your target
+        file size and download the final JPG.
       </p>
+
+
+      <!-- PHOTO UPLOAD -->
 
       <input
         type="file"
         id="photoInput"
         class="file-input"
-        accept="image/*"
+        accept="image/jpeg,image/png,image/webp"
       >
 
-      <div class="quality-box">
-        <label for="quality">JPG Quality:</label>
 
-        <select id="quality">
-          <option value="0.95">High</option>
-          <option value="0.85" selected>Standard</option>
-          <option value="0.70">Compressed</option>
-        </select>
+      <!-- CONTROLS -->
+
+      <div class="controls">
+
+        <div class="control-box">
+
+          <label for="photoSize">
+            📏 Photo Size
+          </label>
+
+          <select id="photoSize">
+
+            <option value="35x45">
+              35 × 45 mm — 413 × 531 px
+            </option>
+
+            <option value="25x35">
+              25 × 35 mm — 295 × 413 px
+            </option>
+
+            <option value="2x2">
+              2 × 2 inch — 600 × 600 px
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="control-box">
+
+          <label for="backgroundColor">
+            🎨 Background Color
+          </label>
+
+          <select id="backgroundColor">
+
+            <option value="#ffffff">
+              White
+            </option>
+
+            <option value="#eaf4ff">
+              Light Blue
+            </option>
+
+            <option value="#f2f2f2">
+              Light Gray
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="control-box">
+
+          <label for="targetSize">
+            📦 Target File Size
+          </label>
+
+          <select id="targetSize">
+
+            <option value="20">
+              20 KB
+            </option>
+
+            <option value="50">
+              50 KB
+            </option>
+
+            <option value="100" selected>
+              100 KB
+            </option>
+
+            <option value="200">
+              200 KB
+            </option>
+
+            <option value="500">
+              500 KB
+            </option>
+
+            <option value="1024">
+              1 MB
+            </option>
+
+            <option value="2048">
+              2 MB
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="control-box">
+
+          <label for="cropZoom">
+            🔍 Manual Crop / Zoom
+          </label>
+
+          <input
+            type="range"
+            id="cropZoom"
+            min="1"
+            max="3"
+            step="0.05"
+            value="1"
+          >
+
+          <div
+            class="zoom-value"
+            id="zoomValue"
+          >
+            Zoom: 1.00×
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="preview-area" id="previewArea">
 
-        <canvas id="passportCanvas"></canvas>
+      <!-- STATUS -->
 
-        <div class="photo-info">
-          Output size: 35 × 45 mm<br>
-          Digital size: 413 × 531 pixels
+      <div
+        class="status"
+        id="toolStatus"
+      ></div>
+
+
+      <!-- PREVIEW -->
+
+      <div
+        class="preview-area"
+        id="previewArea"
+      >
+
+        <canvas
+          id="passportCanvas"
+        ></canvas>
+
+
+        <div
+          class="photo-info"
+          id="outputDimensions"
+        >
+          Output: —
         </div>
+
+
+        <div
+          class="photo-info"
+          id="fileSizeText"
+        >
+          Estimated size: —
+        </div>
+
 
         <button
           class="download-btn"
+          id="downloadButton"
           onclick="downloadPassportPhoto()"
         >
-          ⬇️ Download Passport Photo
+          📥 Download Passport Photo
         </button>
 
       </div>
 
+
       <br>
+
 
       <button
         class="close-btn"
@@ -447,489 +686,1187 @@
         ✕ Close Tool
       </button>
 
+
       <div class="notice">
-        🔒 Your photo is processed directly in your browser.
-        It is not uploaded to a server by this tool.
+
+        🔒 Your uploaded photo is processed inside
+        your browser by this tool. It is not sent to
+        our server.
+
+        <br><br>
+
+        ℹ️ The background-color option creates the
+        selected canvas background. Automatic AI
+        background removal will be added separately.
+
       </div>
 
     </section>
 
 
-    <h2 class="section-title">🔥 Latest Notifications</h2>
+    <!-- NOTIFICATIONS -->
+
+    <h2 class="section-title">
+      🔥 Latest Notifications
+    </h2>
 
     <div class="updates">
 
       <div class="update">
-        <span class="badge">JOB</span>
-        <h3>Latest Government Job Notifications</h3>
-        <p>Job details and application links will appear here.</p>
+
+        <span class="badge">
+          JOB
+        </span>
+
+        <h3>
+          Latest Government Job Notifications
+        </h3>
+
+        <p>
+          Job details and application links will appear here.
+        </p>
+
       </div>
 
-      <div class="update">
-        <span class="badge">RESULT</span>
-        <h3>Latest Exam Results</h3>
-        <p>Result updates and official links will appear here.</p>
-      </div>
 
       <div class="update">
-        <span class="badge">EXAM</span>
-        <h3>Latest Exam Notifications</h3>
-        <p>Important examination updates will appear here.</p>
+
+        <span class="badge">
+          RESULT
+        </span>
+
+        <h3>
+          Latest Exam Results
+        </h3>
+
+        <p>
+          Result updates and official links will appear here.
+        </p>
+
+      </div>
+
+
+      <div class="update">
+
+        <span class="badge">
+          EXAM
+        </span>
+
+        <h3>
+          Latest Exam Notifications
+        </h3>
+
+        <p>
+          Important examination updates will appear here.
+        </p>
+
       </div>
 
     </div>
 
   </main>
 
+
+  <!-- FOOTER -->
+
   <footer>
-    <h3>ExamSathi</h3>
-    <p>Jobs • Results • Admit Cards • Student Tools</p>
+
+    <h3>
+      ExamSathi
+    </h3>
+
+    <p>
+      Jobs • Results • Admit Cards • Student Tools
+    </p>
+
     <br>
-    <p>© 2026 ExamSathi. All Rights Reserved.</p>
+
+    <p>
+      © 2026 ExamSathi. All Rights Reserved.
+    </p>
+
   </footer>
 
 
+  <!-- JAVASCRIPT -->
+
   <script>
 
-  let originalImage = null;
-let zoomLevel = 1;
+    let originalImage = null;
 
-const photoSizes = {
-    "35x45": {
+    let zoomLevel = 1;
+
+
+    /* PHOTO SIZE SETTINGS */
+
+    const photoSizes = {
+
+      "35x45": {
         width: 413,
         height: 531,
         label: "35 × 45 mm"
-    },
-    "25x35": {
+      },
+
+      "25x35": {
         width: 295,
         height: 413,
         label: "25 × 35 mm"
-    },
-    "2x2": {
+      },
+
+      "2x2": {
         width: 600,
         height: 600,
         label: "2 × 2 inch"
-    }
-};
+      }
 
-function openPassportTool() {
-    const tool = document.getElementById("passportTool");
+    };
 
-    if (tool) {
-        tool.classList.add("active");
-        setTimeout(function(){
-          tool.scrolllntoView({
-            behavior: "smooth",
-            block: "start"
+
+    /* OPEN PASSPORT TOOL */
+
+    function openPassportTool() {
+
+      const tool =
+        document.getElementById("passportTool");
+
+      if (!tool) {
+        return;
+      }
+
+      tool.classList.add("active");
+
+      setTimeout(function() {
+
+        tool.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
         });
-    },100);
-  }
-}
-  
-function closePassportTool() {
-    const tool = document.getElementById("passportTool");
 
-    if (tool) {
-        tool.style.display = "none";
+      }, 100);
+
     }
 
-    originalImage = null;
-    zoomLevel = 1;
 
-    const input = document.getElementById("photoInput");
-    if (input) {
+    /* CLOSE PASSPORT TOOL */
+
+    function closePassportTool() {
+
+      const tool =
+        document.getElementById("passportTool");
+
+      if (tool) {
+
+        tool.classList.remove("active");
+
+      }
+
+      originalImage = null;
+
+      zoomLevel = 1;
+
+
+      const input =
+        document.getElementById("photoInput");
+
+      if (input) {
+
         input.value = "";
+
+      }
+
+
+      const canvas =
+        document.getElementById("passportCanvas");
+
+      if (canvas) {
+
+        const ctx =
+          canvas.getContext("2d");
+
+        ctx.clearRect(
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+      }
+
+
+      const preview =
+        document.getElementById("previewArea");
+
+      if (preview) {
+
+        preview.classList.remove("active");
+
+      }
+
+
+      const zoom =
+        document.getElementById("cropZoom");
+
+      if (zoom) {
+
+        zoom.value = "1";
+
+      }
+
+
+      const zoomValue =
+        document.getElementById("zoomValue");
+
+      if (zoomValue) {
+
+        zoomValue.textContent =
+          "Zoom: 1.00×";
+
+      }
+
+
+      const fileSize =
+        document.getElementById("fileSizeText");
+
+      if (fileSize) {
+
+        fileSize.textContent =
+          "Estimated size: —";
+
+      }
+
+
+      const dimensions =
+        document.getElementById("outputDimensions");
+
+      if (dimensions) {
+
+        dimensions.textContent =
+          "Output: —";
+
+      }
+
+
+      const status =
+        document.getElementById("toolStatus");
+
+      if (status) {
+
+        status.textContent = "";
+
+      }
+
     }
 
-    const canvas = document.getElementById("passportCanvas");
 
-    if (canvas) {
-        const ctx = canvas.getContext("2d");
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
+    /* IMAGE UPLOAD */
 
-    const fileSize = document.getElementById("fileSizeText");
-    if (fileSize) {
-        fileSize.textContent = "File size: —";
-    }
-}
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
 
-document.addEventListener("DOMContentLoaded", function () {
+        const photoInput =
+          document.getElementById("photoInput");
 
-    const photoInput = document.getElementById("photoInput");
 
-    if (photoInput) {
-        photoInput.addEventListener("change", function (event) {
+        if (photoInput) {
 
-            const file = event.target.files[0];
+          photoInput.addEventListener(
+            "change",
+            function(event) {
 
-            if (!file) return;
+              const file =
+                event.target.files[0];
 
-            if (!file.type.startsWith("image/")) {
-                alert("Please select an image file.");
+
+              if (!file) {
                 return;
-            }
+              }
 
-            const reader = new FileReader();
 
-            reader.onload = function (e) {
+              if (!file.type.startsWith("image/")) {
 
-                const img = new Image();
+                alert(
+                  "Please select a valid image."
+                );
 
-                img.onload = function () {
+                return;
 
-                    originalImage = img;
-                    zoomLevel = 1;
+              }
 
-                    const zoom = document.getElementById("cropZoom");
 
-                    if (zoom) {
+              const status =
+                document.getElementById("toolStatus");
+
+              if (status) {
+
+                status.textContent =
+                  "Loading photo...";
+
+              }
+
+
+              const reader =
+                new FileReader();
+
+
+              reader.onload =
+                function(e) {
+
+                  const img =
+                    new Image();
+
+
+                  img.onload =
+                    function() {
+
+                      originalImage = img;
+
+                      zoomLevel = 1;
+
+
+                      const zoom =
+                        document.getElementById(
+                          "cropZoom"
+                        );
+
+                      if (zoom) {
+
                         zoom.value = "1";
-                    }
 
-                    drawPassportPhoto();
+                      }
+
+
+                      const zoomValue =
+                        document.getElementById(
+                          "zoomValue"
+                        );
+
+                      if (zoomValue) {
+
+                        zoomValue.textContent =
+                          "Zoom: 1.00×";
+
+                      }
+
+
+                      const preview =
+                        document.getElementById(
+                          "previewArea"
+                        );
+
+                      if (preview) {
+
+                        preview.classList.add(
+                          "active"
+                        );
+
+                      }
+
+
+                      if (status) {
+
+                        status.textContent =
+                          "Photo loaded successfully.";
+
+                      }
+
+
+                      drawPassportPhoto();
+
+                    };
+
+
+                  img.onerror =
+                    function() {
+
+                      alert(
+                        "Could not load this image."
+                      );
+
+                    };
+
+
+                  img.src =
+                    e.target.result;
+
                 };
 
-                img.src = e.target.result;
-            };
 
-            reader.readAsDataURL(file);
-        });
-    }
+              reader.readAsDataURL(file);
 
-    const sizeSelect = document.getElementById("photoSize");
+            }
+          );
 
-    if (sizeSelect) {
-        sizeSelect.addEventListener("change", function () {
-            drawPassportPhoto();
-        });
-    }
+        }
 
-    const backgroundSelect = document.getElementById("backgroundColor");
 
-    if (backgroundSelect) {
-        backgroundSelect.addEventListener("change", function () {
-            drawPassportPhoto();
-        });
-    }
+        /* SIZE CHANGE */
 
-    const zoomControl = document.getElementById("cropZoom");
+        const sizeSelect =
+          document.getElementById("photoSize");
 
-    if (zoomControl) {
-        zoomControl.addEventListener("input", function () {
 
-            zoomLevel = parseFloat(this.value) || 1;
+        if (sizeSelect) {
 
-            drawPassportPhoto();
-        });
-    }
+          sizeSelect.addEventListener(
+            "change",
+            function() {
 
-});
+              drawPassportPhoto();
 
-function drawPassportPhoto() {
+            }
+          );
 
-    if (!originalImage) return;
+        }
 
-    const sizeSelect = document.getElementById("photoSize");
-    const backgroundSelect = document.getElementById("backgroundColor");
 
-    const selectedSize = sizeSelect ? sizeSelect.value : "35x45";
-    const selectedBackground = backgroundSelect
-        ? backgroundSelect.value
-        : "white";
+        /* BACKGROUND CHANGE */
 
-    const size = photoSizes[selectedSize];
+        const backgroundSelect =
+          document.getElementById(
+            "backgroundColor"
+          );
 
-    const canvas = document.getElementById("passportCanvas");
 
-    if (!canvas) return;
+        if (backgroundSelect) {
 
-    canvas.width = size.width;
-    canvas.height = size.height;
+          backgroundSelect.addEventListener(
+            "change",
+            function() {
 
-    const ctx = canvas.getContext("2d");
+              drawPassportPhoto();
 
-    /* Background */
-    ctx.fillStyle = selectedBackground;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+          );
 
-    /*
-       Crop image to the selected passport ratio.
-       Zoom allows manual crop control.
-    */
+        }
 
-    const canvasRatio = canvas.width / canvas.height;
-    const imageRatio = originalImage.width / originalImage.height;
 
-    let sourceWidth;
-    let sourceHeight;
-    let sourceX;
-    let sourceY;
+        /* ZOOM */
 
-    if (imageRatio > canvasRatio) {
+        const zoomControl =
+          document.getElementById("cropZoom");
 
-        sourceHeight = originalImage.height / zoomLevel;
-        sourceWidth = sourceHeight * canvasRatio;
 
-        sourceX = (originalImage.width - sourceWidth) / 2;
-        sourceY = (originalImage.height - sourceHeight) / 2;
+        if (zoomControl) {
 
-    } else {
+          zoomControl.addEventListener(
+            "input",
+            function() {
 
-        sourceWidth = originalImage.width / zoomLevel;
-        sourceHeight = sourceWidth / canvasRatio;
+              zoomLevel =
+                parseFloat(this.value) || 1;
 
-        sourceX = (originalImage.width - sourceWidth) / 2;
-        sourceY = (originalImage.height - sourceHeight) / 2;
-    }
 
-    ctx.drawImage(
-        originalImage,
-        sourceX,
-        sourceY,
-        sourceWidth,
-        sourceHeight,
+              const zoomValue =
+                document.getElementById(
+                  "zoomValue"
+                );
+
+
+              if (zoomValue) {
+
+                zoomValue.textContent =
+                  "Zoom: " +
+                  zoomLevel.toFixed(2) +
+                  "×";
+
+              }
+
+
+              drawPassportPhoto();
+
+            }
+          );
+
+        }
+
+
+        /* TARGET SIZE */
+
+        const targetSizeControl =
+          document.getElementById(
+            "targetSize"
+          );
+
+
+        if (targetSizeControl) {
+
+          targetSizeControl.addEventListener(
+            "change",
+            function() {
+
+              updateEstimatedFileSize();
+
+            }
+          );
+
+        }
+
+
+        /* SEARCH */
+
+        const searchBox =
+          document.getElementById(
+            "searchBox"
+          );
+
+
+        if (searchBox) {
+
+          searchBox.addEventListener(
+            "input",
+            function() {
+
+              const query =
+                this.value
+                  .toLowerCase()
+                  .trim();
+
+
+              const cards =
+                document.querySelectorAll(
+                  ".card"
+                );
+
+
+              cards.forEach(
+                function(card) {
+
+                  const text =
+                    card.innerText
+                      .toLowerCase();
+
+
+                  if (
+                    query === "" ||
+                    text.includes(query)
+                  ) {
+
+                    card.style.display = "";
+
+                  } else {
+
+                    card.style.display =
+                      "none";
+
+                  }
+
+                }
+              );
+
+            }
+          );
+
+        }
+
+      }
+    );
+
+
+    /* DRAW PASSPORT PHOTO */
+
+    function drawPassportPhoto() {
+
+      if (!originalImage) {
+        return;
+      }
+
+
+      const sizeSelect =
+        document.getElementById(
+          "photoSize"
+        );
+
+
+      const backgroundSelect =
+        document.getElementById(
+          "backgroundColor"
+        );
+
+
+      const selectedSize =
+        sizeSelect
+          ? sizeSelect.value
+          : "35x45";
+
+
+      const selectedBackground =
+        backgroundSelect
+          ? backgroundSelect.value
+          : "#ffffff";
+
+
+      const size =
+        photoSizes[selectedSize];
+
+
+      if (!size) {
+        return;
+      }
+
+
+      const canvas =
+        document.getElementById(
+          "passportCanvas"
+        );
+
+
+      if (!canvas) {
+        return;
+      }
+
+
+      canvas.width =
+        size.width;
+
+      canvas.height =
+        size.height;
+
+
+      const ctx =
+        canvas.getContext("2d");
+
+
+      /* BACKGROUND */
+
+      ctx.fillStyle =
+        selectedBackground;
+
+      ctx.fillRect(
         0,
         0,
         canvas.width,
         canvas.height
-    );
+      );
 
-    updatePhotoInfo();
-}
 
-function updatePhotoInfo() {
+      /* IMAGE RATIO */
 
-    const sizeSelect = document.getElementById("photoSize");
+      const canvasRatio =
+        canvas.width /
+        canvas.height;
 
-    if (!sizeSelect) return;
 
-    const selectedSize = sizeSelect.value;
-    const size = photoSizes[selectedSize];
+      const imageRatio =
+        originalImage.width /
+        originalImage.height;
 
-    const dimensions = document.getElementById("outputDimensions");
 
-    if (dimensions) {
-        dimensions.textContent =
-            "Output: " +
-            size.label +
-            " • " +
-            size.width +
-            " × " +
-            size.height +
-            " px";
-    }
+      let sourceWidth;
+      let sourceHeight;
+      let sourceX;
+      let sourceY;
 
-    updateEstimatedFileSize();
-}
 
-function updateEstimatedFileSize() {
+      /*
+        Crop the image to the
+        selected passport ratio.
+      */
 
-    const canvas = document.getElementById("passportCanvas");
+      if (imageRatio > canvasRatio) {
 
-    if (!canvas || !originalImage) return;
+        sourceHeight =
+          originalImage.height /
+          zoomLevel;
 
-    const targetSelect = document.getElementById("targetSize");
 
-    if (!targetSelect) return;
+        sourceWidth =
+          sourceHeight *
+          canvasRatio;
 
-    const targetKB = parseFloat(targetSelect.value);
 
-    if (!targetKB) return;
+        sourceX =
+          (originalImage.width -
+            sourceWidth) / 2;
 
-    const dataURL = canvas.toDataURL("image/jpeg", 0.85);
 
-    const bytes =
-        Math.round(
-            (dataURL.length - dataURL.indexOf(",") - 1) * 3 / 4
+        sourceY =
+          (originalImage.height -
+            sourceHeight) / 2;
+
+      } else {
+
+        sourceWidth =
+          originalImage.width /
+          zoomLevel;
+
+
+        sourceHeight =
+          sourceWidth /
+          canvasRatio;
+
+
+        sourceX =
+          (originalImage.width -
+            sourceWidth) / 2;
+
+
+        sourceY =
+          (originalImage.height -
+            sourceHeight) / 2;
+
+      }
+
+
+      /* SAFETY LIMITS */
+
+      sourceX =
+        Math.max(
+          0,
+          Math.min(
+            sourceX,
+            originalImage.width -
+            sourceWidth
+          )
         );
 
-    const actualKB = bytes / 1024;
 
-    const fileSizeText = document.getElementById("fileSizeText");
+      sourceY =
+        Math.max(
+          0,
+          Math.min(
+            sourceY,
+            originalImage.height -
+            sourceHeight
+          )
+        );
 
-    if (fileSizeText) {
+
+      /* DRAW */
+
+      ctx.drawImage(
+
+        originalImage,
+
+        sourceX,
+        sourceY,
+        sourceWidth,
+        sourceHeight,
+
+        0,
+        0,
+        canvas.width,
+        canvas.height
+
+      );
+
+
+      updatePhotoInfo();
+
+    }
+
+
+    /* UPDATE INFORMATION */
+
+    function updatePhotoInfo() {
+
+      const sizeSelect =
+        document.getElementById(
+          "photoSize"
+        );
+
+
+      if (!sizeSelect) {
+        return;
+      }
+
+
+      const selectedSize =
+        sizeSelect.value;
+
+
+      const size =
+        photoSizes[selectedSize];
+
+
+      if (!size) {
+        return;
+      }
+
+
+      const dimensions =
+        document.getElementById(
+          "outputDimensions"
+        );
+
+
+      if (dimensions) {
+
+        dimensions.textContent =
+          "Output: " +
+          size.label +
+          " • " +
+          size.width +
+          " × " +
+          size.height +
+          " px";
+
+      }
+
+
+      updateEstimatedFileSize();
+
+    }
+
+
+    /* ESTIMATE FILE SIZE */
+
+    function updateEstimatedFileSize() {
+
+      const canvas =
+        document.getElementById(
+          "passportCanvas"
+        );
+
+
+      if (!canvas || !originalImage) {
+        return;
+      }
+
+
+      const targetSelect =
+        document.getElementById(
+          "targetSize"
+        );
+
+
+      if (!targetSelect) {
+        return;
+      }
+
+
+      const targetKB =
+        parseFloat(
+          targetSelect.value
+        );
+
+
+      if (!targetKB) {
+        return;
+      }
+
+
+      const dataURL =
+        canvas.toDataURL(
+          "image/jpeg",
+          0.85
+        );
+
+
+      const base64 =
+        dataURL.split(",")[1];
+
+
+      const bytes =
+        Math.round(
+          base64.length * 0.75
+        );
+
+
+      const actualKB =
+        bytes / 1024;
+
+
+      const fileSizeText =
+        document.getElementById(
+          "fileSizeText"
+        );
+
+
+      if (fileSizeText) {
 
         fileSizeText.textContent =
-            "Estimated size: " +
-            actualKB.toFixed(1) +
-            " KB • Target: " +
-            targetKB +
-            " KB";
+          "Estimated size: " +
+          actualKB.toFixed(1) +
+          " KB • Target: " +
+          targetKB +
+          " KB";
+
+      }
+
     }
-}
 
-const targetSizeControl = document.getElementById("targetSize");
 
-if (targetSizeControl) {
+    /* CANVAS TO BLOB */
 
-    targetSizeControl.addEventListener("change", function () {
-        updateEstimatedFileSize();
-    });
-}
+    function canvasToBlob(
+      canvas,
+      quality
+    ) {
 
-function canvasToBlob(canvas, quality) {
+      return new Promise(
+        function(resolve) {
 
-    return new Promise(function (resolve) {
+          canvas.toBlob(
 
-        canvas.toBlob(
-            function (blob) {
-                resolve(blob);
+            function(blob) {
+
+              resolve(blob);
+
             },
+
             "image/jpeg",
+
             quality
+
+          );
+
+        }
+      );
+
+    }
+
+
+    /* COMPRESS TO TARGET */
+
+    async function createCompressedPhoto(
+      canvas,
+      targetKB
+    ) {
+
+      const targetBytes =
+        targetKB * 1024;
+
+
+      let quality = 0.95;
+
+
+      let blob =
+        await canvasToBlob(
+          canvas,
+          quality
         );
 
-    });
-}
 
-async function createCompressedPhoto(canvas, targetKB) {
+      /*
+        Reduce JPEG quality until
+        target size is reached.
+      */
 
-    const targetBytes = targetKB * 1024;
-
-    let quality = 0.95;
-
-    let blob = await canvasToBlob(canvas, quality);
-
-    /*
-       Reduce JPEG quality until the selected
-       target size is reached.
-    */
-
-    while (
+      while (
         blob.size > targetBytes &&
         quality > 0.10
-    ) {
+      ) {
 
         quality -= 0.05;
 
-        blob = await canvasToBlob(
+
+        blob =
+          await canvasToBlob(
             canvas,
             quality
+          );
+
+      }
+
+
+      return blob;
+
+    }
+
+
+    /* DOWNLOAD */
+
+    async function downloadPassportPhoto() {
+
+      if (!originalImage) {
+
+        alert(
+          "Please upload a photo first."
         );
-    }
-
-    return blob;
-}
-
-async function downloadPassportPhoto() {
-
-    if (!originalImage) {
-
-        alert("Please upload a photo first.");
 
         return;
-    }
 
-    const canvas = document.getElementById("passportCanvas");
+      }
 
-    const targetSelect =
-        document.getElementById("targetSize");
 
-    if (!canvas || !targetSelect) return;
+      const canvas =
+        document.getElementById(
+          "passportCanvas"
+        );
 
-    const targetKB =
-        parseFloat(targetSelect.value);
 
-    if (!targetKB) {
+      const targetSelect =
+        document.getElementById(
+          "targetSize"
+        );
 
-        alert("Please select a target file size.");
+
+      if (!canvas || !targetSelect) {
+
+        alert(
+          "Passport photo tool is not ready."
+        );
 
         return;
-    }
 
-    const button =
-        document.querySelector(".download-btn");
+      }
 
-    if (button) {
+
+      const targetKB =
+        parseFloat(
+          targetSelect.value
+        );
+
+
+      if (!targetKB) {
+
+        alert(
+          "Please select a target file size."
+        );
+
+        return;
+
+      }
+
+
+      const button =
+        document.getElementById(
+          "downloadButton"
+        );
+
+
+      const status =
+        document.getElementById(
+          "toolStatus"
+        );
+
+
+      if (button) {
+
         button.disabled = true;
-        button.textContent = "Preparing...";
-    }
 
-    try {
+        button.textContent =
+          "⏳ Preparing...";
+
+      }
+
+
+      if (status) {
+
+        status.textContent =
+          "Creating your passport photo...";
+
+      }
+
+
+      try {
 
         const blob =
-            await createCompressedPhoto(
-                canvas,
-                targetKB
-            );
+          await createCompressedPhoto(
+            canvas,
+            targetKB
+          );
+
+
+        if (!blob) {
+
+          throw new Error(
+            "Could not create image."
+          );
+
+        }
+
 
         const url =
-            URL.createObjectURL(blob);
+          URL.createObjectURL(blob);
+
 
         const link =
-            document.createElement("a");
+          document.createElement("a");
+
 
         link.href = url;
-        link.download =
-            "ExamSathi-Passport-Photo.jpg";
 
-        document.body.appendChild(link);
+
+        link.download =
+          "ExamSathi-Passport-Photo.jpg";
+
+
+        document.body.appendChild(
+          link
+        );
+
 
         link.click();
 
-        document.body.removeChild(link);
 
-        URL.revokeObjectURL(url);
+        document.body.removeChild(
+          link
+        );
+
+
+        setTimeout(
+          function() {
+
+            URL.revokeObjectURL(url);
+
+          },
+          1000
+        );
+
+
+        const finalKB =
+          blob.size / 1024;
+
 
         const fileSizeText =
-            document.getElementById("fileSizeText");
+          document.getElementById(
+            "fileSizeText"
+          );
+
 
         if (fileSizeText) {
 
-            fileSizeText.textContent =
-                "Final size: " +
-                (blob.size / 1024).toFixed(1) +
-                " KB";
+          fileSizeText.textContent =
+            "Final size: " +
+            finalKB.toFixed(1) +
+            " KB • Target: " +
+            targetKB +
+            " KB";
+
         }
 
-    } catch (error) {
+
+        if (status) {
+
+          status.textContent =
+            "✅ Photo created successfully.";
+
+        }
+
+      } catch (error) {
 
         console.error(error);
 
+
         alert(
-            "Could not create the photo. Please try again."
+          "Could not create the photo. Please try again."
         );
 
-    } finally {
 
-        if (button) {
-            button.disabled = false;
-            button.textContent =
-                "📥 Download Passport Photo";
+        if (status) {
+
+          status.textContent =
+            "❌ Something went wrong.";
+
         }
 
-    /* SEARCH */
-      .getElementById("searchBox")
-      .addEventListener("input", function() {
+      } finally {
 
-        const query =
-          this.value.toLowerCase().trim();
+        if (button) {
 
-        const cards =
-          document.querySelectorAll(".card");
+          button.disabled = false;
 
-        cards.forEach(function(card) {
+          button.textContent =
+            "📥 Download Passport Photo";
 
-          const text =
-            card.innerText.toLowerCase();
+        }
 
-          if (
-            query === "" ||
-            text.includes(query)
-          ) {
+      }
 
-            card.style.display = "";
-
-          } else {
-
-            card.style.display = "none";
-
-          }
-
-        });
-
-      })
+    }
 
   </script>
 
