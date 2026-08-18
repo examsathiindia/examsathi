@@ -1,5 +1,235 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Government Exams — ExamSathi</title><link rel="stylesheet" href="styles.css"></head><body>
-<aside class="sidebar"><a class="brand" href="index.html"><span class="mark">ES</span><span><b>ExamSathi</b><small>Student Portal</small></span></a><div class="nav-title">Main Menu</div><nav class="nav"><a href="index.html"><span>⌂</span> Dashboard</a><a href="jobs.html"><span>▣</span> Latest Jobs</a><a href="notifications.html"><span>●</span> Notifications</a><a href="admit-cards.html"><span>▤</span> Admit Cards</a><a href="results.html"><span>✓</span> Results</a><a href="exams.html"><span>◇</span> Exams</a><a href="study.html"><span>▥</span> Study / PYQ</a><a href="current-affairs.html"><span>★</span> Current Affairs</a><a href="mock-tests.html"><span>◉</span> Mock Tests</a><a href="tools.html"><span>⚙</span> Student Tools</a></nav><div class="sidefoot"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div></aside>
-<div class="main"><header class="mobile-head"><a class="mobile-brand" href="index.html"><span class="mark">ES</span>ExamSathi</a><button class="theme" data-theme>☾</button></header><div class="mobile-search"><input data-search placeholder="Search jobs, exams, results..."></div><header class="top"><div class="search"><input data-search placeholder="Search jobs, exams, results, study resources..."></div><button class="theme" data-theme>☾</button></header><main class="page"><div class="content"><h1>Government Exams</h1><p class="muted">Central and Assam government exam directory.</p><div class="grid"><div class="card"><h3>UPSC</h3><p>CSE, NDA, CDS, CAPF, ESE and more.</p></div><div class="card"><h3>SSC</h3><p>CGL, CHSL, MTS, GD, CPO and more.</p></div><div class="card"><h3>Railways</h3><p>NTPC, Group D, ALP, Technician and more.</p></div><div class="card"><h3>Banking</h3><p>IBPS, SBI, RBI and NABARD exams.</p></div><div class="card"><h3>Defence</h3><p>Army, Navy, Air Force, Coast Guard.</p></div><div class="card"><h3>Assam</h3><p>APSC, ADRE, Assam Police, TET and state exams.</p></div></div></div></main>
-<footer class="footer"><span>© 2026 ExamSathi. Student information portal.</span><span><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></span></footer></div>
-<nav class="bottom"><a href="index.html"><span>⌂</span>Home</a><a href="jobs.html"><span>▣</span>Jobs</a><a href="exams.html"><span>◇</span>Exams</a><a href="study.html"><span>▥</span>Study</a><a href="tools.html"><span>⚙</span>Tools</a></nav><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Government Exams — ExamSathi</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<aside class="sidebar">
+<a class="brand" href="index.html"><span class="mark">ES</span><span><b>ExamSathi</b><small>Student Portal</small></span></a>
+<div class="nav-title">Main Menu</div>
+<nav class="nav">
+<a href="index.html"><span>⌂</span> Dashboard</a>
+<a href="jobs.html"><span>▣</span> Latest Jobs</a>
+<a href="notifications.html"><span>●</span> Notifications</a>
+<a href="admit-cards.html"><span>▤</span> Admit Cards</a>
+<a href="results.html"><span>✓</span> Results</a>
+<a class="active" href="exams.html"><span>◇</span> Exams</a>
+<a href="study.html"><span>▥</span> Study / PYQ</a>
+<a href="current-affairs.html"><span>★</span> Current Affairs</a>
+<a href="mock-tests.html"><span>◉</span> Mock Tests</a>
+<a href="tools.html"><span>⚙</span> Student Tools</a>
+</nav>
+<div class="sidefoot"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+</aside>
+
+<div class="main">
+<header class="mobile-head">
+<a class="mobile-brand" href="index.html"><span class="mark">ES</span>ExamSathi</a>
+<button class="theme" data-theme>☾</button>
+</header>
+
+<div class="mobile-search"><input data-search placeholder="Search jobs, exams, results..."></div>
+
+<header class="top">
+<div class="search"><input data-search placeholder="Search jobs, exams, results, study resources..."></div>
+<button class="theme" data-theme>☾</button>
+</header>
+
+<main class="page">
+<div class="section-head">
+<div>
+<h1 style="margin:0;font-size:28px">Government Exams</h1>
+<p>Central and Assam government exam directory with official recruitment websites.</p>
+</div>
+</div>
+
+<div class="content" style="margin-bottom:18px">
+<input id="examFilter" placeholder="Search by exam, department, abbreviation or keyword..." style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#f8fafc;outline:0">
+</div>
+
+<div class="content" style="margin-bottom:18px">
+<div class="stats">
+<div class="stat"><b>50+</b><span>Exam Categories</span></div>
+<div class="stat"><b>Central</b><span>National Exams</span></div>
+<div class="stat"><b>Assam</b><span>State Exams</span></div>
+<div class="stat"><b>Official</b><span>Source Links</span></div>
+</div>
+</div>
+
+<section>
+<div class="section-head"><div><h2>Central Government Exams</h2><p>Major national-level recruitment and entrance examinations.</p></div></div>
+<div id="examGrid" class="grid">
+
+<article class="card exam-card" data-key="upsc civil services cse ifos nda cds capf engineering cms geo scientist epfo">
+<div class="result-top"><span class="soft btn tag">UPSC</span><span class="status blue">CENTRAL</span></div>
+<h3>UPSC Examinations</h3>
+<p>Civil Services, Forest Service, NDA, CDS, CAPF, Engineering Services, CMS, Geo-Scientist and other UPSC examinations.</p>
+<div class="meta"><b>Authority:</b> Union Public Service Commission</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.upsc.gov.in/examinations">Examinations</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.upsc.gov.in/examinations/exam-calendar">Calendar</a></div>
+</article>
+
+<article class="card exam-card" data-key="ssc cgl chsl mts gd cpo je stenographer selection post jht">
+<div class="result-top"><span class="soft btn tag">SSC</span><span class="status blue">CENTRAL</span></div>
+<h3>SSC Examinations</h3>
+<p>CGL, CHSL, MTS, GD Constable, CPO, JE, Stenographer, Selection Post and other SSC exams.</p>
+<div class="meta"><b>Authority:</b> Staff Selection Commission</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://ssc.gov.in/">SSC Official</a><a class="btn soft" target="_blank" rel="noopener" href="https://ssc.gov.in/home/notice-board">Notices</a></div>
+</article>
+
+<article class="card exam-card" data-key="railway rrb rrc ntpc group d alp technician je paramedical rpf ministerial">
+<div class="result-top"><span class="soft btn tag">RAILWAY</span><span class="status blue">CENTRAL</span></div>
+<h3>Railway Recruitment</h3>
+<p>RRB/RRC NTPC, Group D, ALP, Technician, JE, Paramedical, Ministerial and RPF recruitment.</p>
+<div class="meta"><b>Authority:</b> Railway Recruitment Boards / RRCs</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.rrbapply.gov.in/">RRB Apply</a><a class="btn soft" target="_blank" rel="noopener" href="https://indianrailways.gov.in/">Railways</a></div>
+</article>
+
+<article class="card exam-card" data-key="ibps po clerk csa so rrb bank sbi po clerk so rbi grade b assistant nabard">
+<div class="result-top"><span class="soft btn tag">BANKING</span><span class="status blue">CENTRAL</span></div>
+<h3>Banking Examinations</h3>
+<p>IBPS PO, CSA/Clerk, SO, RRB; SBI PO, Clerk, SO; RBI and NABARD examinations.</p>
+<div class="meta"><b>Authorities:</b> IBPS, SBI, RBI, NABARD</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.ibps.in/">IBPS</a><a class="btn soft" target="_blank" rel="noopener" href="https://sbi.co.in/web/careers">SBI Careers</a></div>
+</article>
+
+<article class="card exam-card" data-key="nta jee neet ug cuet ug ugc net csir net entrance education">
+<div class="result-top"><span class="soft btn tag">NTA</span><span class="status blue">CENTRAL</span></div>
+<h3>NTA Examinations</h3>
+<p>NEET-UG, JEE Main, CUET-UG, UGC-NET, Joint CSIR-UGC NET and other NTA examinations.</p>
+<div class="meta"><b>Authority:</b> National Testing Agency</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.nta.ac.in/">NTA Official</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.nta.ac.in/NoticeBoardArchive">Updates</a></div>
+</article>
+
+<article class="card exam-card" data-key="defence army navy air force coast guard nda cds afcat recruitment">
+<div class="result-top"><span class="soft btn tag">DEFENCE</span><span class="status blue">CENTRAL</span></div>
+<h3>Defence Examinations</h3>
+<p>Army, Navy, Air Force, Coast Guard, NDA, CDS and AFCAT recruitment opportunities.</p>
+<div class="meta"><b>Category:</b> Defence recruitment and entrance exams</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://joinindianarmy.nic.in/">Army</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.joinindiannavy.gov.in/">Navy</a></div>
+</article>
+
+<article class="card exam-card" data-key="teaching ctet tet kvs nvs teacher recruitment">
+<div class="result-top"><span class="soft btn tag">TEACHING</span><span class="status blue">CENTRAL</span></div>
+<h3>Teaching Examinations</h3>
+<p>CTET and major central-school recruitment pathways including KVS and NVS.</p>
+<div class="meta"><b>Authorities:</b> CBSE / KVS / NVS</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://ctet.nic.in/">CTET</a><a class="btn soft" target="_blank" rel="noopener" href="https://kvsangathan.nic.in/">KVS</a></div>
+</article>
+
+<article class="card exam-card" data-key="insurance lic uiic niacl insurance recruitment">
+<div class="result-top"><span class="soft btn tag">INSURANCE</span><span class="status blue">CENTRAL</span></div>
+<h3>Insurance Examinations</h3>
+<p>Recruitment examinations and opportunities from major public-sector insurance organisations.</p>
+<div class="meta"><b>Examples:</b> LIC, UIIC, NIACL and others</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://licindia.in/careers">LIC Careers</a><a class="btn soft" target="_blank" rel="noopener" href="https://uiic.co.in/recruitment">UIIC Recruitment</a></div>
+</article>
+
+</div>
+</section>
+
+<section style="margin-top:28px">
+<div class="section-head"><div><h2>Assam Government Exams</h2><p>Important state-level recruitment and education examinations.</p></div></div>
+<div id="assamGrid" class="grid">
+
+<article class="card exam-card" data-key="assam apsc civil service combined competitive examination acs">
+<div class="result-top"><span class="soft btn tag">ASSAM</span><span class="status green">STATE</span></div>
+<h3>APSC Examinations</h3>
+<p>Assam Public Service Commission recruitment including Combined Competitive Examination and specialist posts.</p>
+<div class="meta"><b>Authority:</b> Assam Public Service Commission</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://apscrecruitment.in/">APSC Recruitment</a><a class="btn soft" target="_blank" rel="noopener" href="https://apsc.nic.in/">APSC</a></div>
+</article>
+
+<article class="card exam-card" data-key="assam direct recruitment adre slrc class iii class iv">
+<div class="result-top"><span class="soft btn tag">ASSAM</span><span class="status green">STATE</span></div>
+<h3>Assam Direct Recruitment / SLRC</h3>
+<p>Class III and Class IV direct recruitment updates, notices and candidate information.</p>
+<div class="meta"><b>Category:</b> State-level direct recruitment</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://site.sebaonline.org/">Official Updates</a><a class="btn soft" target="_blank" rel="noopener" href="https://assam.gov.in/">Assam Govt</a></div>
+</article>
+
+<article class="card exam-card" data-key="assam police constable sub inspector si recruitment">
+<div class="result-top"><span class="soft btn tag">ASSAM POLICE</span><span class="status green">STATE</span></div>
+<h3>Assam Police Recruitment</h3>
+<p>Constable, Sub-Inspector and other Assam Police recruitment notices and updates.</p>
+<div class="meta"><b>Authority:</b> Assam Police</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://police.assam.gov.in/documents-detail/recruitment-notice">Recruitment Notices</a><a class="btn soft" target="_blank" rel="noopener" href="https://police.assam.gov.in/">Police Portal</a></div>
+</article>
+
+<article class="card exam-card" data-key="assam tet special tet teacher tet">
+<div class="result-top"><span class="soft btn tag">ASSAM</span><span class="status green">STATE</span></div>
+<h3>Assam TET / Special TET</h3>
+<p>Teacher Eligibility Test notifications, applications and examination updates for Assam.</p>
+<div class="meta"><b>Category:</b> Teacher eligibility examinations</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://site.sebaonline.org/notifications/">Notifications</a><a class="btn soft" target="_blank" rel="noopener" href="https://site.sebaonline.org/">ASSEB</a></div>
+</article>
+
+<article class="card exam-card" data-key="assam hslc hs final examination asseb seba class 10">
+<div class="result-top"><span class="soft btn tag">ASSEB</span><span class="status green">STATE</span></div>
+<h3>ASSEB / HSLC Examinations</h3>
+<p>HSLC and school-level examination notifications, schedules, downloads and results.</p>
+<div class="meta"><b>Authority:</b> Assam State School Education Board</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://site.sebaonline.org/notifications/">Notifications</a><a class="btn soft" target="_blank" rel="noopener" href="https://site.sebaonline.org/downloads">Downloads</a></div>
+</article>
+
+<article class="card exam-card" data-key="dhs assam health nursing gnm paramedical recruitment">
+<div class="result-top"><span class="soft btn tag">HEALTH</span><span class="status green">STATE</span></div>
+<h3>Assam Health / DHS Recruitment</h3>
+<p>Health Department recruitment notices and examination-related updates for Assam.</p>
+<div class="meta"><b>Category:</b> Directorate of Health Services</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://dhs.assam.gov.in/">DHS Assam</a><a class="btn soft" target="_blank" rel="noopener" href="https://assam.gov.in/">Assam Govt</a></div>
+</article>
+
+<article class="card exam-card" data-key="aesrb engineering assistant professor lecturer recruitment assam">
+<div class="result-top"><span class="soft btn tag">ASSAM</span><span class="status green">STATE</span></div>
+<h3>Assam Engineering Service Recruitment Board</h3>
+<p>Engineering education and recruitment-related notifications under the Assam engineering recruitment system.</p>
+<div class="meta"><b>Authority:</b> AESRB Assam</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.aesrb.in/">AESRB Official</a></div>
+</article>
+
+<article class="card exam-card" data-key="gauhati high court assam court recruitment judicial assistant ldc stenographer">
+<div class="result-top"><span class="soft btn tag">JUDICIARY</span><span class="status green">ASSAM</span></div>
+<h3>Gauhati High Court Recruitment</h3>
+<p>Recruitment and examination notices for posts under the Gauhati High Court.</p>
+<div class="meta"><b>Authority:</b> Gauhati High Court</div>
+<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://ghconline.gov.in/">Official Website</a></div>
+</article>
+
+</div>
+</section>
+
+<div class="notice" style="margin-top:22px">
+<b>Important:</b> Exam dates, eligibility, vacancies and application rules can change. Always verify the latest details on the official recruiting authority website before applying.
+</div>
+</main>
+
+<footer class="footer">
+<div>© 2026 ExamSathi. Student information portal.</div>
+<div><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
+</footer>
+
+<nav class="bottom-nav">
+<a href="index.html"><span>⌂</span><small>Home</small></a>
+<a href="jobs.html"><span>▣</span><small>Jobs</small></a>
+<a class="active" href="exams.html"><span>◇</span><small>Exams</small></a>
+<a href="study.html"><span>▥</span><small>Study</small></a>
+<a href="tools.html"><span>⚙</span><small>Tools</small></a>
+</nav>
+</div>
+
+<script src="app.js"></script>
+<script>
+const filter = document.getElementById('examFilter');
+const cards = [...document.querySelectorAll('.exam-card')];
+filter.addEventListener('input', () => {
+  const q = filter.value.trim().toLowerCase();
+  cards.forEach(card => {
+    card.style.display = (!q || card.dataset.key.includes(q)) ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
