@@ -67,6 +67,7 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
   <button class="card" onclick="scrollToSection('admit')">🎫<br><b>Admit Card</b></button>
   <button class="card" onclick="scrollToSection('results')">📊<br><b>Results</b></button>
   <button class="card" onclick="scrollToSection('study')">📚<br><b>Study</b></button>
+  <button class="card" onclick="scrollToSection('answerKeys')">🔑<br><b>Answer Key</b></button>
   <button class="card" onclick="scrollToSection('exams')">🎯<br><b>Exams</b></button>
   <button class="card" onclick="scrollToSection('studentTools')">🛠️<br><b>Tools</b></button>
 </nav>
@@ -382,6 +383,39 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
 </section>
 
 
+<section id="answerKeys" class="portal-section">
+  <h2>🔑 Answer Keys & Cut-Off Marks</h2>
+  <p class="section-note">Official answer-key and cut-off hubs. Availability depends on the examination stage; always verify the latest notice on the official authority website.</p>
+  <div class="search-wrap"><input id="answerKeySearch" type="text" placeholder="Search SSC, UPSC, Assam, answer key, cut-off..."></div>
+  <div class="grid" id="answerKeyGrid">
+    <div class="card answerkey-card" data-answer="upsc answer key cut off cds capf civil services nda engineering services 2026 2025">
+      <span class="badge">UPSC</span><h3>🇮🇳 UPSC — Answer Keys</h3>
+      <p>Official UPSC answer-key archive. Recent listings include CDS II 2025 and CAPF 2025 answer keys.</p>
+      <div class="actions"><a class="btn" href="https://www.upsc.gov.in/examinations/answer-key" target="_blank" rel="noopener">Answer Keys</a><a class="btn secondary" href="https://www.upsc.gov.in/examinations/cutoff-marks--" target="_blank" rel="noopener">Cut-Off Marks</a></div>
+    </div>
+    <div class="card answerkey-card" data-answer="ssc answer key response sheet cgl chsl mts gd cpo je stenographer 2026 2025">
+      <span class="badge">SSC</span><h3>📝 SSC — Answer Key & Response Sheet</h3>
+      <p>Use SSC's official notice board and candidate portal for answer-key, response-sheet and result-stage updates.</p>
+      <div class="actions"><a class="btn" href="https://ssc.gov.in/home/notice-board" target="_blank" rel="noopener">SSC Notice Board</a><a class="btn secondary" href="https://ssc.gov.in/home/candidate-result" target="_blank" rel="noopener">Candidate Result</a></div>
+    </div>
+    <div class="card answerkey-card" data-answer="ssc chsl 2025 frta cut off marks 2026 section iii iv">
+      <span class="badge">SSC</span><h3>📊 SSC CHSL 2025 — Cut-Off / FRTA</h3>
+      <p>SSC's 17 August 2026 FRTA notice includes qualifying cut-off standards for specified Tier-II sections.</p>
+      <div class="actions"><a class="btn" href="https://ssc.gov.in/api/attachment/uploads/masterData/Results/FRTA_CHSLE_2025_17082026.pdf" target="_blank" rel="noopener">Open FRTA PDF</a><a class="btn secondary" href="https://ssc.gov.in/home/notice-board" target="_blank" rel="noopener">SSC Notices</a></div>
+    </div>
+    <div class="card answerkey-card" data-answer="assam answer key cutoff apsc assam police adre slrc tet recruitment">
+      <span class="badge">ASSAM</span><h3>🟢 Assam Recruitment — Answer Keys & Cut-Off</h3>
+      <p>Official Assam department/recruitment portals publish answer keys, objections and cut-off information when applicable.</p>
+      <div class="actions"><a class="btn" href="https://apscrecruitment.in/" target="_blank" rel="noopener">APSC Recruitment</a><a class="btn secondary" href="https://police.assam.gov.in/documents-detail/recruitment-notice" target="_blank" rel="noopener">Assam Police Notices</a></div>
+    </div>
+    <div class="card answerkey-card" data-answer="assam pgt cutoff marks teacher recruitment 2026 madhyamik">
+      <span class="badge">ASSAM</span><h3>📚 Assam Teacher — Cut-Off Marks</h3>
+      <p>Assam school-education department pages publish recruitment-specific cut-off marks and related notices.</p>
+      <div class="actions"><a class="btn" href="https://madhyamik.assam.gov.in/latest/cut-off-marks-of-pgtpaper-ii" target="_blank" rel="noopener">Official Cut-Off Page</a></div>
+    </div>
+  </div>
+</section>
+
 <section id="exams" class="portal-section">
   <h2>🎯 Government Exam Directory</h2>
   <div class="card" style="margin-bottom:14px">
@@ -681,6 +715,17 @@ if(studySearch){
   });
 }
 
+
+const answerKeySearch = $('answerKeySearch');
+if(answerKeySearch){
+  answerKeySearch.addEventListener('input',()=>{
+    const q=answerKeySearch.value.toLowerCase().trim();
+    document.querySelectorAll('.answerkey-card').forEach(card=>{
+      card.style.display=(!q || (card.dataset.answer||'').includes(q))?'block':'none';
+    });
+  });
+}
+
 const admitSearch = $('admitSearch');
 if(admitSearch){
   admitSearch.addEventListener('input',()=>{
@@ -748,4 +793,4 @@ function buildPDF(canvases){
 }
 </script>
 </body>
-                            </html>
+                                                                                       </html>
