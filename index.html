@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="ExamSathi - Free student utilities for exams, images and documents">
-<title>ExamSathi — Student Tools</title>
+<title>ExamSathi — Student Portal</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#172033}
@@ -67,10 +66,11 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
   <button class="card" onclick="scrollToSection('notifications')">🔔<br><b>Notifications</b></button>
   <button class="card" onclick="scrollToSection('admit')">🎫<br><b>Admit Card</b></button>
   <button class="card" onclick="scrollToSection('results')">📊<br><b>Results</b></button>
+  <button class="card" onclick="scrollToSection('exams')">🎯<br><b>Exams</b></button>
   <button class="card" onclick="scrollToSection('studentTools')">🛠️<br><b>Tools</b></button>
 </nav>
 
-<section id="home" style="display:none"></section>
+<div id="home"></div>
 
 <section id="jobs" class="portal-section">
   <h2>💼 Latest Jobs</h2>
@@ -211,8 +211,138 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
 <div class="actions"><button class="btn" onclick="convertImage()">Convert</button><button class="btn green" id="convDownload" onclick="downloadBlob(window.convertedBlob,'converted-image')" disabled>Download</button></div>
 <div id="convInfo" class="status"></div>
 </section>
+
+
+<section id="exams" class="portal-section">
+  <h2>🎯 Government Exam Directory</h2>
+  <div class="card" style="margin-bottom:14px">
+    <label>Search Exams</label>
+    <input id="examSearch" type="text" placeholder="Search SSC, UPSC, Assam Police, APSC, Railway...">
+    <div class="info">ExamSathi lists major central and Assam state exam categories. Always verify dates and eligibility on the official recruiting body's website.</div>
+  </div>
+
+  <div id="examDirectory" class="grid">
+    <div class="card exam-card" data-exams="upsc civil services cse ifs indian forest service nda cds capf ese engineering services cms medical services geo scientist epfo">
+      <h3>🇮🇳 UPSC</h3>
+      <p>Civil Services (CSE), Indian Forest Service (IFoS), NDA, CDS, CAPF, Engineering Services (ESE), Combined Medical Services (CMS), Geo-Scientist and other UPSC recruitments.</p>
+    </div>
+    <div class="card exam-card" data-exams="ssc cgl chsl mts gd cpo je stenographer jht selection post">
+      <h3>📋 SSC</h3>
+      <p>CGL, CHSL, MTS, GD Constable, CPO, JE, Stenographer Grade C & D, Junior Hindi Translator and Selection Post.</p>
+    </div>
+    <div class="card exam-card" data-exams="railway rrb rrc ntpc group d alp technician je paramedical nursing ministerial isolated rpf">
+      <h3>🚆 Railways</h3>
+      <p>RRB/RRC exams including NTPC, Group D, ALP, Technician, JE, Paramedical, Ministerial & Isolated Categories and RPF recruitment.</p>
+    </div>
+    <div class="card exam-card" data-exams="ibps po clerk so rrb banking sbi po clerk so rbi grade b assistant nabard">
+      <h3>🏦 Banking & Finance</h3>
+      <p>IBPS PO/Clerk/SO/RRB, SBI PO/Clerk/SO, RBI Grade B/Assistant, NABARD and other major banking/regulatory recruitments.</p>
+    </div>
+    <div class="card exam-card" data-exams="nta jee neet ugc net cuet">
+      <h3>🎓 NTA & Education</h3>
+      <p>JEE, NEET-UG, UGC-NET, CUET and other major examinations conducted through NTA or national education bodies.</p>
+    </div>
+    <div class="card exam-card" data-exams="defence army navy air force coast guard agniveer cds nda afcat">
+      <h3>🛡️ Defence</h3>
+      <p>Army, Navy, Air Force and Coast Guard recruitment/examinations, including NDA, CDS and AFCAT categories.</p>
+    </div>
+    <div class="card exam-card" data-exams="teaching ctet tet kvs nvs teacher recruitment">
+      <h3>👩‍🏫 Teaching</h3>
+      <p>CTET, TET and major central teaching recruitments such as KVS/NVS, subject to the current recruitment cycle.</p>
+    </div>
+    <div class="card exam-card" data-exams="insurance lic uiic niacl oriental insurance ao assistant">
+      <h3>🛡️ Insurance</h3>
+      <p>Major insurance-sector recruitment such as LIC and public-sector insurance AO/Assistant categories.</p>
+    </div>
+    <div class="card exam-card" data-exams="sebi grade a nabard rbi regulatory">
+      <h3>🏛️ Regulatory Bodies</h3>
+      <p>RBI, SEBI, NABARD and other regulatory/public financial institution recruitment examinations.</p>
+    </div>
+
+    <div class="card exam-card" data-exams="apsc combined competitive examination cce assistant engineer junior engineer lecturer agriculture">
+      <h3>🟢 Assam PSC (APSC)</h3>
+      <p>APSC Combined Competitive Examination (CCE) and other recruitment examinations for Assam Government services.</p>
+    </div>
+    <div class="card exam-card" data-exams="assam direct recruitment adre slrc class iii class iv grade iii grade iv">
+      <h3>🟢 Assam Direct Recruitment / SLRC</h3>
+      <p>State Level Recruitment Commission recruitment for major Class III and Class IV posts, including ADRE-related cycles.</p>
+    </div>
+    <div class="card exam-card" data-exams="assam police si constable commando driver radio organisation">
+      <h3>👮 Assam Police</h3>
+      <p>Constable, Sub-Inspector and other Assam Police / allied recruitment categories announced by the competent recruitment board.</p>
+    </div>
+    <div class="card exam-card" data-exams="assam tet special tet teacher lower primary upper primary">
+      <h3>📚 Assam TET</h3>
+      <p>Assam TET and Special TET categories for eligible teaching aspirants.</p>
+    </div>
+    <div class="card exam-card" data-exams="dhs assam health services grade iii grade iv technical recruitment">
+      <h3>🏥 Assam Health / DHS</h3>
+      <p>Directorate of Health Services and related Assam health-department recruitment categories.</p>
+    </div>
+    <div class="card exam-card" data-exams="assam engineering service recruitment board aesrb engineering">
+      <h3>⚙️ Assam Engineering Service</h3>
+      <p>Engineering recruitment conducted through the Assam Engineering Service Recruitment Board (AESRB).</p>
+    </div>
+    <div class="card exam-card" data-exams="gauhati high court assam judicial service court assistant stenographer">
+      <h3>⚖️ Gauhati High Court</h3>
+      <p>Recruitment/examination categories notified by Gauhati High Court and its subordinate judiciary.</p>
+    </div>
+    <div class="card exam-card" data-exams="asseb hslc ahm tet education board assam">
+      <h3>🏫 ASSEB / School Exams</h3>
+      <p>HSLC/AHM and other school-board examination services and notices from ASSEB.</p>
+    </div>
+    <div class="card exam-card" data-exams="assam forest forest ranger forestry environment">
+      <h3>🌳 Assam Forest</h3>
+      <p>Forest and environment-related recruitment categories when notified by the competent Assam authority.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="portal-section">
+  <h2>ℹ️ About ExamSathi</h2>
+  <div class="card">
+    <p><b>ExamSathi</b> is a student-focused portal designed to keep exam-related information and useful online tools together in one simple place.</p>
+    <p class="info">Always verify important dates, eligibility, fees and application details on the concerned official website before taking action.</p>
+  </div>
+</section>
+
+<section id="contact" class="portal-section">
+  <h2>📞 Contact</h2>
+  <div class="card">
+    <p>For website feedback, corrections or tool-related issues, contact details can be added here.</p>
+    <div class="actions">
+      <button class="btn secondary" onclick="showPortalMessage('Contact')">Contact ExamSathi</button>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" class="portal-section">
+  <h2>🔐 Privacy Policy</h2>
+  <div class="card">
+    <p>Most image tools on this version process files directly in your browser. Images are not intentionally sent to an ExamSathi server by these tools.</p>
+    <p class="info">Third-party browser libraries may have their own network/model-loading behaviour. Review their terms before using sensitive documents.</p>
+  </div>
+</section>
+
+<section id="disclaimer" class="portal-section">
+  <h2>📄 Disclaimer</h2>
+  <div class="card">
+    <p>ExamSathi is an informational student portal. Information should be verified against the relevant official authority before relying on it.</p>
+    <p class="info">ExamSathi does not guarantee the accuracy, completeness or continued availability of third-party notices, links or schedules.</p>
+  </div>
+</section>
+
 </main>
-<footer>ExamSathi • Free browser-based student utilities</footer>
+<footer>
+  <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:10px">
+    <button class="close" onclick="scrollToSection('about')">About</button>
+    <button class="close" onclick="scrollToSection('contact')">Contact</button>
+    <button class="close" onclick="scrollToSection('exams')">Exams</button>
+    <button class="close" onclick="scrollToSection('privacy')">Privacy</button>
+    <button class="close" onclick="scrollToSection('disclaimer')">Disclaimer</button>
+  </div>
+  ExamSathi • Free browser-based student utilities
+</footer>
 
 <script>
 let passImg=null, resizeImgObj=null, sigImg=null, bgImg=null, changeImgObj=null, compImg=null, convImg=null;
@@ -251,6 +381,13 @@ function downloadCanvas(id,name){
 function scrollToSection(id){
   const el=$(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 }
+$('examSearch').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase().trim();
+  document.querySelectorAll('.exam-card').forEach(card=>{
+    card.style.display = (!q || card.dataset.exams.includes(q)) ? 'block' : 'none';
+  });
+});
+
 function showPortalMessage(name){
   alert(name + ' section is ready. Official links/data can be added here next.');
 }
@@ -350,34 +487,48 @@ async function createPDF(){
 
 /* Minimal browser-side PDF writer: embeds JPEG page images without external library. */
 function buildPDF(canvases){
-  const enc=new TextEncoder(),objects=[],offsets=[];let pos=0;
-  function add(s){const b=enc.encode(s);objects.push(b);return objects.length}
-  function bin(u8){objects.push(u8);return objects.length}
-  const header=enc.encode('%PDF-1.4\n%âãÏÓ\n');let chunks=[header];pos=header.length;
-  const pageIds=[],contentIds=[],imageIds=[];
-  canvases.forEach(c=>{
-    const idImg=imageIds.length+3;imageIds.push(idImg);
-    const jpegData=c.toDataURL('image/jpeg',.9).split(',')[1], raw=Uint8Array.from(atob(jpegData),x=>x.charCodeAt(0));
-    const imgObj=enc.encode(`${idImg} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${c.width} /Height ${c.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${raw.length} >>\nstream\n`);
-    objects.push(imgObj,raw,enc.encode('\nendstream\nendobj\n'));
-  });
-  let nextId=3+imageIds.length; const catalogId=1,pagesId=2;
+  const enc=new TextEncoder();
+  const objects=[];
+  const addObject=(bytes)=>{objects.push(bytes);return objects.length;};
+  const header=enc.encode('%PDF-1.4\n%\xE2\xE3\xCF\xD3\n');
+  const catalogId=1, pagesId=2;
+  const pageIds=[], contentIds=[], imageIds=[];
+
+  // Reserve the object numbers in a stable order: catalog, pages, then each page's image/content/page.
   canvases.forEach((c,i)=>{
-    const imgId=imageIds[i],contentId=nextId++,pageId=nextId++;
-    const stream=`q ${c.width} 0 0 ${c.height} 0 0 cm /Im${i} Do Q`;
-    contentIds.push(contentId);pageIds.push(pageId);
-    objects.push(enc.encode(`${contentId} 0 obj\n<< /Length ${stream.length} >>\nstream\n${stream}\nendstream\nendobj\n`));
-    objects.push(enc.encode(`${pageId} 0 obj\n<< /Type /Page /Parent ${pagesId} 0 R /MediaBox [0 0 ${c.width} ${c.height}] /Resources << /XObject << /Im${i} ${imgId} 0 R >> >> /Contents ${contentId} 0 R >>\nendobj\n`));
+    imageIds.push(3+i*3);
+    contentIds.push(4+i*3);
+    pageIds.push(5+i*3);
   });
-  objects.push(enc.encode(`${pagesId} 0 obj\n<< /Type /Pages /Kids [${pageIds.map(x=>x+' 0 R').join(' ')}] /Count ${pageIds.length} >>\nendobj\n`));
-  objects.push(enc.encode(`${catalogId} 0 obj\n<< /Type /Catalog /Pages ${pagesId} 0 R >>\nendobj\n`));
-  let body='',offsets2=[0];let byteLen=header.length;
-  for(let i=0;i<objects.length;i++){offsets2[i+1]=byteLen;body+=new TextDecoder().decode(objects[i]);byteLen+=objects[i].length}
-  const total=objects.length+1,xref=byteLen;
-  let x=`xref\n0 ${total}\n0000000000 65535 f \n`;
-  for(let i=1;i<total;i++)x+=String(offsets2[i]).padStart(10,'0')+' 00000 n \n';
-  const trailer=`trailer\n<< /Size ${total} /Root ${catalogId} 0 R >>\nstartxref\n${xref}\n%%EOF`;
-  return new Blob([header, ...objects, enc.encode(x+trailer)],{type:'application/pdf'});
+
+  addObject(new Uint8Array()); // placeholder for catalog
+  addObject(new Uint8Array()); // placeholder for pages
+
+  canvases.forEach((c,i)=>{
+    const jpegData=c.toDataURL('image/jpeg',.9).split(',')[1];
+    const raw=Uint8Array.from(atob(jpegData),x=>x.charCodeAt(0));
+    const imgHead=enc.encode(`${imageIds[i]} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${c.width} /Height ${c.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${raw.length} >>\nstream\n`);
+    const imgTail=enc.encode('\nendstream\nendobj\n');
+    addObject(new Uint8Array([...imgHead,...raw,...imgTail]));
+
+    const stream=`q ${c.width} 0 0 ${c.height} 0 0 cm /Im${i} Do Q`;
+    addObject(enc.encode(`${contentIds[i]} 0 obj\n<< /Length ${stream.length} >>\nstream\n${stream}\nendstream\nendobj\n`));
+    addObject(enc.encode(`${pageIds[i]} 0 obj\n<< /Type /Page /Parent ${pagesId} 0 R /MediaBox [0 0 ${c.width} ${c.height}] /Resources << /XObject << /Im${i} ${imageIds[i]} 0 R >> >> /Contents ${contentIds[i]} 0 R >>\nendobj\n`));
+  });
+
+  objects[1]=enc.encode(`${pagesId} 0 obj\n<< /Type /Pages /Kids [${pageIds.map(x=>x+' 0 R').join(' ')}] /Count ${pageIds.length} >>\nendobj\n`);
+  objects[0]=enc.encode(`${catalogId} 0 obj\n<< /Type /Catalog /Pages ${pagesId} 0 R >>\nendobj\n`);
+
+  const chunks=[header];
+  const offsets=[0];
+  let pos=header.length;
+  for(const obj of objects){offsets.push(pos);chunks.push(obj);pos+=obj.length;}
+  const xrefPos=pos;
+  let xref=`xref\n0 ${objects.length+1}\n0000000000 65535 f \n`;
+  for(let i=1;i<=objects.length;i++)xref+=String(offsets[i]).padStart(10,'0')+' 00000 n \n';
+  const trailer=`trailer\n<< /Size ${objects.length+1} /Root ${catalogId} 0 R >>\nstartxref\n${xrefPos}\n%%EOF`;
+  chunks.push(enc.encode(xref+trailer));
+  return new Blob(chunks,{type:'application/pdf'});
 }
 </script>
 </body>
