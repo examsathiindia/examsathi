@@ -68,6 +68,7 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
   <button class="card" onclick="scrollToSection('results')">📊<br><b>Results</b></button>
   <button class="card" onclick="scrollToSection('study')">📚<br><b>Study</b></button>
   <button class="card" onclick="scrollToSection('answerKeys')">🔑<br><b>Answer Key</b></button>
+  <button class="card" onclick="scrollToSection('calendar')">📅<br><b>Calendar</b></button>
   <button class="card" onclick="scrollToSection('exams')">🎯<br><b>Exams</b></button>
   <button class="card" onclick="scrollToSection('studentTools')">🛠️<br><b>Tools</b></button>
 </nav>
@@ -382,6 +383,47 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
 <div id="convInfo" class="status"></div>
 </section>
 
+
+<section id="calendar" class="portal-section">
+  <h2>📅 Exam Calendar & Important Dates 2026–27</h2>
+  <div class="card" style="margin-bottom:14px">
+    <p><b>Official-source calendar:</b> Central + Assam student exams and recruitment schedules.</p>
+    <div class="info">Dates shown below are based on official calendars/notices checked on 18 August 2026. Examination authorities may revise dates, so open the official source before relying on a date.</div>
+  </div>
+  <div style="margin-bottom:14px"><input id="calendarSearch" type="text" placeholder="Search calendar: SSC, UPSC, IBPS, Assam, NTA..." aria-label="Search exam calendar"></div>
+  <div id="calendarGrid" class="grid">
+    <div class="card calendar-card" data-calendar="ssc cgl 2026 chsl 2026 stenographer mts je selection post cpo gd">
+      <h3>📋 SSC Calendar 2026–27</h3>
+      <p><b>Major dates:</b> CGL Tier-I May–June 2026; CHSL Tier-I July–September 2026; Stenographer August–September 2026; MTS/Havaldar September–November 2026; CPO October–November 2026.</p>
+      <div class="actions"><a class="btn" href="https://ssc.gov.in/api/attachment/uploads/masterData/ExamCalendar/Tentative_Calendar2026_27_08012026.pdf" target="_blank" rel="noopener">Official SSC Calendar</a><a class="btn secondary" href="https://ssc.gov.in/" target="_blank" rel="noopener">SSC Website</a></div>
+    </div>
+    <div class="card calendar-card" data-calendar="upsc 2026 2027 civil services nda cds capf cms engineering geo scientist calendar">
+      <h3>🇮🇳 UPSC Annual Calendar</h3>
+      <p>UPSC publishes annual calendars for its examinations. The official calendar page currently provides the 2026 calendar and the Annual Calendar 2027.</p>
+      <div class="actions"><a class="btn" href="https://www.upsc.gov.in/examinations/exam-calendar" target="_blank" rel="noopener">Official UPSC Calendar</a></div>
+    </div>
+    <div class="card calendar-card" data-calendar="ibps 2026 2027 po mt specialist officer spl csa clerk rrbs office assistant officer scale">
+      <h3>🏦 IBPS Calendar 2026–27</h3>
+      <p><b>Key dates:</b> PO/MT Prelims 22–23 Aug 2026; SPL Prelims 29 Aug; PO/MT Main 4 Oct; CSA Prelims 10–11 Oct; SPL Main 1 Nov; RRB Officer Scale I Prelims 21–22 Nov; RRB Office Assistant Prelims 6, 12–13 Dec.</p>
+      <div class="actions"><a class="btn" href="https://www.ibps.in/wp-content/uploads/IBPS_CALENDAR_2026-27_final.pdf" target="_blank" rel="noopener">Official IBPS Calendar</a><a class="btn secondary" href="https://www.ibps.in/index.php/crp-updates/" target="_blank" rel="noopener">IBPS Updates</a></div>
+    </div>
+    <div class="card calendar-card" data-calendar="nta 2026 jee neet cuet ugc net csir net cmat entrance examination calendar">
+      <h3>🎓 NTA Exam Schedule & Updates</h3>
+      <p>NTA publishes exam schedules, city-intimation, admit-card and other date notices through its official portal. Use the official archive for the latest exam-specific date.</p>
+      <div class="actions"><a class="btn" href="https://www.nta.ac.in/NoticeBoardArchive" target="_blank" rel="noopener">NTA Official Updates</a><a class="btn secondary" href="https://www.nta.ac.in/" target="_blank" rel="noopener">NTA Website</a></div>
+    </div>
+    <div class="card calendar-card" data-calendar="assam asseb hslc academic calendar 2026 2027 jaa crt tet">
+      <h3>🟢 Assam ASSEB Calendar & Notices</h3>
+      <p>ASSEB Division-I has published the Academic Calendar 2026–27 and current 2026 examination/recruitment notices, including HSLC and JAA CRT updates.</p>
+      <div class="actions"><a class="btn" href="https://site.sebaonline.org/notifications/" target="_blank" rel="noopener">ASSEB Notifications</a><a class="btn secondary" href="https://site.sebaonline.org/" target="_blank" rel="noopener">ASSEB Website</a></div>
+    </div>
+    <div class="card calendar-card" data-calendar="assam hslc 2026 examination programme academic year">
+      <h3>🏫 Assam HSLC 2026</h3>
+      <p>ASSEB's official notifications archive contains the HSLC Examination 2026 programme and related examination notices.</p>
+      <div class="actions"><a class="btn" href="https://site.sebaonline.org/notifications/" target="_blank" rel="noopener">Official HSLC Notices</a></div>
+    </div>
+  </div>
+</section>
 
 <section id="answerKeys" class="portal-section">
   <h2>🔑 Answer Keys & Cut-Off Marks</h2>
@@ -716,6 +758,17 @@ if(studySearch){
 }
 
 
+
+const calendarSearch = $('calendarSearch');
+if(calendarSearch){
+  calendarSearch.addEventListener('input',()=>{
+    const q=calendarSearch.value.toLowerCase().trim();
+    document.querySelectorAll('.calendar-card').forEach(card=>{
+      card.style.display=(!q || (card.dataset.calendar||'').includes(q))?'block':'none';
+    });
+  });
+}
+
 const answerKeySearch = $('answerKeySearch');
 if(answerKeySearch){
   answerKeySearch.addEventListener('input',()=>{
@@ -793,4 +846,4 @@ function buildPDF(canvases){
 }
 </script>
 </body>
-                                                                                       </html>
+                                                                                                                                                                                                                                                                                                   </html>
