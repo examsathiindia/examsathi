@@ -66,6 +66,7 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
   <button class="card" onclick="scrollToSection('notifications')">🔔<br><b>Notifications</b></button>
   <button class="card" onclick="scrollToSection('admit')">🎫<br><b>Admit Card</b></button>
   <button class="card" onclick="scrollToSection('results')">📊<br><b>Results</b></button>
+  <button class="card" onclick="scrollToSection('study')">📚<br><b>Study</b></button>
   <button class="card" onclick="scrollToSection('exams')">🎯<br><b>Exams</b></button>
   <button class="card" onclick="scrollToSection('studentTools')">🛠️<br><b>Tools</b></button>
 </nav>
@@ -229,6 +230,47 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
     <div class="card result-card" data-result="assam dme medical education gnm nursing junior assistant dresser staff nurse result 2026"><span class="badge">ASSAM</span><h3>Assam DME Results</h3><p>Directorate of Medical Education, Assam result page with recruitment and training-course results.</p><div class="actions"><a class="btn" href="https://dme.assam.gov.in/documents-detail/results" target="_blank" rel="noopener">Check DME Results</a></div></div>
     <div class="card result-card" data-result="assam dect junior instructor iti recruitment result 2026"><span class="badge">ASSAM</span><h3>Assam DECT Recruitment Results</h3><p>Directorate of Employment and Craftsmen Training result sheets and selection updates.</p><div class="actions"><a class="btn" href="https://dect.assam.gov.in/documents/results" target="_blank" rel="noopener">Check DECT Results</a></div></div>
     <div class="card result-card" data-result="assam adarsha vidyalaya graduate teacher assistant teacher merit list result 2026"><span class="badge">ASSAM</span><h3>Assam Adarsha Vidyalaya Results</h3><p>Official notifications and merit-list updates for Adarsha Vidyalaya recruitment.</p><div class="actions"><a class="btn" href="https://avs.assam.gov.in/notifications" target="_blank" rel="noopener">Check Updates</a></div></div>
+  </div>
+</section>
+
+<section id="study" class="portal-section">
+  <h2>📚 Study Materials, Syllabus & Previous Papers</h2>
+  <p class="muted">Official-source study hubs • Syllabus, exam pattern and previous-year question papers</p>
+  <div class="card" style="margin-bottom:14px">
+    <div class="info">Use official papers whenever possible. Always verify the latest syllabus and exam pattern from the recruiting body before preparing.</div>
+  </div>
+  <div style="margin-bottom:14px"><input id="studySearch" type="text" placeholder="Search: SSC, UPSC, Assam, CBSE, NTA, PYQ..."></div>
+  <div class="grid" id="studyGrid">
+    <div class="card study-card" data-study="ssc syllabus exam pattern previous year question papers cgl chsl mts gd cpo je stenographer">
+      <span class="badge">SSC</span><h3>📝 SSC — Syllabus & PYQ</h3>
+      <p>Official SSC portal provides examination resources including syllabus, exam pattern and previous-year question-paper resources.</p>
+      <div class="actions"><a class="btn" href="https://ssc.gov.in/" target="_blank" rel="noopener">SSC Official</a><a class="btn secondary" href="https://ssc.gov.in/home/notice-board" target="_blank" rel="noopener">Notice Board</a></div>
+    </div>
+    <div class="card study-card" data-study="upsc syllabus previous question papers civil services nda cds capf engineering services">
+      <span class="badge">UPSC</span><h3>🇮🇳 UPSC — Previous Question Papers</h3>
+      <p>Official UPSC question-paper library with 2026, 2025 and earlier examination papers across major exams.</p>
+      <div class="actions"><a class="btn" href="https://www.upsc.gov.in/examinations/previous-question-papers" target="_blank" rel="noopener">Previous Papers</a><a class="btn secondary" href="https://www.upsc.gov.in/examinations/active-exams" target="_blank" rel="noopener">Active Exams</a></div>
+    </div>
+    <div class="card study-card" data-study="asseb assam hslc previous question papers mathematics english social science sample questions">
+      <span class="badge">ASSAM</span><h3>🏫 ASSEB — HSLC Question Papers</h3>
+      <p>Official ASSEB Division-I downloads include HSLC 2025 and 2024 question papers plus sample questions.</p>
+      <div class="actions"><a class="btn" href="https://site.sebaonline.org/downloads" target="_blank" rel="noopener">Official Downloads</a><a class="btn secondary" href="https://site.sebaonline.org/notifications/" target="_blank" rel="noopener">Notifications</a></div>
+    </div>
+    <div class="card study-card" data-study="cbse class 10 class 12 previous year question papers board exams">
+      <span class="badge">CBSE</span><h3>📖 CBSE — Previous Year Papers</h3>
+      <p>Official CBSE question-paper page for Class X and other board examinations.</p>
+      <div class="actions"><a class="btn" href="https://www.cbse.gov.in/cbsenew/question-paper.html" target="_blank" rel="noopener">Question Papers</a></div>
+    </div>
+    <div class="card study-card" data-study="nta neet cuet ugc net csir net exam updates question papers">
+      <span class="badge">NTA</span><h3>🎓 NTA — Exam Resources</h3>
+      <p>Official NTA notice archive for NEET, CUET, UGC-NET, Joint CSIR-UGC NET and other examinations.</p>
+      <div class="actions"><a class="btn" href="https://www.nta.ac.in/NoticeBoardArchive" target="_blank" rel="noopener">NTA Notices</a><a class="btn secondary" href="https://www.nta.ac.in/" target="_blank" rel="noopener">NTA Home</a></div>
+    </div>
+    <div class="card study-card" data-study="upsc recruitment test question papers answer keys syllabus">
+      <span class="badge">UPSC</span><h3>📚 UPSC Recruitment Test Resources</h3>
+      <p>UPSC recruitment-test portal includes links for exam schedules, e-Admit Cards, results, answer keys and question papers.</p>
+      <div class="actions"><a class="btn" href="https://www.upsc.gov.in/recruitment/recruitment-test" target="_blank" rel="noopener">Official RT Resources</a></div>
+    </div>
   </div>
 </section>
 
@@ -629,6 +671,16 @@ async function convertImage(){
   $('convDownload').disabled=false;$('convDownload').onclick=()=>downloadBlob(window.convertedBlob,'converted-image.'+ext);
 }
 
+const studySearch = $('studySearch');
+if(studySearch){
+  studySearch.addEventListener('input',()=>{
+    const q=studySearch.value.toLowerCase().trim();
+    document.querySelectorAll('.study-card').forEach(card=>{
+      card.style.display=(!q || (card.dataset.study||'').includes(q))?'block':'none';
+    });
+  });
+}
+
 const admitSearch = $('admitSearch');
 if(admitSearch){
   admitSearch.addEventListener('input',()=>{
@@ -696,4 +748,4 @@ function buildPDF(canvases){
 }
 </script>
 </body>
-                                                                                                                       </html>
+                            </html>
