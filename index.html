@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExamSathi - Jobs, Results & Student Tools</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      color: #2563eb;
+    }
+
+    .tagline {
+      font-size: 13px;
+      color: #666;
+      margin-top: 3px;
+    }
+
+    .hero {
+      padding: 35px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .search {
+      width: 100%;
+      max-width: 500px;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 30px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 25px 18px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 18px 12px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+    }
+
+    .icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .updates {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .update {
+      padding: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .update:last-child {
+      border-bottom: none;
+    }
+
+    .update h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .update p {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e8f0ff;
+      color: #2563eb;
+      padding: 4px 8px;
+      border-radius: 20px;
+      font-size: 11px;
+      margin-bottom: 7px;
+    }
+
+    footer {
+      background: #172033;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 20px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+
+    @media (min-width: 700px) {
+      .cards {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">ExamSathi</div>
+    <div class="tagline">Jobs • Results • Admit Cards • Student Tools</div>
+  </header>
+
+  <section class="hero">
+    <h1>Your Complete Student Portal</h1>
+    <p>Jobs, Results, Exam Updates & Useful Student Tools</p>
+
+    <input
+      class="search"
+      type="text"
+      placeholder="Search jobs, results, exams..."
+      id="searchBox"
+    >
+  </section>
+
+  <main class="container">
+
+    <h2 class="section-title">📢 Latest Updates</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">💼</div>
+        <h3>Latest Jobs</h3>
+        <p>Government & private job updates</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Results</h3>
+        <p>Latest exam results</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎫</div>
+        <h3>Admit Card</h3>
+        <p>Download exam admit cards</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📢</div>
+        <h3>Notifications</h3>
+        <p>Important exam notices</p>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">🛠️ Student Tools</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">📸</div>
+        <h3>Passport Photo</h3>
+        <p>Create passport size photos</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📐</div>
+        <h3>Image Resize</h3>
+        <p>Resize your image easily</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✍️</div>
+        <h3>Signature Tool</h3>
+        <p>Resize & compress signature</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📄</div>
+        <h3>Image to PDF</h3>
+        <p>Convert images to PDF</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🖼️</div>
+        <h3>Background Remove</h3>
+        <p>Remove image background</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3>Background Change</h3>
+        <p>Change photo background</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📦</div>
+        <h3>Image Compress</h3>
+        <p>Reduce image file size</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔄</div>
+        <h3>JPG / PNG</h3>
+        <p>Convert image formats</p>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">🔥 Latest Notifications</h2>
+
+    <div class="updates">
+
+      <div class="update">
+        <span class="badge">JOB</span>
+        <h3>Latest Government Job Notifications</h3>
+        <p>Job details and application links will appear here.</p>
+      </div>
+
+      <div class="update">
+        <span class="badge">RESULT</span>
+        <h3>Latest Exam Results</h3>
+        <p>Result updates and official links will appear here.</p>
+      </div>
+
+      <div class="update">
+        <span class="badge">EXAM</span>
+        <h3>Latest Exam Notifications</h3>
+        <p>Important examination updates will appear here.</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <h3>ExamSathi</h3>
+    <p>Jobs • Results • Admit Cards • Student Tools</p>
+    <br>
+    <p>© 2026 ExamSathi. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
