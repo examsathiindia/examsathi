@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+,<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -491,207 +491,413 @@
 
   <script>
 
-    let originalImage = null;
+  let originalImage = null;
+let zoomLevel = 1;
 
-    function openPassportTool() {
+const photoSizes = {
+    "35x45": {
+        width: 413,
+        height: 531,
+        label: "35 × 45 mm"
+    },
+    "25x35": {
+        width: 295,
+        height: 413,
+        label: "25 × 35 mm"
+    },
+    "2x2": {
+        width: 600,
+        height: 600,
+        label: "2 × 2 inch"
+    }
+};
 
-      const tool = document.getElementById("passportTool");
+function openPassportTool() {
+    const tool = document.getElementById("passportTool");
 
-      tool.classList.add("active");
-
-      setTimeout(function() {
+    if (tool) {
+        tool.style.display = "block";
         tool.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
+            behavior: "smooth",
+            block: "start"
         });
-      }, 100);
+    }
+}
 
+function closePassportTool() {
+    const tool = document.getElementById("passportTool");
+
+    if (tool) {
+        tool.style.display = "none";
     }
 
+    originalImage = null;
+    zoomLevel = 1;
 
-    function closePassportTool() {
-
-      document
-        .getElementById("passportTool")
-        .classList.remove("active");
-
-      document
-        .getElementById("previewArea")
-        .classList.remove("active");
-
-      document
-        .getElementById("photoInput")
-        .value = "";
-
-      originalImage = null;
-
+    const input = document.getElementById("photoInput");
+    if (input) {
+        input.value = "";
     }
 
+    const canvas = document.getElementById("passportCanvas");
 
-    document
-      .getElementById("photoInput")
-      .addEventListener("change", function(event) {
+    if (canvas) {
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 
-        const file = event.target.files[0];
+    const fileSize = document.getElementById("fileSizeText");
+    if (fileSize) {
+        fileSize.textContent = "File size: —";
+    }
+}
 
-        if (!file) {
-          return;
-        }
+document.addEventListener("DOMContentLoaded", function () {
 
-        if (!file.type.startsWith("image/")) {
+    const photoInput = document.getElementById("photoInput");
 
-          alert("Please select a valid image.");
+    if (photoInput) {
+        photoInput.addEventListener("change", function (event) {
 
-          return;
+            const file = event.target.files[0];
 
-        }
+            if (!file) return;
 
-        const reader = new FileReader();
+            if (!file.type.startsWith("image/")) {
+                alert("Please select an image file.");
+                return;
+            }
 
-        reader.onload = function(e) {
+            const reader = new FileReader();
 
-          const img = new Image();
+            reader.onload = function (e) {
 
-          img.onload = function() {
+                const img = new Image();
 
-            originalImage = img;
+                img.onload = function () {
 
-            createPassportPhoto(img);
+                    originalImage = img;
+                    zoomLevel = 1;
 
-          };
+                    const zoom = document.getElementById("cropZoom");
 
-          img.src = e.target.result;
+                    if (zoom) {
+                        zoom.value = "1";
+                    }
 
-        };
+                    drawPassportPhoto();
+                };
 
-        reader.readAsDataURL(file);
+                img.src = e.target.result;
+            };
 
-      });
+            reader.readAsDataURL(file);
+        });
+    }
 
+    const sizeSelect = document.getElementById("photoSize");
 
-    function createPassportPhoto(img) {
+    if (sizeSelect) {
+        sizeSelect.addEventListener("change", function () {
+            drawPassportPhoto();
+        });
+    }
 
-      const canvas =
-        document.getElementById("passportCanvas");
+    const backgroundSelect = document.getElementById("backgroundColor");
 
-      const ctx =
-        canvas.getContext("2d");
+    if (backgroundSelect) {
+        backgroundSelect.addEventListener("change", function () {
+            drawPassportPhoto();
+        });
+    }
 
-      /*
-        35 × 45 mm at approximately 300 DPI
-        = 413 × 531 pixels
-      */
+    const zoomControl = document.getElementById("cropZoom");
 
-      const outputWidth = 413;
-      const outputHeight = 531;
+    if (zoomControl) {
+        zoomControl.addEventListener("input", function () {
 
-      canvas.width = outputWidth;
-      canvas.height = outputHeight;
+            zoomLevel = parseFloat(this.value) || 1;
 
-      /*
-        Cover crop:
-        The image fills the complete passport-photo frame
-        while keeping the subject centered.
-      */
+            drawPassportPhoto();
+        });
+    }
 
-      const imageRatio = img.width / img.height;
+});
 
-      const canvasRatio =
-        outputWidth / outputHeight;
+function drawPassportPhoto() {
 
-      let sourceWidth;
-      let sourceHeight;
-      let sourceX;
-      let sourceY;
+    if (!originalImage) return;
 
-      if (imageRatio > canvasRatio) {
+    const sizeSelect = document.getElementById("photoSize");
+    const backgroundSelect = document.getElementById("backgroundColor");
 
-        sourceHeight = img.height;
-        sourceWidth = img.height * canvasRatio;
+    const selectedSize = sizeSelect ? sizeSelect.value : "35x45";
+    const selectedBackground = backgroundSelect
+        ? backgroundSelect.value
+        : "white";
 
-        sourceX =
-          (img.width - sourceWidth) / 2;
+    const size = photoSizes[selectedSize];
 
-        sourceY = 0;
+    const canvas = document.getElementById("passportCanvas");
 
-      } else {
+    if (!canvas) return;
 
-        sourceWidth = img.width;
-        sourceHeight = img.width / canvasRatio;
+    canvas.width = size.width;
+    canvas.height = size.height;
 
-        sourceX = 0;
+    const ctx = canvas.getContext("2d");
 
-        sourceY =
-          (img.height - sourceHeight) / 2;
+    /* Background */
+    ctx.fillStyle = selectedBackground;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      }
+    /*
+       Crop image to the selected passport ratio.
+       Zoom allows manual crop control.
+    */
 
-      ctx.fillStyle = "#ffffff";
+    const canvasRatio = canvas.width / canvas.height;
+    const imageRatio = originalImage.width / originalImage.height;
 
-      ctx.fillRect(
-        0,
-        0,
-        outputWidth,
-        outputHeight
-      );
+    let sourceWidth;
+    let sourceHeight;
+    let sourceX;
+    let sourceY;
 
-      ctx.drawImage(
-        img,
+    if (imageRatio > canvasRatio) {
+
+        sourceHeight = originalImage.height / zoomLevel;
+        sourceWidth = sourceHeight * canvasRatio;
+
+        sourceX = (originalImage.width - sourceWidth) / 2;
+        sourceY = (originalImage.height - sourceHeight) / 2;
+
+    } else {
+
+        sourceWidth = originalImage.width / zoomLevel;
+        sourceHeight = sourceWidth / canvasRatio;
+
+        sourceX = (originalImage.width - sourceWidth) / 2;
+        sourceY = (originalImage.height - sourceHeight) / 2;
+    }
+
+    ctx.drawImage(
+        originalImage,
         sourceX,
         sourceY,
         sourceWidth,
         sourceHeight,
         0,
         0,
-        outputWidth,
-        outputHeight
-      );
+        canvas.width,
+        canvas.height
+    );
 
-      document
-        .getElementById("previewArea")
-        .classList.add("active");
+    updatePhotoInfo();
+}
 
+function updatePhotoInfo() {
+
+    const sizeSelect = document.getElementById("photoSize");
+
+    if (!sizeSelect) return;
+
+    const selectedSize = sizeSelect.value;
+    const size = photoSizes[selectedSize];
+
+    const dimensions = document.getElementById("outputDimensions");
+
+    if (dimensions) {
+        dimensions.textContent =
+            "Output: " +
+            size.label +
+            " • " +
+            size.width +
+            " × " +
+            size.height +
+            " px";
     }
 
+    updateEstimatedFileSize();
+}
 
-    function downloadPassportPhoto() {
+function updateEstimatedFileSize() {
 
-      if (!originalImage) {
+    const canvas = document.getElementById("passportCanvas");
+
+    if (!canvas || !originalImage) return;
+
+    const targetSelect = document.getElementById("targetSize");
+
+    if (!targetSelect) return;
+
+    const targetKB = parseFloat(targetSelect.value);
+
+    if (!targetKB) return;
+
+    const dataURL = canvas.toDataURL("image/jpeg", 0.85);
+
+    const bytes =
+        Math.round(
+            (dataURL.length - dataURL.indexOf(",") - 1) * 3 / 4
+        );
+
+    const actualKB = bytes / 1024;
+
+    const fileSizeText = document.getElementById("fileSizeText");
+
+    if (fileSizeText) {
+
+        fileSizeText.textContent =
+            "Estimated size: " +
+            actualKB.toFixed(1) +
+            " KB • Target: " +
+            targetKB +
+            " KB";
+    }
+}
+
+const targetSizeControl = document.getElementById("targetSize");
+
+if (targetSizeControl) {
+
+    targetSizeControl.addEventListener("change", function () {
+        updateEstimatedFileSize();
+    });
+}
+
+function canvasToBlob(canvas, quality) {
+
+    return new Promise(function (resolve) {
+
+        canvas.toBlob(
+            function (blob) {
+                resolve(blob);
+            },
+            "image/jpeg",
+            quality
+        );
+
+    });
+}
+
+async function createCompressedPhoto(canvas, targetKB) {
+
+    const targetBytes = targetKB * 1024;
+
+    let quality = 0.95;
+
+    let blob = await canvasToBlob(canvas, quality);
+
+    /*
+       Reduce JPEG quality until the selected
+       target size is reached.
+    */
+
+    while (
+        blob.size > targetBytes &&
+        quality > 0.10
+    ) {
+
+        quality -= 0.05;
+
+        blob = await canvasToBlob(
+            canvas,
+            quality
+        );
+    }
+
+    return blob;
+}
+
+async function downloadPassportPhoto() {
+
+    if (!originalImage) {
 
         alert("Please upload a photo first.");
 
         return;
-
-      }
-
-      const canvas =
-        document.getElementById("passportCanvas");
-
-      const quality =
-        parseFloat(
-          document.getElementById("quality").value
-        );
-
-      const link =
-        document.createElement("a");
-
-      link.download =
-        "ExamSathi-Passport-Photo.jpg";
-
-      link.href =
-        canvas.toDataURL(
-          "image/jpeg",
-          quality
-        );
-
-      link.click();
-
     }
 
+    const canvas = document.getElementById("passportCanvas");
+
+    const targetSelect =
+        document.getElementById("targetSize");
+
+    if (!canvas || !targetSelect) return;
+
+    const targetKB =
+        parseFloat(targetSelect.value);
+
+    if (!targetKB) {
+
+        alert("Please select a target file size.");
+
+        return;
+    }
+
+    const button =
+        document.querySelector(".download-btn");
+
+    if (button) {
+        button.disabled = true;
+        button.textContent = "Preparing...";
+    }
+
+    try {
+
+        const blob =
+            await createCompressedPhoto(
+                canvas,
+                targetKB
+            );
+
+        const url =
+            URL.createObjectURL(blob);
+
+        const link =
+            document.createElement("a");
+
+        link.href = url;
+        link.download =
+            "ExamSathi-Passport-Photo.jpg";
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+
+        URL.revokeObjectURL(url);
+
+        const fileSizeText =
+            document.getElementById("fileSizeText");
+
+        if (fileSizeText) {
+
+            fileSizeText.textContent =
+                "Final size: " +
+                (blob.size / 1024).toFixed(1) +
+                " KB";
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Could not create the photo. Please try again."
+        );
+
+    } finally {
+
+        if (button) {
+            button.disabled = false;
+            button.textContent =
+                "📥 Download Passport Photo";
+        }
 
     /* SEARCH */
-
-    document
       .getElementById("searchBox")
       .addEventListener("input", function() {
 
@@ -721,7 +927,7 @@
 
         });
 
-      });
+      })
 
   </script>
 
