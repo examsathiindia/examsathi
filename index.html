@@ -516,14 +516,16 @@ function openPassportTool() {
     const tool = document.getElementById("passportTool");
 
     if (tool) {
-        tool.style.display = "block";
-        tool.scrollIntoView({
+        tool.classList.add("active");
+        setTimeout(function(){
+          tool.scrolllntoView({
             behavior: "smooth",
             block: "start"
         });
-    }
+    },100);
+  }
 }
-
+  
 function closePassportTool() {
     const tool = document.getElementById("passportTool");
 
