@@ -71,6 +71,7 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
   <button class="card" onclick="scrollToSection('calendar')">📅<br><b>Calendar</b></button>
   <button class="card" onclick="scrollToSection('currentAffairs')">📰<br><b>Current Affairs</b></button>
   <button class="card" onclick="scrollToSection('exams')">🎯<br><b>Exams</b></button>
+  <button class="card" onclick="scrollToSection('mockTests')">🧪<br><b>Mock Test</b></button>
   <button class="card" onclick="scrollToSection('studentTools')">🛠️<br><b>Tools</b></button>
 </nav>
 
@@ -274,6 +275,29 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
       <p>UPSC recruitment-test portal includes links for exam schedules, e-Admit Cards, results, answer keys and question papers.</p>
       <div class="actions"><a class="btn" href="https://www.upsc.gov.in/recruitment/recruitment-test" target="_blank" rel="noopener">Official RT Resources</a></div>
     </div>
+  </div>
+</section>
+
+
+<section id="mockTests" class="portal-section">
+  <h2>🧪 Online Mock Tests</h2>
+  <p style="color:#667085;margin-top:-6px">Practice with original sample questions. Choose a test, answer MCQs, use the timer and get your score instantly.</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin:14px 0">
+    <button class="card" onclick="startMock('ssc')"><div class="icon">📝</div><h3>SSC Practice</h3><p>10 MCQs • 10 minutes • +1 / −0.25</p></button>
+    <button class="card" onclick="startMock('banking')"><div class="icon">🏦</div><h3>Banking Practice</h3><p>10 MCQs • 10 minutes • +1 / −0.25</p></button>
+    <button class="card" onclick="startMock('assam')"><div class="icon">🟢</div><h3>Assam Exam Practice</h3><p>10 MCQs • 10 minutes • +1 / −0.25</p></button>
+  </div>
+  <div id="mockPanel" class="panel" style="display:none">
+    <div class="panel-head"><div><h3 id="mockTitle" style="margin:0">Mock Test</h3><div id="mockProgress" class="info"></div></div><div id="mockTimer" style="font-weight:800;font-size:18px">10:00</div></div>
+    <div id="mockQuestion" style="margin-top:18px"></div>
+    <div id="mockNav" style="display:flex;flex-wrap:wrap;gap:7px;margin-top:16px"></div>
+    <div class="actions">
+      <button class="btn secondary" onclick="mockPrev()">← Previous</button>
+      <button class="btn" onclick="mockNext()">Next →</button>
+      <button class="btn green" onclick="submitMock()">Submit Test</button>
+      <button class="btn secondary" onclick="closeMock()">Close</button>
+    </div>
+    <div id="mockResult" class="tool-note hidden"></div>
   </div>
 </section>
 
@@ -946,5 +970,67 @@ function buildPDF(canvases){
   return new Blob(chunks,{type:'application/pdf'});
 }
 </script>
+
+<script>
+const MOCK_BANK={
+ssc:[
+['What is 25% of 240?',['40','50','60','70'],2],
+['If a train covers 360 km in 4 hours, its average speed is:',['80 km/h','90 km/h','100 km/h','120 km/h'],1],
+['Which word is closest in meaning to “brief”?',['Long','Short','Difficult','Bright'],1],
+['The HCF of 18 and 24 is:',['3','6','9','12'],1],
+['Which is the largest planet in our Solar System?',['Earth','Mars','Jupiter','Venus'],2],
+['A shopkeeper buys an item for ₹500 and sells it for ₹600. Profit percent is:',['10%','15%','20%','25%'],2],
+['Find the next number: 2, 4, 8, 16, ?',['20','24','30','32'],3],
+['Which fundamental right is related to equality before law?',['Article 14','Article 19','Article 21','Article 32'],0],
+['If 3 workers finish a job in 12 days, at the same rate 6 workers take:',['3 days','6 days','12 days','24 days'],1],
+['Which gas is most abundant in Earth’s atmosphere?',['Oxygen','Nitrogen','Carbon dioxide','Hydrogen'],1]
+],
+banking:[
+['What does RBI stand for?',['Reserve Bank of India','Regional Bank of India','Rural Bank of India','Reserve Bureau of India'],0],
+['If ₹1,000 earns simple interest of ₹100 in 2 years, the annual rate is:',['2%','5%','10%','20%'],2],
+['A number increased by 20% becomes 360. The original number is:',['280','300','320','340'],1],
+['Which institution regulates monetary policy in India?',['SEBI','RBI','NITI Aayog','NABARD'],1],
+['What is the square root of 144?',['10','11','12','14'],2],
+['Which of these is generally a current account feature?',['Only fixed interest','Frequent transactions','No withdrawals','Only for minors'],1],
+['If 5 pens cost ₹75, 8 pens cost:',['₹100','₹110','₹120','₹125'],2],
+['What is the full form of KYC?',['Know Your Customer','Keep Your Cash','Know Your Credit','Key Yield Certificate'],0],
+['Find 15% of 800.',['100','120','140','160'],1],
+['A ratio of 2:3 has total 25. The smaller part is:',['8','10','12','15'],1]
+],
+assam:[
+['What is the capital of Assam?',['Guwahati','Dispur','Jorhat','Dibrugarh'],1],
+['Kaziranga National Park is especially known for the:',['One-horned rhinoceros','Lion','Camel','Penguin'],0],
+['Which river is closely associated with Assam’s major river system?',['Brahmaputra','Narmada','Godavari','Tapi'],0],
+['Bihu is primarily associated with which state?',['Assam','Kerala','Punjab','Gujarat'],0],
+['Majuli is famous as a large:',['Desert','River island','Mountain pass','Coastal lagoon'],1],
+['Which city is known as the “Tea City of India” in Assam?',['Dibrugarh','Silchar','Tezpur','Barpeta'],0],
+['The Assamese language is written mainly in which script?',['Bengali-Assamese script','Roman script','Tamil script','Gujarati script'],0],
+['Sivasagar is historically associated with the:',['Ahom kingdom','Maurya empire','Chola kingdom','Mughal capital'],0],
+['Which is a major wildlife sanctuary/park in Assam?',['Manas','Gir','Periyar','Bandipur'],0],
+['The Brahmaputra enters Assam near:',['Sadiya region','Silchar','Karimganj','Dhubri only'],0]
+]};
+let mockState={key:null,questions:[],answers:[],index:0,time:600,timer:null,submitted:false};
+function startMock(key){
+  clearInterval(mockState.timer); mockState={key,questions:MOCK_BANK[key],answers:Array(10).fill(null),index:0,time:600,timer:null,submitted:false};
+  document.getElementById('mockPanel').style.display='block'; document.getElementById('mockResult').classList.add('hidden');
+  document.getElementById('mockTitle').textContent=key==='ssc'?'SSC Practice Mock Test':key==='banking'?'Banking Practice Mock Test':'Assam Exam Practice Mock Test';
+  document.getElementById('mockPanel').scrollIntoView({behavior:'smooth',block:'start'}); renderMock();
+  mockState.timer=setInterval(()=>{mockState.time--; renderTimer(); if(mockState.time<=0)submitMock(true)},1000);
+}
+function renderTimer(){const m=String(Math.floor(mockState.time/60)).padStart(2,'0'),s=String(mockState.time%60).padStart(2,'0');document.getElementById('mockTimer').textContent=m+':'+s;}
+function renderMock(){
+  renderTimer(); const q=mockState.questions[mockState.index];
+  document.getElementById('mockProgress').textContent=`Question ${mockState.index+1} of ${mockState.questions.length}`;
+  document.getElementById('mockQuestion').innerHTML=`<div style="font-size:17px;font-weight:800;line-height:1.45">${mockState.index+1}. ${q[0]}</div><div style="margin-top:14px">${q[1].map((o,i)=>`<label style="display:block;padding:12px;border:1px solid #dfe5ee;border-radius:10px;margin:8px 0;cursor:pointer;background:${mockState.answers[mockState.index]===i?'#eef4ff':'#fff'}"><input type="radio" name="mockOpt" value="${i}" ${mockState.answers[mockState.index]===i?'checked':''} onchange="saveMockAnswer(${i})" style="margin-right:8px">${o}</label>`).join('')}</div>`;
+  document.getElementById('mockNav').innerHTML=mockState.questions.map((_,i)=>`<button class="btn ${i===mockState.index?'':'secondary'}" style="padding:7px 10px" onclick="mockGo(${i})">${i+1}</button>`).join('');
+}
+function saveMockAnswer(i){mockState.answers[mockState.index]=i;renderMock();}
+function mockGo(i){if(!mockState.submitted){mockState.index=i;renderMock()}}
+function mockNext(){if(mockState.index<mockState.questions.length-1){mockState.index++;renderMock()}else submitMock()}
+function mockPrev(){if(mockState.index>0){mockState.index--;renderMock()}}
+function submitMock(auto=false){if(mockState.submitted)return;mockState.submitted=true;clearInterval(mockState.timer);let correct=0,wrong=0,unanswered=0;mockState.questions.forEach((q,i)=>{if(mockState.answers[i]===null)unanswered++;else if(mockState.answers[i]===q[2])correct++;else wrong++});let score=correct-(wrong*0.25);score=Math.max(0,score);let pct=(score/mockState.questions.length*100).toFixed(1);const r=document.getElementById('mockResult');r.classList.remove('hidden');r.innerHTML=`<b>${auto?'⏰ Time over! ':'🎉 Test submitted! '}</b><br><br>Correct: <b>${correct}</b> &nbsp; Wrong: <b>${wrong}</b> &nbsp; Unanswered: <b>${unanswered}</b><br>Score: <b>${score.toFixed(2)} / ${mockState.questions.length}</b> &nbsp; Percentage: <b>${pct}%</b><br><br><button class="btn secondary" onclick="startMock('${mockState.key}')">🔄 Retake Test</button>`;document.getElementById('mockQuestion').innerHTML='<p style="font-weight:700">Your test is complete. Review your result above or retake the test.</p>';}
+function closeMock(){clearInterval(mockState.timer);document.getElementById('mockPanel').style.display='none';}
+</script>
+
 </body>
-  </html>
+      </html>
