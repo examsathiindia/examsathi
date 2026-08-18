@@ -74,11 +74,43 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
 <div id="home"></div>
 
 <section id="jobs" class="portal-section">
-  <h2>💼 Latest Jobs</h2>
-  <div class="grid">
-    <div class="card"><h3>SSC Recruitment</h3><p>Latest SSC vacancy details, eligibility and official application link will appear here.</p><button class="btn secondary" onclick="showPortalMessage('SSC Jobs')">View Details</button></div>
-    <div class="card"><h3>Banking Jobs</h3><p>Banking recruitment updates and important application information.</p><button class="btn secondary" onclick="showPortalMessage('Banking Jobs')">View Details</button></div>
-    <div class="card"><h3>Railway Jobs</h3><p>Railway recruitment updates, notices and application information.</p><button class="btn secondary" onclick="showPortalMessage('Railway Jobs')">View Details</button></div>
+  <h2>💼 Latest Jobs & Recruitment Updates</h2>
+  <div class="card" style="margin-bottom:14px">
+    <p><b>Last verified:</b> 18 August 2026</p>
+    <div class="info">These are selected official recruitment updates. Always open the official notice before applying and check eligibility, dates and fees.</div>
+  </div>
+  <div style="margin-bottom:14px"><input id="jobSearch" type="text" placeholder="Search jobs: SSC, IBPS, Assam Police, APSC, UPSC..."></div>
+  <div id="jobsGrid" class="grid">
+    <div class="card job-card" data-job="ibps csa xvi banking clerk customer service associate open august 2026">
+      <h3>🏦 IBPS CRP-CSA-XVI</h3>
+      <p><b>Status:</b> Application window open. Online registration: 01/08/2026–21/08/2026.</p>
+      <div class="actions"><a class="btn" href="https://ibpsreg.ibps.in/csaxvijul26/" target="_blank" rel="noopener">Official Apply</a><a class="btn secondary" href="https://www.ibps.in/index.php/recruitment/" target="_blank" rel="noopener">IBPS Recruitment</a></div>
+    </div>
+    <div class="card job-card" data-job="nic assistants 500 ibps banking recruitment 2026 august">
+      <h3>💻 NIC – 500 Assistants</h3>
+      <p><b>Status:</b> Application closed on 07/08/2026. Application print facility remains available until 22/08/2026.</p>
+      <div class="actions"><a class="btn secondary" href="https://ibpsreg.ibps.in/nicljul26/" target="_blank" rel="noopener">Official Portal</a></div>
+    </div>
+    <div class="card job-card" data-job="assam police constable apro fire emergency rescuer guardsman grade iii 2026">
+      <h3>👮 Assam Police Recruitment</h3>
+      <p><b>Status:</b> Official recruitment notices are available for APRO/Fire & Emergency Services and Constable/Guardsman (Grade-III) categories.</p>
+      <div class="actions"><a class="btn" href="https://police.assam.gov.in/documents-detail/recruitment-notice" target="_blank" rel="noopener">Official Notice</a></div>
+    </div>
+    <div class="card job-card" data-job="apsc assam chemist assistant geologist 2026 recruitment">
+      <h3>🟢 APSC Recruitment</h3>
+      <p><b>Recent:</b> APSC recruitment notices include Chemist and Assistant Geologist posts under Assam Government departments.</p>
+      <div class="actions"><a class="btn" href="https://apscrecruitment.in/" target="_blank" rel="noopener">APSC Portal</a></div>
+    </div>
+    <div class="card job-card" data-job="ssc stenographer grade c d 2026 recruitment exam july august">
+      <h3>📋 SSC Stenographer C & D 2026</h3>
+      <p><b>Update:</b> SSC's official notice schedules the Computer Based Examination for July–August 2026.</p>
+      <div class="actions"><a class="btn secondary" href="https://ssc.gov.in/home/notice-board" target="_blank" rel="noopener">SSC Notice Board</a></div>
+    </div>
+    <div class="card job-card" data-job="upsc active examinations 2026 civil services main cds nda capf cms engineering geo scientist">
+      <h3>🇮🇳 UPSC Active Examinations</h3>
+      <p><b>Update:</b> UPSC currently lists active 2026 examinations including Civil Services Main, CDS II, NDA II, CAPF, CMS and others.</p>
+      <div class="actions"><a class="btn secondary" href="https://www.upsc.gov.in/examinations/active-exams" target="_blank" rel="noopener">UPSC Active Exams</a></div>
+    </div>
   </div>
 </section>
 
@@ -382,6 +414,13 @@ function downloadCanvas(id,name){
 function scrollToSection(id){
   const el=$(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 }
+$('jobSearch').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase().trim();
+  document.querySelectorAll('.job-card').forEach(c=>{
+    c.style.display=(!q || c.dataset.job.includes(q))?'':'none';
+  });
+});
+
 $('examSearch').addEventListener('input',e=>{
   const q=e.target.value.toLowerCase().trim();
   document.querySelectorAll('.exam-card').forEach(card=>{
