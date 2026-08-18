@@ -150,6 +150,118 @@
       margin-bottom: 7px;
     }
 
+    /* TOOL PANEL */
+
+    .tool-panel {
+      display: none;
+      background: white;
+      border-radius: 16px;
+      padding: 22px;
+      margin: 10px 0 30px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .tool-panel.active {
+      display: block;
+    }
+
+    .tool-panel h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .tool-description {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .file-input {
+      display: block;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto 18px;
+      padding: 12px;
+      border: 2px dashed #2563eb;
+      border-radius: 10px;
+      background: #f8fbff;
+      cursor: pointer;
+    }
+
+    .preview-area {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .preview-area.active {
+      display: block;
+    }
+
+    .preview-area canvas {
+      max-width: 100%;
+      width: 260px;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: white;
+    }
+
+    .photo-info {
+      font-size: 12px;
+      color: #666;
+      margin: 12px 0;
+    }
+
+    .download-btn,
+    .close-btn {
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .download-btn {
+      background: #2563eb;
+      color: white;
+    }
+
+    .download-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .close-btn {
+      background: #e5e7eb;
+      color: #172033;
+    }
+
+    .quality-box {
+      margin: 15px 0;
+    }
+
+    .quality-box label {
+      font-size: 13px;
+      margin-right: 8px;
+    }
+
+    .quality-box select {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .notice {
+      background: #eff6ff;
+      color: #1e40af;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      margin-top: 15px;
+      text-align: left;
+    }
+
     footer {
       background: #172033;
       color: white;
@@ -230,7 +342,8 @@
 
     <div class="cards">
 
-      <div class="card">
+      <!-- PASSPORT PHOTO -->
+      <div class="card" onclick="openPassportTool()">
         <div class="icon">📸</div>
         <h3>Passport Photo</h3>
         <p>Create passport size photos</p>
@@ -280,6 +393,68 @@
 
     </div>
 
+    <!-- PASSPORT PHOTO TOOL -->
+
+    <section class="tool-panel" id="passportTool">
+
+      <h2>📸 Passport Photo Maker</h2>
+
+      <p class="tool-description">
+        Upload your photo and create a standard 35 × 45 mm passport-size photo.
+      </p>
+
+      <input
+        type="file"
+        id="photoInput"
+        class="file-input"
+        accept="image/*"
+      >
+
+      <div class="quality-box">
+        <label for="quality">JPG Quality:</label>
+
+        <select id="quality">
+          <option value="0.95">High</option>
+          <option value="0.85" selected>Standard</option>
+          <option value="0.70">Compressed</option>
+        </select>
+      </div>
+
+      <div class="preview-area" id="previewArea">
+
+        <canvas id="passportCanvas"></canvas>
+
+        <div class="photo-info">
+          Output size: 35 × 45 mm<br>
+          Digital size: 413 × 531 pixels
+        </div>
+
+        <button
+          class="download-btn"
+          onclick="downloadPassportPhoto()"
+        >
+          ⬇️ Download Passport Photo
+        </button>
+
+      </div>
+
+      <br>
+
+      <button
+        class="close-btn"
+        onclick="closePassportTool()"
+      >
+        ✕ Close Tool
+      </button>
+
+      <div class="notice">
+        🔒 Your photo is processed directly in your browser.
+        It is not uploaded to a server by this tool.
+      </div>
+
+    </section>
+
+
     <h2 class="section-title">🔥 Latest Notifications</h2>
 
     <div class="updates">
@@ -312,6 +487,243 @@
     <br>
     <p>© 2026 ExamSathi. All Rights Reserved.</p>
   </footer>
+
+
+  <script>
+
+    let originalImage = null;
+
+    function openPassportTool() {
+
+      const tool = document.getElementById("passportTool");
+
+      tool.classList.add("active");
+
+      setTimeout(function() {
+        tool.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 100);
+
+    }
+
+
+    function closePassportTool() {
+
+      document
+        .getElementById("passportTool")
+        .classList.remove("active");
+
+      document
+        .getElementById("previewArea")
+        .classList.remove("active");
+
+      document
+        .getElementById("photoInput")
+        .value = "";
+
+      originalImage = null;
+
+    }
+
+
+    document
+      .getElementById("photoInput")
+      .addEventListener("change", function(event) {
+
+        const file = event.target.files[0];
+
+        if (!file) {
+          return;
+        }
+
+        if (!file.type.startsWith("image/")) {
+
+          alert("Please select a valid image.");
+
+          return;
+
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+          const img = new Image();
+
+          img.onload = function() {
+
+            originalImage = img;
+
+            createPassportPhoto(img);
+
+          };
+
+          img.src = e.target.result;
+
+        };
+
+        reader.readAsDataURL(file);
+
+      });
+
+
+    function createPassportPhoto(img) {
+
+      const canvas =
+        document.getElementById("passportCanvas");
+
+      const ctx =
+        canvas.getContext("2d");
+
+      /*
+        35 × 45 mm at approximately 300 DPI
+        = 413 × 531 pixels
+      */
+
+      const outputWidth = 413;
+      const outputHeight = 531;
+
+      canvas.width = outputWidth;
+      canvas.height = outputHeight;
+
+      /*
+        Cover crop:
+        The image fills the complete passport-photo frame
+        while keeping the subject centered.
+      */
+
+      const imageRatio = img.width / img.height;
+
+      const canvasRatio =
+        outputWidth / outputHeight;
+
+      let sourceWidth;
+      let sourceHeight;
+      let sourceX;
+      let sourceY;
+
+      if (imageRatio > canvasRatio) {
+
+        sourceHeight = img.height;
+        sourceWidth = img.height * canvasRatio;
+
+        sourceX =
+          (img.width - sourceWidth) / 2;
+
+        sourceY = 0;
+
+      } else {
+
+        sourceWidth = img.width;
+        sourceHeight = img.width / canvasRatio;
+
+        sourceX = 0;
+
+        sourceY =
+          (img.height - sourceHeight) / 2;
+
+      }
+
+      ctx.fillStyle = "#ffffff";
+
+      ctx.fillRect(
+        0,
+        0,
+        outputWidth,
+        outputHeight
+      );
+
+      ctx.drawImage(
+        img,
+        sourceX,
+        sourceY,
+        sourceWidth,
+        sourceHeight,
+        0,
+        0,
+        outputWidth,
+        outputHeight
+      );
+
+      document
+        .getElementById("previewArea")
+        .classList.add("active");
+
+    }
+
+
+    function downloadPassportPhoto() {
+
+      if (!originalImage) {
+
+        alert("Please upload a photo first.");
+
+        return;
+
+      }
+
+      const canvas =
+        document.getElementById("passportCanvas");
+
+      const quality =
+        parseFloat(
+          document.getElementById("quality").value
+        );
+
+      const link =
+        document.createElement("a");
+
+      link.download =
+        "ExamSathi-Passport-Photo.jpg";
+
+      link.href =
+        canvas.toDataURL(
+          "image/jpeg",
+          quality
+        );
+
+      link.click();
+
+    }
+
+
+    /* SEARCH */
+
+    document
+      .getElementById("searchBox")
+      .addEventListener("input", function() {
+
+        const query =
+          this.value.toLowerCase().trim();
+
+        const cards =
+          document.querySelectorAll(".card");
+
+        cards.forEach(function(card) {
+
+          const text =
+            card.innerText.toLowerCase();
+
+          if (
+            query === "" ||
+            text.includes(query)
+          ) {
+
+            card.style.display = "";
+
+          } else {
+
+            card.style.display = "none";
+
+          }
+
+        });
+
+      });
+
+  </script>
 
 </body>
 </html>
