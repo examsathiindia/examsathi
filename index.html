@@ -164,10 +164,55 @@ footer{text-align:center;color:#667085;padding:25px;font-size:12px}
 </section>
 
 <section id="admit" class="portal-section">
-  <h2>🎫 Admit Cards</h2>
-  <div class="card">
-    <p>Keep admit-card links organised by exam so students can quickly find the official download page.</p>
-    <div class="actions"><button class="btn secondary" onclick="showPortalMessage('Admit Cards')">View Admit Cards</button></div>
+  <h2>🎫 Latest Admit Cards</h2>
+  <p class="muted">Official-source admit-card links • Last checked: 18 August 2026</p>
+  <div class="card" style="margin-bottom:14px">
+    <div class="info">Important: An official portal link does not always mean the admit card is released. Check the status shown on each card before downloading.</div>
+  </div>
+  <div class="search-row" style="margin-bottom:14px">
+    <input id="admitSearch" type="text" placeholder="Search admit cards: UPSC, SSC, IBPS, NTA, Assam...">
+  </div>
+  <div id="admitGrid" class="grid">
+    <div class="card admit-card" data-admit="upsc civil services main csm 2026 e admit card august 2026">
+      <h3>🇮🇳 UPSC Civil Services (Main) 2026</h3>
+      <p><b>Status:</b> e-Admit Card notice available. The Main examination is scheduled to begin on 21 August 2026.</p>
+      <div class="actions"><a class="btn" href="https://www.upsc.gov.in/whats-new/Civil%20Services%20%28Main%29%20Examination%2C%202026/e%20-%20Admit%20Card" target="_blank" rel="noopener">Official e-Admit Card</a><a class="btn secondary" href="https://www.upsc.gov.in/" target="_blank" rel="noopener">UPSC Home</a></div>
+    </div>
+    <div class="card admit-card" data-admit="ssc stenographer grade c d 2026 admit card september exam ssc">
+      <h3>⌨️ SSC Stenographer Grade C & D 2026</h3>
+      <p><b>Exam:</b> Computer Based Examination scheduled for 9–12 September 2026. Admit-card availability should be checked on the official SSC portal/region portal.</p>
+      <div class="actions"><a class="btn" href="https://ssc.gov.in/" target="_blank" rel="noopener">SSC Official Website</a><a class="btn secondary" href="https://ssc.gov.in/home/notice-board" target="_blank" rel="noopener">Notice Board</a></div>
+    </div>
+    <div class="card admit-card" data-admit="ssc all exams admit card regional websites 2026">
+      <h3>📋 SSC — Admit Card / Candidate Login</h3>
+      <p>Use the official SSC website to access candidate login and exam-specific admit-card information when released.</p>
+      <div class="actions"><a class="btn" href="https://ssc.gov.in/login" target="_blank" rel="noopener">SSC Candidate Login</a></div>
+    </div>
+    <div class="card admit-card" data-admit="ibps csa xvi clerical customer service associate 2026 admit card">
+      <h3>🏦 IBPS CRP-CSA-XVI</h3>
+      <p><b>Status:</b> Recruitment process is active. Admit-card updates will appear through the official IBPS website as the process progresses.</p>
+      <div class="actions"><a class="btn" href="https://www.ibps.in/index.php/recruitment/" target="_blank" rel="noopener">IBPS Recruitment</a></div>
+    </div>
+    <div class="card admit-card" data-admit="ibps po mt xvi 2026 admit card probationary officer management trainee">
+      <h3>🏦 IBPS PO/MT-XVI</h3>
+      <p>Check the official IBPS recruitment page for call-letter/admit-card releases and candidate login updates.</p>
+      <div class="actions"><a class="btn" href="https://www.ibps.in/" target="_blank" rel="noopener">IBPS Official Website</a></div>
+    </div>
+    <div class="card admit-card" data-admit="nta ugc net 2026 admit card neet cuet nta notice board">
+      <h3>🎓 NTA — Admit Card & Exam Updates</h3>
+      <p>For NTA examinations such as UGC-NET, NEET (UG) and CUET, check the official NTA notice board for the current admit-card release.</p>
+      <div class="actions"><a class="btn" href="https://www.nta.ac.in/NoticeBoardArchive" target="_blank" rel="noopener">NTA Notice Board</a><a class="btn secondary" href="https://www.nta.ac.in/" target="_blank" rel="noopener">NTA Home</a></div>
+    </div>
+    <div class="card admit-card" data-admit="assam asseb jaa crt junior administrative assistant admit card 2026">
+      <h3>🏫 Assam — ASSEB / JAA CRT</h3>
+      <p>Check the official ASSEB Division-I notifications page for JAA Common Recruitment Test and other examination documents.</p>
+      <div class="actions"><a class="btn" href="https://site.sebaonline.org/notifications/" target="_blank" rel="noopener">Official ASSEB Notifications</a></div>
+    </div>
+    <div class="card admit-card" data-admit="assam police recruitment admit card constable apro grade iii 2026">
+      <h3>👮 Assam Police Recruitment</h3>
+      <p>Admit-card and recruitment-stage notices are published through the official Assam Police recruitment notice page.</p>
+      <div class="actions"><a class="btn" href="https://police.assam.gov.in/documents-detail/recruitment-notice" target="_blank" rel="noopener">Official Recruitment Notices</a></div>
+    </div>
   </div>
 </section>
 
@@ -564,6 +609,16 @@ async function convertImage(){
   const ext=fmt==='image/png'?'png':fmt==='image/webp'?'webp':'jpg';
   $('convInfo').textContent=`Converted to ${ext.toUpperCase()} • ${Math.round(window.convertedBlob.size/1024)} KB`;
   $('convDownload').disabled=false;$('convDownload').onclick=()=>downloadBlob(window.convertedBlob,'converted-image.'+ext);
+}
+
+const admitSearch = $('admitSearch');
+if(admitSearch){
+  admitSearch.addEventListener('input',()=>{
+    const q=admitSearch.value.toLowerCase().trim();
+    document.querySelectorAll('.admit-card').forEach(card=>{
+      card.style.display=(!q || (card.dataset.admit||'').includes(q))?'block':'none';
+    });
+  });
 }
 
 async function createPDF(){
