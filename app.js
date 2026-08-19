@@ -1,42 +1,24 @@
 (() => {
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const data=window.EXAMSATHI_DATA||{};
-function date(v){try{return new Date(v).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"})}catch{return v}}
-function card(x,type){
- const href=x.url||"#";
- return `<article class="item-card">
-  <div class="item-top"><span class="badge">${x.status||x.category||"Update"}</span><span class="date">${date(x.date)}</span></div>
-  <h3>${x.title}</h3><p>${x.org||x.category||"ExamSathi"}</p>
-  <div class="item-bottom"><span>${x.category||type}</span><a class="btn btn-sm" href="${href}">View Details →</a></div>
- </article>`;
-}
-function renderList(id,items,type,limit=6){
- const el=$("#"+id); if(!el)return;
- el.innerHTML=items.slice(0,limit).map(x=>card(x,type)).join("")||`<div class="empty">No updates available.</div>`;
-}
-renderList("latestJobs",data.jobs||[],"Jobs");
-renderList("latestNotifications",data.notifications||[],"Notifications");
-renderList("latestResults",data.results||[],"Results");
-renderList("latestAdmit",data.admitCards||[],"Admit Cards");
-
-const nav=$(".sidebar"), overlay=$(".nav-overlay");
-$("#menuBtn")?.addEventListener("click",()=>{nav?.classList.toggle("open");overlay?.classList.toggle("show")});
-overlay?.addEventListener("click",()=>{nav?.classList.remove("open");overlay?.classList.remove("show")});
-$$(".theme-toggle").forEach(b=>b.addEventListener("click",()=>{
- const dark=document.documentElement.classList.toggle("dark");localStorage.setItem("es-theme",dark?"dark":"light");
- $$(".theme-toggle").forEach(x=>x.textContent=dark?"☀️":"🌙");
-}));
-if(localStorage.getItem("es-theme")==="dark"){document.documentElement.classList.add("dark");$$(".theme-toggle").forEach(x=>x.textContent="☀️")}
-
-const all=[...(data.jobs||[]).map(x=>({...x,type:"Jobs"})),...(data.notifications||[]).map(x=>({...x,type:"Notifications"})),...(data.results||[]).map(x=>({...x,type:"Results"})),...(data.admitCards||[]).map(x=>({...x,type:"Admit Cards"})),...(data.exams||[]).map(x=>({...x,type:"Exams"}))];
-function search(q){
- const box=$("#searchResults"); if(!box)return;
- q=q.trim().toLowerCase();
- if(!q){box.classList.remove("show");return}
- const hits=all.filter(x=>(x.title+" "+(x.org||"")+" "+(x.category||"")+" "+x.type).toLowerCase().includes(q)).slice(0,10);
- box.innerHTML=hits.length?hits.map(x=>`<a href="${x.url||"#"}"><b>${x.title}</b><small>${x.type} · ${x.category||""}</small></a>`).join(""):`<div class="empty">No results found.</div>`;
- box.classList.add("show");
-}
-$$(".global-search").forEach(i=>i.addEventListener("input",e=>search(e.target.value)));
-document.addEventListener("click",e=>{if(!e.target.closest(".search-wrap"))$$(".search-results").forEach(x=>x.classList.remove("show"))});
+const date=v=>{try{return new Date(v).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"})}catch{return v||""}};
+function safe(s){return String(s??"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function getItems(type){return data[type]||[]}
+function card(x,type,index){return `<article class="item-card"><div class="item-top"><span class="badge">${safe(x.status||x.category||"Update")}</span><span class="date">${safe(date(x.date))}</span></div><h3>${safe(x.title)}</h3><p>${safe(x.org||x.category||"ExamSathi")}</p><div class="item-bottom"><span>${safe(x.category||type)}</span><button class="btn btn-sm detail-btn" data-type="${safe(type)}" data-index="${index}">View Details →</button></div></article>`}
+function renderList(id,type,limit=99){const el=$("#"+id);if(!el)return;const items=getItems(type);el.innerHTML=items.slice(0,limit).map((x,i)=>card(x,type,i)).join("")||'<div class="empty">No updates available yet.</div>'}
+renderList("latestJobs","jobs",6); renderList("latestNotifications","notifications",6); renderList("latestResults","results",6); renderList("latestAdmit","admitCards",6);
+function ensureModal(){if($("#detailModal"))return;document.body.insertAdjacentHTML("beforeend",`<div class="detail-modal" id="detailModal" aria-hidden="true"><div class="detail-backdrop" data-close-detail></div><div class="detail-dialog" role="dialog" aria-modal="true"><button class="detail-close" data-close-detail aria-label="Close">×</button><div id="detailBody"></div></div></div>`)}
+function openDetails(type,index){ensureModal();const x=getItems(type)[Number(index)];if(!x)return;const body=$("#detailBody");body.innerHTML=`<span class="badge">${safe(x.status||x.mode||x.category||type)}</span><h2>${safe(x.title)}</h2><p class="detail-meta">${safe(x.org||x.category||type)}${x.date?" · "+safe(date(x.date)):""}</p><p>${safe(x.details||x.text||"More information will be added after verification from the official source.")}</p><div class="detail-actions">${x.official?`<a class="btn" href="${safe(x.official)}" target="_blank" rel="noopener">Open Official Website ↗</a>`:""}<button class="btn btn-secondary" data-close-detail>Close</button></div>`;$("#detailModal").classList.add("show");$("#detailModal").setAttribute("aria-hidden","false")}
+function closeDetails(){const m=$("#detailModal");if(m){m.classList.remove("show");m.setAttribute("aria-hidden","true")}}
+document.addEventListener("click",e=>{const b=e.target.closest(".detail-btn");if(b){e.preventDefault();openDetails(b.dataset.type,b.dataset.index)} if(e.target.closest("[data-close-detail]"))closeDetails()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDetails()});
+const nav=$(".sidebar"),overlay=$(".nav-overlay");$("#menuBtn")?.addEventListener("click",()=>{nav?.classList.toggle("open");overlay?.classList.toggle("show")});overlay?.addEventListener("click",()=>{nav?.classList.remove("open");overlay?.classList.remove("show")});
+$$(".theme-toggle").forEach(b=>b.addEventListener("click",()=>{const dark=document.documentElement.classList.toggle("dark");localStorage.setItem("es-theme",dark?"dark":"light");$$('.theme-toggle').forEach(x=>x.textContent=dark?"☀️":"🌙")}));
+if(localStorage.getItem("es-theme")==="dark"){document.documentElement.classList.add("dark");$$('.theme-toggle').forEach(x=>x.textContent="☀️")}
+const all=[...(data.jobs||[]).map((x,i)=>({...x,type:"jobs",index:i})),...(data.notifications||[]).map((x,i)=>({...x,type:"notifications",index:i})),...(data.results||[]).map((x,i)=>({...x,type:"results",index:i})),...(data.admitCards||[]).map((x,i)=>({...x,type:"admitCards",index:i})),...(data.exams||[]).map((x,i)=>({...x,type:"exams",index:i}))];
+function search(q){const boxes=$$(".search-results");q=q.trim().toLowerCase();if(!q){boxes.forEach(b=>b.classList.remove("show"));return}const hits=all.filter(x=>(x.title+" "+(x.org||"")+" "+(x.category||"")+" "+x.type).toLowerCase().includes(q)).slice(0,10);const html=hits.length?hits.map(x=>`<button class="search-hit" data-type="${x.type}" data-index="${x.index}"><b>${safe(x.title)}</b><small>${safe(x.type)} · ${safe(x.category||"")}</small></button>`).join(""):`<div class="empty">No results found.</div>`;boxes.forEach(box=>{box.innerHTML=html;box.classList.add("show")})}
+$$('.global-search').forEach(i=>i.addEventListener('input',e=>search(e.target.value)));
+document.addEventListener('click',e=>{const h=e.target.closest('.search-hit');if(h){e.preventDefault();openDetails(h.dataset.type,h.dataset.index);$$('.search-results').forEach(x=>x.classList.remove('show'))} if(!e.target.closest('.search-wrap'))$$('.search-results').forEach(x=>x.classList.remove('show'))});
+// Google Analytics
+(function(){const GA_ID="G-NE39V76SVK";if(window.__EXAMSATHI_GA_LOADED__)return;window.__EXAMSATHI_GA_LOADED__=true;window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(GA_ID);document.head.appendChild(s);window.gtag('js',new Date());window.gtag('config',GA_ID)})();
 })();
