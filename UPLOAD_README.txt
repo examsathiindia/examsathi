@@ -1,14 +1,13 @@
-ExamSathi CSS Fix
+ExamSathi — Google Analytics fixed app.js
 
-Replace your existing repository root styles.css with the included styles.css.
+Replace ONLY the repository-root app.js with the included app.js.
 
-This fix targets:
-- Important notice spacing
-- Study tip spacing
-- Privacy note spacing
-- Large blank areas
-- Footer spacing
-- Mobile bottom navigation consistency
-- Raw/unformatted bottom navigation on some pages
+Measurement ID:
+G-NE39V76SVK
 
-Do not replace index.html, data.js, or the other HTML pages for this fix.
+Do not replace index.html, styles.css, data.js, or other HTML files for this step.
+
+The HTML pages must load app.js with:
+<script src="app.js"></script>
+
+If Realtime still shows 0 after this replacement, the next step is checking the live HTML source for the app.js script tag.
