@@ -1,4 +1,25 @@
 
+  // Google Analytics
+  // Loaded from the shared app.js so all ExamSathi pages using app.js
+  // automatically send page-view data to the same GA4 property.
+  (function(){
+    const GA_ID = "G-NE39V76SVK";
+    if(window.__EXAMSATHI_GA_LOADED__) return;
+    window.__EXAMSATHI_GA_LOADED__ = true;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_ID);
+    document.head.appendChild(script);
+
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID);
+  })();
+
+
 (function(){
   "use strict";
   const KEY="examsathi-theme";
