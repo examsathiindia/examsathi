@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Photo & Signature Tools — ExamSathi</title>
+<meta name="description" content="Free passport photo maker and signature maker for exam and government job applications.">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--tool-blue:#4d57a8;--tool-border:#dfe3ef;--tool-soft:#f5f7fb}
+.tool-page{max-width:1100px;margin:0 auto;padding:20px}
+.tool-hero{background:linear-gradient(135deg,#eef1ff,#fff);border:1px solid var(--tool-border);border-radius:20px;padding:24px;margin-bottom:18px}
+.tool-hero h2{margin:6px 0 8px;font-size:28px}
+.tool-hero p{margin:0;color:#687083}
+.tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.tool-card{border:1px solid var(--tool-border);border-radius:18px;background:#fff;padding:20px;box-shadow:0 8px 24px rgba(40,50,90,.06)}
+.tool-card h3{margin:4px 0 8px}
+.tool-card p{color:#6d7485}
+.tool-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:#eef0ff;font-size:27px}
+.tool-btn{border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer;background:var(--tool-blue);color:#fff}
+.tool-btn.alt{background:#fff;color:var(--tool-blue);border:1px solid #bcc2df}
+.tool-btn:disabled{opacity:.5;cursor:not-allowed}
+.tool-panel{display:none;margin-top:18px;border:1px solid var(--tool-border);border-radius:20px;background:#fff;padding:18px}
+.stepbar{display:flex;gap:8px;overflow:auto;margin-bottom:18px}
+.step{min-width:105px;padding:9px 12px;border-radius:999px;background:#eef0f7;color:#72788a;text-align:center;font-size:13px;font-weight:700}
+.step.active{background:var(--tool-blue);color:#fff}
+.step.done{background:#e5f5ea;color:#267442}
+.step-pane{display:none}.step-pane.active{display:block}
+.size-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.size-option{border:1px solid #d9ddea;border-radius:14px;padding:15px;background:#fff;cursor:pointer;text-align:left}
+.size-option.active{border:2px solid var(--tool-blue);padding:14px;background:#f7f8ff}
+.size-option strong{display:block;font-size:17px}.size-option span{display:block;color:#73798a;margin-top:4px;font-size:13px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:end}
+.field{display:flex;flex-direction:column;gap:6px;min-width:130px}.field label{font-weight:700;font-size:13px}
+.field input,.field select{padding:10px;border:1px solid #cfd4e3;border-radius:9px;background:#fff}
+.preview-wrap{display:flex;justify-content:center;background:#f3f4f8;border-radius:16px;padding:14px;margin-top:12px}
+.crop-stage{position:relative;display:inline-block;max-width:100%;touch-action:none}
+.crop-stage img{display:block;max-width:100%;max-height:430px;border-radius:8px}
+.crop-box{position:absolute;border:3px solid #2f8cff;background:rgba(47,140,255,.08);box-shadow:0 0 0 9999px rgba(0,0,0,.35);cursor:move}
+.crop-handle{position:absolute;width:18px;height:18px;background:#2f8cff;right:-9px;bottom:-9px;border-radius:4px;cursor:nwse-resize}
+.canvas-wrap{display:flex;justify-content:center;background:#f3f4f8;border-radius:16px;padding:14px;margin-top:12px}
+canvas{max-width:100%;height:auto;background:#fff;border-radius:8px}
+.choice-row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.choice{border:1px solid #d7dbea;padding:9px 13px;border-radius:10px;background:#fff;cursor:pointer}.choice.active{border-color:var(--tool-blue);background:#eef0ff;color:var(--tool-blue);font-weight:700}
+.notice{padding:12px 14px;border-radius:12px;background:#f7f8fb;color:#687083;margin-top:12px}
+.tool-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.signature-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+.draw-box{border:2px dashed #c8ccda;border-radius:14px;background:#fff;overflow:hidden}
+.draw-box canvas{width:100%;height:280px;display:block;touch-action:none;cursor:crosshair}
+@media(max-width:760px){
+ .tool-page{padding:12px}.tool-grid,.size-grid,.signature-layout{grid-template-columns:1fr}
+ .tool-hero h2{font-size:23px}.tool-card{padding:16px}
+ .crop-stage img{max-height:360px}
+}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="index.html"><span class="mark">E</span><span><strong>ExamSathi</strong><small>Student Portal</small></span></a>
+  <nav class="nav">
+    <a href="index.html">⌂ <span>Dashboard</span></a>
+    <a href="jobs.html">💼 <span>Latest Jobs</span></a>
+    <a href="notifications.html">🔔 <span>Notifications</span></a>
+    <a href="admit-cards.html">🎫 <span>Admit Cards</span></a>
+    <a href="results.html">🏆 <span>Results</span></a>
+    <a href="exams.html">📅 <span>Exam Directory</span></a>
+    <a href="study.html">📚 <span>Study & PYQ</span></a>
+    <a href="current-affairs.html">📰 <span>Current Affairs</span></a>
+    <a href="mock-tests.html">🧪 <span>Mock Tests</span></a>
+    <a class="active" href="tools.html">🛠️ <span>Student Tools</span></a>
+  </nav>
+  <div class="sidefoot">Useful utilities • Runs in your browser</div>
+</aside>
+
+<main class="main">
+<header class="top">
+  <div><div class="eyebrow">ExamSathi / Utilities</div><h1>Photo & Signature Tools</h1></div>
+  <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☾</button>
+</header>
+<div class="mobile-head">
+  <a class="brand" href="index.html"><span class="mark">E</span><span><strong>ExamSathi</strong><small>Student Portal</small></span></a>
+</div>
+<div class="mobile-search"><input data-search type="search" placeholder="Search ExamSathi..."></div>
+
+<section class="tool-page">
+  <div class="tool-hero">
+    <span class="status">Free • Browser based</span>
+    <h2>Application Photo & Signature Maker</h2>
+    <p>Create exam-form ready passport photos and signatures with a simple step-by-step workflow.</p>
+  </div>
+
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-icon">🪪</div>
+      <h3>Passport Photo Maker</h3>
+      <p>Choose India 35×45 mm, 2×2 inch, 50×70 mm or a custom size. Crop, set background and download.</p>
+      <button class="tool-btn" onclick="openPassport()">Open Passport Photo Maker →</button>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">✍️</div>
+      <h3>Signature Maker</h3>
+      <p>Upload a signature or draw one with your finger, adjust size and download PNG/JPG.</p>
+      <button class="tool-btn" onclick="openSignature()">Open Signature Maker →</button>
+    </div>
+  </div>
+
+  <div id="passportPanel" class="tool-panel">
+    <div class="section-head">
+      <div><span class="eyebrow">Passport Photo Maker</span><h2>Select → Crop → Background → Download</h2></div>
+      <button class="tool-btn alt" onclick="closePanels()">Close</button>
+    </div>
+    <div class="stepbar">
+      <div class="step active" id="ps1">1. Size</div><div class="step" id="ps2">2. Crop</div><div class="step" id="ps3">3. Background</div><div class="step" id="ps4">4. Download</div>
+    </div>
+
+    <div class="step-pane active" id="pstep1">
+      <h3>Select Passport Photo Size</h3>
+      <div class="row" style="margin:12px 0 16px">
+        <div class="field"><label>DPI</label><input id="dpi" type="number" min="72" max="600" value="300"></div>
+      </div>
+      <div class="size-grid">
+        <button class="size-option active" data-size="india" onclick="chooseSize(this)"><strong>✓ India / Standard</strong><span>35 × 45 mm • 3.5 × 4.5 cm</span><span>Recommended for many Indian applications</span></button>
+        <button class="size-option" data-size="square2" onclick="chooseSize(this)"><strong>2 × 2 Inch</strong><span>51 × 51 mm</span><span>Square passport photo</span></button>
+        <button class="size-option" data-size="canada" onclick="chooseSize(this)"><strong>50 × 70 mm</strong><span>5 × 7 cm</span><span>Custom application size</span></button>
+        <button class="size-option" data-size="custom" onclick="chooseSize(this)"><strong>Custom</strong><span>Set your own dimensions</span><span>CM / MM / INCH / PX</span></button>
+      </div>
+      <div id="customSize" class="row" style="display:none;margin-top:14px">
+        <div class="field"><label>Unit</label><select id="customUnit"><option>CM</option><option>MM</option><option>INCH</option><option>PX</option></select></div>
+        <div class="field"><label>Width</label><input id="customW" type="number" value="3.5" step="0.1"></div>
+        <div class="field"><label>Height</label><input id="customH" type="number" value="4.5" step="0.1"></div>
+      </div>
+      <div class="tool-actions"><button class="tool-btn" onclick="goPassportCrop()">Next →</button></div>
+    </div>
+
+    <div class="step-pane" id="pstep2">
+      <h3>Crop Face / Position Photo</h3>
+      <p class="soft">Upload a clear photo. Drag the blue crop box and use the corner handle to adjust it.</p>
+      <input id="passportFile" type="file" accept="image/*" style="margin:10px 0">
+      <div id="cropArea" class="preview-wrap" style="display:none">
+        <div class="crop-stage" id="cropStage"><img id="cropImage" alt="Selected photo"><div id="cropBox" class="crop-box"><div class="crop-handle"></div></div></div>
+      </div>
+      <div class="tool-actions"><button class="tool-btn alt" onclick="passportStep(1)">← Back</button><button class="tool-btn" id="cropNext" onclick="goBackground()" disabled>Save & Next →</button></div>
+    </div>
+
+    <div class="step-pane" id="pstep3">
+      <h3>Select Background Style</h3>
+      <div class="choice-row">
+        <button class="choice active" id="bgOriginal" onclick="setBg('original')">✓ Original</button>
+        <button class="choice" id="bgWhite" onclick="setBg('white')">White Background</button>
+        <label class="choice">Custom <input id="bgCustom" type="color" value="#ffffff" onchange="setBg('custom')"></label>
+      </div>
+      <div class="canvas-wrap"><canvas id="passportCanvas"></canvas></div>
+      <div class="notice">Tip: For an official application, always follow the exact photo/background requirements in that application's notification.</div>
+      <div class="tool-actions"><button class="tool-btn alt" onclick="passportStep(2)">← Back</button><button class="tool-btn" onclick="preparePassport()">Save & Next →</button></div>
+    </div>
+
+    <div class="step-pane" id="pstep4">
+      <h3>Your Passport Photo is Ready</h3>
+      <div class="canvas-wrap"><canvas id="passportFinal"></canvas></div>
+      <div class="tool-actions">
+        <button class="tool-btn" onclick="downloadPassport('image/jpeg')">Download JPG</button>
+        <button class="tool-btn alt" onclick="downloadPassport('image/png')">Download PNG</button>
+        <button class="tool-btn alt" onclick="passportStep(1)">Create Another</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="signaturePanel" class="tool-panel">
+    <div class="section-head">
+      <div><span class="eyebrow">Signature Maker</span><h2>Upload or Draw → Resize → Download</h2></div>
+      <button class="tool-btn alt" onclick="closePanels()">Close</button>
+    </div>
+    <div class="stepbar">
+      <div class="step active" id="ss1">1. Signature</div><div class="step" id="ss2">2. Size & Style</div><div class="step" id="ss3">3. Download</div>
+    </div>
+
+    <div class="step-pane active" id="sstep1">
+      <div class="signature-layout">
+        <div>
+          <h3>Draw Signature</h3>
+          <div class="draw-box"><canvas id="drawCanvas" width="900" height="350"></canvas></div>
+          <div class="tool-actions"><button class="tool-btn alt" onclick="clearSignature()">Clear</button></div>
+        </div>
+        <div>
+          <h3>Or Upload Signature</h3>
+          <input id="signatureFile" type="file" accept="image/*">
+          <p class="soft">For best results, use a dark signature on a clean light background.</p>
+        </div>
+      </div>
+      <div class="tool-actions"><button class="tool-btn" onclick="signatureStep(2)">Next →</button></div>
+    </div>
+
+    <div class="step-pane" id="sstep2">
+      <h3>Select Output Size</h3>
+      <div class="row">
+        <div class="field"><label>Width (px)</label><input id="sigW" type="number" value="300" min="50"></div>
+        <div class="field"><label>Height (px)</label><input id="sigH" type="number" value="100" min="30"></div>
+        <div class="field"><label>Background</label><select id="sigBg"><option value="transparent">Transparent PNG</option><option value="white">White</option></select></div>
+        <div class="field"><label>Format</label><select id="sigFormat"><option value="image/png">PNG</option><option value="image/jpeg">JPG</option></select></div>
+      </div>
+      <div class="canvas-wrap"><canvas id="sigPreview"></canvas></div>
+      <div class="tool-actions"><button class="tool-btn alt" onclick="signatureStep(1)">← Back</button><button class="tool-btn" onclick="prepareSignature()">Save & Next →</button></div>
+    </div>
+
+    <div class="step-pane" id="sstep3">
+      <h3>Your Signature is Ready</h3>
+      <div class="canvas-wrap"><canvas id="sigFinal"></canvas></div>
+      <div class="tool-actions"><button class="tool-btn" onclick="downloadSignature()">Download Signature</button><button class="tool-btn alt" onclick="signatureStep(1)">Create Another</button></div>
+    </div>
+  </div>
+
+  <div class="tool-card" style="margin-top:18px">
+    <h3>Privacy</h3>
+    <p class="soft">These two tools process selected images in your browser using Canvas. No intentional image upload to an ExamSathi server is required.</p>
+  </div>
+</section>
+
+<nav class="bottom">
+  <a href="index.html">⌂<span>Home</span></a><a href="jobs.html">💼<span>Jobs</span></a><a href="mock-tests.html">🧪<span>Mocks</span></a><a class="active" href="tools.html">🛠️<span>Tools</span></a>
+</nav>
+</main>
+
+<script src="app.js"></script>
+<script>
+let selectedSize='india', passportImg=null, passportCrop=null, passportBg='original', finalPassport=null;
+let sigSource=null, finalSig=null, drawing=false, lastPoint=null;
+
+function closePanels(){document.getElementById('passportPanel').style.display='none';document.getElementById('signaturePanel').style.display='none'}
+function openPassport(){closePanels();document.getElementById('passportPanel').style.display='block';passportStep(1);document.getElementById('passportPanel').scrollIntoView({behavior:'smooth'})}
+function openSignature(){closePanels();document.getElementById('signaturePanel').style.display='block';signatureStep(1);document.getElementById('signaturePanel').scrollIntoView({behavior:'smooth'})}
+function chooseSize(btn){document.querySelectorAll('.size-option').forEach(x=>x.classList.remove('active'));btn.classList.add('active');selectedSize=btn.dataset.size;document.getElementById('customSize').style.display=selectedSize==='custom'?'flex':'none'}
+function passportStep(n){for(let i=1;i<=4;i++){document.getElementById('pstep'+i).classList.toggle('active',i===n);document.getElementById('ps'+i).classList.toggle('active',i===n);document.getElementById('ps'+i).classList.toggle('done',i<n)}}
+function signatureStep(n){for(let i=1;i<=3;i++){document.getElementById('sstep'+i).classList.toggle('active',i===n);document.getElementById('ss'+i).classList.toggle('active',i===n);document.getElementById('ss'+i).classList.toggle('done',i<n)}}
+
+function pxSize(){
+ const dpi=Math.max(72,Math.min(600,+document.getElementById('dpi').value||300));
+ if(selectedSize==='india') return [Math.round(35/25.4*dpi),Math.round(45/25.4*dpi)];
+ if(selectedSize==='square2') return [Math.round(2*dpi),Math.round(2*dpi)];
+ if(selectedSize==='canada') return [Math.round(50/25.4*dpi),Math.round(70/25.4*dpi)];
+ let u=document.getElementById('customUnit').value,w=+document.getElementById('customW').value,h=+document.getElementById('customH').value;
+ if(u==='CM'){w=w/2.54*dpi;h=h/2.54*dpi}else if(u==='MM'){w=w/25.4*dpi;h=h/25.4*dpi}else if(u==='INCH'){w*=dpi}
+ return [Math.max(1,Math.round(w)),Math.max(1,Math.round(h))];
+}
+function goPassportCrop(){passportStep(2)}
+document.getElementById('passportFile').addEventListener('change',e=>{
+ const f=e.target.files[0]; if(!f)return;
+ const url=URL.createObjectURL(f), im=new Image();
+ im.onload=()=>{passportImg=im;setupCrop();document.getElementById('cropNext').disabled=false;URL.revokeObjectURL(url)}
+ im.src=url;
+});
+function setupCrop(){
+ const stage=document.getElementById('cropStage'),im=document.getElementById('cropImage'),area=document.getElementById('cropArea');
+ im.src=passportImg.src; area.style.display='flex';
+ const target=pxSize()[0]/pxSize()[1], iw=passportImg.naturalWidth,ih=passportImg.naturalHeight;
+ let boxW=Math.min(iw,ih*target)*.78,boxH=boxW/target;
+ const maxW=Math.min(650,iw), scale=Math.min(1,maxW/iw);
+ im.style.width=Math.round(iw*scale)+'px';
+ setTimeout(()=>{
+   const rw=im.clientWidth,rh=im.clientHeight; boxW=Math.min(rw,rh*target)*.78;boxH=boxW/target;
+   const b=document.getElementById('cropBox');b.style.width=boxW+'px';b.style.height=boxH+'px';b.style.left=((rw-boxW)/2)+'px';b.style.top=((rh-boxH)/2)+'px';passportCrop={x:(rw-boxW)/2,y:(rh-boxH)/2,w:boxW,h:boxH};
+   enableCropDrag();
+ },50);
+}
+function enableCropDrag(){
+ const box=document.getElementById('cropBox'),stage=document.getElementById('cropStage'),handle=box.querySelector('.crop-handle');
+ let mode='',sx=0,sy=0,start={};
+ function point(e){const t=e.touches?e.touches[0]:e;const r=stage.getBoundingClientRect();return{x:t.clientX-r.left,y:t.clientY-r.top}}
+ function down(e,m){e.preventDefault();mode=m;const p=point(e);sx=p.x;sy=p.y;start={x:parseFloat(box.style.left),y:parseFloat(box.style.top),w:parseFloat(box.style.width),h:parseFloat(box.style.height)}}
+ function move(e){if(!mode)return;e.preventDefault();const p=point(e),dx=p.x-sx,dy=p.y-sy,r=stage.getBoundingClientRect();let x=start.x,y=start.y,w=start.w,h=start.h,target=pxSize()[0]/pxSize()[1];
+   if(mode==='move'){x=start.x+dx;y=start.y+dy}
+   else {w=Math.max(70,start.w+dx);h=w/target}
+   x=Math.max(0,Math.min(x,r.width-w));y=Math.max(0,Math.min(y,r.height-h));
+   box.style.left=x+'px';box.style.top=y+'px';box.style.width=w+'px';box.style.height=h+'px';passportCrop={x,y,w,h}
+ }
+ function up(){mode=''}
+ box.onmousedown=e=>down(e,'move');box.ontouchstart=e=>down(e,'move');
+ handle.onmousedown=e=>{e.stopPropagation();down(e,'resize')};handle.ontouchstart=e=>{e.stopPropagation();down(e,'resize')};
+ window.addEventListener('mousemove',move);window.addEventListener('touchmove',move,{passive:false});window.addEventListener('mouseup',up);window.addEventListener('touchend',up);
+}
+function goBackground(){if(!passportImg||!passportCrop)return;passportStep(3);renderPassportPreview()}
+function setBg(v){passportBg=v;document.querySelectorAll('#passportPanel .choice').forEach(x=>x.classList.remove('active'));if(v==='original')document.getElementById('bgOriginal').classList.add('active');else if(v==='white')document.getElementById('bgWhite').classList.add('active');else document.querySelector('#bgCustom').parentElement.classList.add('active');renderPassportPreview()}
+function renderPassportPreview(){drawPassport(document.getElementById('passportCanvas'),false)}
+function drawPassport(canvas,final){
+ const [tw,th]=pxSize(); canvas.width=tw;canvas.height=th;const c=canvas.getContext('2d'); if(passportBg!=='original'){c.fillStyle=passportBg==='white'?'#fff':document.getElementById('bgCustom').value;c.fillRect(0,0,tw,th)}
+ const im=document.getElementById('cropImage'),stage=im.getBoundingClientRect(),box=document.getElementById('cropBox').getBoundingClientRect();
+ const sx=(box.left-stage.left)/im.clientWidth*passportImg.naturalWidth,sy=(box.top-stage.top)/im.clientHeight*passportImg.naturalHeight,sw=box.width/im.clientWidth*passportImg.naturalWidth,sh=box.height/im.clientHeight*passportImg.naturalHeight;
+ if(passportBg==='original')c.drawImage(passportImg,sx,sy,sw,sh,0,0,tw,th);else{
+   // Draw the selected crop over the chosen background. This is intentionally conservative:
+   // it does not claim to perform AI background removal.
+   c.drawImage(passportImg,sx,sy,sw,sh,0,0,tw,th);
+ }
+}
+function preparePassport(){drawPassport(document.getElementById('passportFinal'),true);finalPassport=document.getElementById('passportFinal');passportStep(4)}
+function downloadPassport(type){if(!finalPassport)return;const ext=type==='image/png'?'png':'jpg';finalPassport.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='examsathi-passport-photo.'+ext;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)},type,.95)}
+
+const dc=document.getElementById('drawCanvas'),dctx=dc.getContext('2d');dctx.fillStyle='#fff';dctx.fillRect(0,0,dc.width,dc.height);dctx.strokeStyle='#111';dctx.lineWidth=7;dctx.lineCap='round';dctx.lineJoin='round';
+function drawPoint(e){const r=dc.getBoundingClientRect(),t=e.touches?e.touches[0]:e;return{x:(t.clientX-r.left)*dc.width/r.width,y:(t.clientY-r.top)*dc.height/r.height}}
+function startDraw(e){e.preventDefault();drawing=true;lastPoint=drawPoint(e)}
+function moveDraw(e){if(!drawing)return;e.preventDefault();const p=drawPoint(e);dctx.beginPath();dctx.moveTo(lastPoint.x,lastPoint.y);dctx.lineTo(p.x,p.y);dctx.stroke();lastPoint=p}
+function endDraw(){drawing=false}
+dc.addEventListener('mousedown',startDraw);dc.addEventListener('mousemove',moveDraw);window.addEventListener('mouseup',endDraw);
+dc.addEventListener('touchstart',startDraw,{passive:false});dc.addEventListener('touchmove',moveDraw,{passive:false});window.addEventListener('touchend',endDraw);
+function clearSignature(){dctx.clearRect(0,0,dc.width,dc.height);dctx.fillStyle='#fff';dctx.fillRect(0,0,dc.width,dc.height)}
+document.getElementById('signatureFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const u=URL.createObjectURL(f),im=new Image();im.onload=()=>{sigSource=im;URL.revokeObjectURL(u)};im.src=u});
+function signatureStep(n){if(n===2 && !document.getElementById('signatureFile').files[0] && isBlankDraw()) return alert('Please draw or upload a signature first.');for(let i=1;i<=3;i++){document.getElementById('sstep'+i).classList.toggle('active',i===n);document.getElementById('ss'+i).classList.toggle('active',i===n);document.getElementById('ss'+i).classList.toggle('done',i<n)}if(n===2)prepareSignaturePreview()}
+function isBlankDraw(){const data=dctx.getImageData(0,0,dc.width,dc.height).data;for(let i=0;i<data.length;i+=4){if(data[i]<245||data[i+1]<245||data[i+2]<245)return false}return true}
+function prepareSignaturePreview(){
+ const w=+document.getElementById('sigW').value,h=+document.getElementById('sigH').value,c=document.getElementById('sigPreview');c.width=w;c.height=h;const x=c.getContext('2d');if(document.getElementById('sigBg').value==='white'){x.fillStyle='#fff';x.fillRect(0,0,w,h)}else{x.clearRect(0,0,w,h)}
+ let source=sigSource||dc,sw=source.naturalWidth||source.width,sh=source.naturalHeight||source.height;
+ const scale=Math.min(w/sw,h/sh),dw=sw*scale,dh=sh*scale;x.drawImage(source,(w-dw)/2,(h-dh)/2,dw,dh);
+ const f=document.getElementById('sigFinal');f.width=w;f.height=h;f.getContext('2d').drawImage(c,0,0);finalSig=f;signatureStepDirect(3)
+}
+function signatureStepDirect(n){for(let i=1;i<=3;i++){document.getElementById('sstep'+i).classList.toggle('active',i===n);document.getElementById('ss'+i).classList.toggle('active',i===n);document.getElementById('ss'+i).classList.toggle('done',i<n)}}
+function downloadSignature(){if(!finalSig)return;const type=document.getElementById('sigFormat').value;const ext=type==='image/png'?'png':'jpg';finalSig.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='examsathi-signature.'+ext;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)},type,.95)}
+</script>
+</body>
+</html>
