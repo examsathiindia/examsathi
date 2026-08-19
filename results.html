@@ -224,5 +224,114 @@
   });
 })();
 </script>
+
+<script src="./data.js"></script>
+<script>
+(function(){
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const url = s => String(s || "#");
+
+  function setupDataPage(type){
+    const cfg = {
+      jobs: {grid:"jobsGrid", search:"jobFilter", empty:"noJobs", filters:"categoryFilters"},
+      notifications: {grid:"notificationGrid", search:"notificationFilter", empty:"noNotifications", filters:"notificationFilters"},
+      results: {grid:"resultsGrid", search:"resultFilter", empty:"noResults", filters:"categoryFilters"},
+      admitCards: {grid:"cardsGrid", search:"cardFilter", empty:"noCards", filters:"cardFilters"}
+    }[type];
+    if(!cfg || !window.EXAMSATHI_DATA) return;
+
+    const grid=document.getElementById(cfg.grid);
+    if(!grid) return;
+
+    const data=window.EXAMSATHI_DATA[type] || [];
+
+    if(type==="jobs"){
+      grid.innerHTML=data.map(x=>`
+        <article class="card job-card" data-category="${esc(x.category).toLowerCase()}" data-key="${esc([x.title,x.category,x.qualification,x.status].join(" "))}">
+          <div class="job-head">
+            <div class="org-logo">${esc(x.category==="Banking"?"BANK":x.category==="Assam"?"ASM":x.category==="Railway"?"RRB":"SSC")}</div>
+            <div><span class="badge ${x.status==="Open"?"badge-green":x.status==="Closed"?"badge-gray":"badge-blue"}">${esc(x.status).toUpperCase()}</span>
+            <h3>${esc(x.title)}</h3><p class="muted">${esc(x.category)}</p></div>
+          </div>
+          <div class="job-meta">
+            <div><small>Qualification</small><strong>${esc(x.qualification)}</strong></div>
+            <div><small>Age</small><strong>${esc(x.age)}</strong></div>
+            <div><small>Last Date</small><strong>${esc(x.lastDate)}</strong></div>
+            <div><small>Status</small><strong>${esc(x.status)}</strong></div>
+          </div>
+          <p class="job-note">Verify eligibility, dates, fees and vacancies in the official notification before applying.</p>
+          <div class="actions">
+            <a class="btn primary" href="${url(x.applyUrl)}" target="_blank" rel="noopener">Official Apply</a>
+            <a class="btn" href="${url(x.noticeUrl)}" target="_blank" rel="noopener">Official Notice</a>
+          </div>
+        </article>`).join("");
+    }
+
+    if(type==="notifications"){
+      grid.innerHTML=data.map(x=>`
+        <article class="card notification-card" data-category="${esc(x.category).toLowerCase()}" data-key="${esc([x.title,x.category,x.source,x.badge].join(" "))}">
+          <div class="job-head"><div class="org-logo">${esc(x.category==="Banking"?"BANK":x.category==="Assam"?"ASM":x.category==="Railway"?"RRB":"SSC")}</div>
+          <div><span class="badge badge-blue">${esc(x.badge).toUpperCase()}</span><h3>${esc(x.title)}</h3><p class="muted">${esc(x.source)}</p></div></div>
+          <div class="job-meta"><div><small>Category</small><strong>${esc(x.category)}</strong></div><div><small>Source</small><strong>${esc(x.source)}</strong></div><div><small>Status</small><strong>Check official</strong></div><div><small>Portal</small><strong>Official</strong></div></div>
+          <p class="job-note">Check the official portal for the latest notice, dates and instructions.</p>
+          <div class="actions"><a class="btn primary" href="${url(x.url)}" target="_blank" rel="noopener">Official Source</a></div>
+        </article>`).join("");
+    }
+
+    if(type==="results"){
+      grid.innerHTML=data.map(x=>`
+        <article class="info-card result-card" data-category="${esc(x.category)}" data-key="${esc([x.title,x.category,x.status].join(" "))}">
+          <div class="card-top"><span class="org-badge">${esc(x.category)}</span><span class="status-badge check">${esc(x.status)}</span></div>
+          <h3>${esc(x.title)}</h3><p class="muted">Check the official portal for the latest result notice.</p>
+          <div class="actions"><a class="btn primary" href="${url(x.url)}" target="_blank" rel="noopener">Official Result Portal</a></div>
+        </article>`).join("");
+    }
+
+    if(type==="admitCards"){
+      grid.innerHTML=data.map(x=>`
+        <article class="card admit-card" data-category="${esc(x.category).toLowerCase()}" data-key="${esc([x.title,x.category,x.status].join(" "))}">
+          <div class="job-head"><div class="org-logo">${esc(x.category==="Banking"?"BANK":x.category==="Assam"?"ASM":x.category==="Railway"?"RRB":"SSC")}</div>
+          <div><span class="badge badge-blue">${esc(x.status).toUpperCase()}</span><h3>${esc(x.title)}</h3><p class="muted">${esc(x.category)}</p></div></div>
+          <div class="job-meta"><div><small>Category</small><strong>${esc(x.category)}</strong></div><div><small>Status</small><strong>${esc(x.status)}</strong></div><div><small>Portal</small><strong>Official</strong></div></div>
+          <div class="actions"><a class="btn primary" href="${url(x.url)}" target="_blank" rel="noopener">Official Portal</a></div>
+        </article>`).join("");
+    }
+
+    const search=document.getElementById(cfg.search);
+    const empty=document.getElementById(cfg.empty);
+    let category="all";
+
+    function apply(){
+      const q=(search?.value||"").trim().toLowerCase();
+      let count=0;
+      [...grid.children].forEach(card=>{
+        const c=(card.dataset.category||"").toLowerCase();
+        const key=(card.dataset.key||"").toLowerCase()+" "+card.innerText.toLowerCase();
+        const okCat=category==="all" || c===category.toLowerCase();
+        const okSearch=!q || key.includes(q);
+        card.style.display=(okCat && okSearch) ? "" : "none";
+        if(okCat && okSearch) count++;
+      });
+      if(empty) empty.style.display=count ? "none" : "";
+    }
+    search?.addEventListener("input", apply);
+    document.querySelectorAll("#"+cfg.filters+" .filter-btn").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        document.querySelectorAll("#"+cfg.filters+" .filter-btn").forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
+        category=btn.dataset.filter || btn.dataset.category || "all";
+        apply();
+      });
+    });
+    apply();
+  }
+
+  setupDataPage("jobs");
+  setupDataPage("notifications");
+  setupDataPage("results");
+  setupDataPage("admitCards");
+})();
+</script>
+
 </body>
 </html>
