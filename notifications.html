@@ -3,183 +3,136 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Exam Notifications — ExamSathi</title>
+<title>Latest Notifications — ExamSathi</title>
+<meta name="description" content="Latest government exam notifications, recruitment notices, important updates and official links on ExamSathi.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="app-shell">
 <aside class="sidebar">
-<a class="brand" href="index.html"><span class="mark">ES</span><span><b>ExamSathi</b><small>Student Portal</small></span></a>
-<div class="nav-title">Main Menu</div>
-<nav class="nav">
-<a href="index.html"><span>⌂</span> Dashboard</a>
-<a href="jobs.html"><span>▣</span> Latest Jobs</a>
-<a class="active" href="notifications.html"><span>●</span> Notifications</a>
-<a href="admit-cards.html"><span>▤</span> Admit Cards</a>
-<a href="results.html"><span>✓</span> Results</a>
-<a href="exams.html"><span>◇</span> Exams</a>
-<a href="study.html"><span>▥</span> Study / PYQ</a>
-<a href="current-affairs.html"><span>★</span> Current Affairs</a>
-<a href="mock-tests.html"><span>◉</span> Mock Tests</a>
-<a href="tools.html"><span>⚙</span> Student Tools</a>
+<a class="brand" href="index.html"><span class="mark">ES</span><span>ExamSathi</span></a>
+<nav class="side-nav">
+<a href="index.html">Home</a><a href="jobs.html">Jobs</a><a class="active" href="notifications.html">Notifications</a>
+<a href="admit-cards.html">Admit Cards</a><a href="results.html">Results</a><a href="exams.html">Exams</a>
+<a href="study.html">Study</a><a href="current-affairs.html">Current Affairs</a><a href="mock-tests.html">Mock Tests</a>
+<a href="tools.html">Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a>
 </nav>
-<div class="sidefoot"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
 </aside>
 
-<div class="main">
-<header class="mobile-head"><a class="mobile-brand" href="index.html"><span class="mark">ES</span>ExamSathi</a><button class="theme" data-theme>☾</button></header>
-<div class="mobile-search"><input data-search placeholder="Search jobs, exams, results..."></div>
-<header class="top"><div class="search"><input data-search placeholder="Search jobs, exams, results, study resources..."></div><button class="theme" data-theme>☾</button></header>
-
-<main class="page">
-<div class="section-head">
+<main class="main-content">
+<header class="topbar">
 <div>
-<h1 style="margin:0;font-size:28px">Exam Notifications</h1>
-<p>Latest important updates from official examination and recruiting authorities.</p>
+<div class="eyebrow">EXAMSATHI • UPDATES</div>
+<h1>Latest Notifications</h1>
+<p class="muted">Important exam, recruitment and application updates in one place.</p>
 </div>
-</div>
+<button class="theme-toggle" id="themeToggle" type="button">◐</button>
+</header>
 
-<div class="content" style="margin-bottom:18px">
-<input id="notificationFilter" placeholder="Search notifications by exam, department or keyword..." style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#f8fafc;outline:0">
+<section class="hero-card">
+<div>
+<span class="badge badge-blue">IMPORTANT UPDATES</span>
+<h2>Stay updated with exam notifications</h2>
+<p>Search by exam or organization and open the official source for complete details.</p>
 </div>
+<div class="hero-stat"><strong>5+</strong><span>featured updates</span></div>
+</section>
+
+<section class="toolbar">
+<div class="search-box"><span>⌕</span><input id="notificationFilter" type="search" placeholder="Search SSC, IBPS, CHSL, Assam..." autocomplete="off"></div>
+<div class="filter-row" id="notificationFilters">
+<button class="filter-btn active" data-filter="all" type="button">All</button>
+<button class="filter-btn" data-filter="ssc" type="button">SSC</button>
+<button class="filter-btn" data-filter="banking" type="button">Banking</button>
+<button class="filter-btn" data-filter="railway" type="button">Railway</button>
+<button class="filter-btn" data-filter="assam" type="button">Assam</button>
+</div>
+</section>
 
 <div id="notificationGrid" class="grid">
 
-<article class="card notification-card" data-key="ssc stenographer grade c d 2026 notice examination august september">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">SSC</span>
-<span style="font-size:11px;color:#2563eb;font-weight:750">IMPORTANT</span>
-</div>
-<h3 style="margin-top:13px">SSC Stenographer Grade C & D 2026</h3>
-<p>Official examination notice and candidate information for the 2026 Stenographer examination.</p>
-<div style="margin-top:13px;font-size:12px"><b>Calendar:</b> CBT is scheduled for August–September 2026 (tentative).</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://ssc.gov.in/home/notice-board">SSC Notice Board</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_steno_2026.pdf">Official Notice</a>
-</div>
+<article class="card notification-card" data-category="ssc" data-key="SSC CHSL 2026 Combined Higher Secondary Level notification calendar">
+<div class="job-head"><div class="org-logo logo-ssc">SSC</div><div><span class="badge badge-blue">IMPORTANT</span><h3>SSC CHSL 2026</h3><p class="muted">Combined Higher Secondary Level</p></div></div>
+<div class="job-meta"><div><small>Category</small><strong>SSC</strong></div><div><small>Level</small><strong>10+2</strong></div><div><small>Update</small><strong>Exam schedule</strong></div><div><small>Source</small><strong>SSC</strong></div></div>
+<p class="job-note">Check the latest official SSC notice for application dates, vacancies, eligibility and examination schedule.</p>
+<div class="actions"><a class="btn primary" href="https://ssc.gov.in/" target="_blank" rel="noopener">Official SSC</a><a class="btn" href="https://ssc.gov.in/" target="_blank" rel="noopener">Notice Board</a></div>
 </article>
 
-<article class="card notification-card" data-key="ssc final result frta stenographer 2025 sliding mechanism august 2026">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">SSC</span>
-<span style="font-size:11px;color:#16a34a;font-weight:750">RECENT</span>
-</div>
-<h3 style="margin-top:13px">SSC Stenographer 2025 — FRTA Update</h3>
-<p>SSC issued an update concerning the final result and sliding mechanism for recommended candidates.</p>
-<div style="margin-top:13px;font-size:12px"><b>Notice date:</b> 31 July 2026</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://ssc.gov.in/home/notice-board">Notice Board</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/writeup_31072026.pdf">Official PDF</a>
-</div>
+<article class="card notification-card" data-category="ssc" data-key="SSC CGL 2026 Combined Graduate Level notification">
+<div class="job-head"><div class="org-logo logo-ssc">SSC</div><div><span class="badge badge-blue">IMPORTANT</span><h3>SSC CGL 2026</h3><p class="muted">Combined Graduate Level</p></div></div>
+<div class="job-meta"><div><small>Category</small><strong>SSC</strong></div><div><small>Level</small><strong>Graduate</strong></div><div><small>Update</small><strong>Exam schedule</strong></div><div><small>Source</small><strong>SSC</strong></div></div>
+<p class="job-note">Use the official SSC portal for the latest recruitment notification and post-wise eligibility details.</p>
+<div class="actions"><a class="btn primary" href="https://ssc.gov.in/" target="_blank" rel="noopener">Official SSC</a><a class="btn" href="https://ssc.gov.in/" target="_blank" rel="noopener">Notice Board</a></div>
 </article>
 
-<article class="card notification-card" data-key="upsc civil services main 2026 timetable august 21 22 23 29 30">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">UPSC</span>
-<span style="font-size:11px;color:#2563eb;font-weight:750">IMPORTANT</span>
-</div>
-<h3 style="margin-top:13px">UPSC Civil Services Main 2026</h3>
-<p>Official timetable for the Civil Services (Main) Examination, 2026.</p>
-<div style="margin-top:13px;font-size:12px"><b>Starts:</b> 21 August 2026<br><b>Sessions:</b> 9:00 AM–12:00 PM and 2:30 PM–5:30 PM</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://www.upsc.gov.in/sites/default/files/TT-CSM-2026-Engl-100726.pdf">Official Timetable</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://www.upsc.gov.in/">UPSC Website</a>
-</div>
+<article class="card notification-card" data-category="banking" data-key="IBPS CRP CSA XVI Customer Service Associates notification">
+<div class="job-head"><div class="org-logo logo-ibps">IBPS</div><div><span class="badge badge-green">NEW</span><h3>IBPS CRP-CSA-XVI</h3><p class="muted">Customer Service Associates</p></div></div>
+<div class="job-meta"><div><small>Category</small><strong>Banking</strong></div><div><small>Qualification</small><strong>Graduation*</strong></div><div><small>Update</small><strong>Recruitment</strong></div><div><small>Source</small><strong>IBPS</strong></div></div>
+<p class="job-note">Read the official notification for state-wise vacancies, eligibility, fees, dates and other conditions.</p>
+<div class="actions"><a class="btn primary" href="https://ibpsreg.ibps.in/csaxvijul26/" target="_blank" rel="noopener">Official Apply</a><a class="btn" href="https://www.ibps.in/wp-content/uploads/Notification_CRP_CSA_XVI-Final.pdf" target="_blank" rel="noopener">Notification PDF</a></div>
 </article>
 
-<article class="card notification-card" data-key="upsc 2027 calendar combined geo scientist engineering services september 2026">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">UPSC</span>
-<span style="font-size:11px;color:#667085;font-weight:750">CALENDAR</span>
-</div>
-<h3 style="margin-top:13px">UPSC 2027 Examination Calendar</h3>
-<p>Annual programme showing upcoming UPSC examination and recruitment-test dates.</p>
-<div style="margin-top:13px;font-size:12px"><b>Next listed notification:</b> Combined Geo-Scientist Preliminary Examination 2027 — 2 September 2026.</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://www.upsc.gov.in/sites/default/files/Calendar-Year-2027-Engl-200526_0.pdf">Official Calendar</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://www.upsc.gov.in/examinations/exam-calendar">Exam Calendar</a>
-</div>
+<article class="card notification-card" data-category="assam" data-key="Assam Police SLRC recruitment notification updates">
+<div class="job-head"><div class="org-logo logo-assam">AS</div><div><span class="badge badge-orange">ASSAM</span><h3>Assam Police / SLRC Updates</h3><p class="muted">Recruitment &amp; examination updates</p></div></div>
+<div class="job-meta"><div><small>Region</small><strong>Assam</strong></div><div><small>Type</small><strong>Recruitment</strong></div><div><small>Update</small><strong>Notice-wise</strong></div><div><small>Source</small><strong>Official</strong></div></div>
+<p class="job-note">Check the official portals for recruitment notices, admit cards, results and other examination updates.</p>
+<div class="actions"><a class="btn primary" href="https://police.assam.gov.in/" target="_blank" rel="noopener">Assam Police</a><a class="btn" href="https://slrcg3.sebaonline.org/" target="_blank" rel="noopener">SLRC Official</a></div>
 </article>
 
-<article class="card notification-card" data-key="ssc examination calendar 2026 2027 cgl chsl steno mts gd cpo">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">SSC</span>
-<span style="font-size:11px;color:#667085;font-weight:750">CALENDAR</span>
-</div>
-<h3 style="margin-top:13px">SSC 2026–27 Examination Calendar</h3>
-<p>Official tentative calendar covering major SSC examinations and their expected months.</p>
-<div style="margin-top:13px;font-size:12px"><b>Examples:</b> CHSL July–September; Stenographer August–September; MTS/Havaldar September–November 2026.</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://ssc.gov.in/home/ssc-calendar">SSC Calendar</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://ssc.gov.in/api/attachment/uploads/masterData/ExamCalendar/Tentative_Calendar2026_27_08012026.pdf">Official PDF</a>
-</div>
-</article>
-
-<article class="card notification-card" data-key="asseb assam state school education board deputy controller deputy secretary hslc jaa crt 2026">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">ASSAM</span>
-<span style="font-size:11px;color:#16a34a;font-weight:750">RECENT</span>
-</div>
-<h3 style="margin-top:13px">ASSEB Division-I Notifications</h3>
-<p>Recent board and recruitment-related notices from Assam State School Education Board.</p>
-<div style="margin-top:13px;font-size:12px"><b>Recent:</b> Deputy Controller/Deputy Secretary advertisement dated 22 July 2026; JAA Common Recruitment Test notice dated 17 June 2026.</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://site.sebaonline.org/notifications/">All Notifications</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://site.sebaonline.org/">Official Website</a>
-</div>
-</article>
-
-<article class="card notification-card" data-key="assam police slrc recruitment notice constable communication messenger carpenter ub fire emergency rescuers guardsman grade iii">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">ASSAM</span>
-<span style="font-size:11px;color:#2563eb;font-weight:750">RECRUITMENT</span>
-</div>
-<h3 style="margin-top:13px">Assam Police / SLRC Recruitment Notices</h3>
-<p>Official recruitment notices and candidate updates for Assam Police and related SLRC recruitment.</p>
-<div style="margin-top:13px;font-size:12px"><b>Official source:</b> Assam Police recruitment notice page, updated July 2026.</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://police.assam.gov.in/documents-detail/recruitment-notice">Recruitment Notices</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://police.assam.gov.in/documents/notice">All Notices</a>
-</div>
-</article>
-
-<article class="card notification-card" data-key="assam police constable apro communication messenger carpenter ub fireman emergency rescuer guardsman grade iii important notice">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">ASSAM POLICE</span>
-<span style="font-size:11px;color:#667085;font-weight:750">NOTICE</span>
-</div>
-<h3 style="margin-top:13px">Assam Police Constable Recruitment Notice</h3>
-<p>Important recruitment notice covering Constable and related Grade-III posts listed by Assam Police.</p>
-<div style="margin-top:13px;font-size:12px"><b>Source:</b> Government of Assam — Assam Police.</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://police.assam.gov.in/documents-detail/impotrant-notice-recruitment-notice-for-the-constables-communication-messenger">Official Notice</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://police.assam.gov.in/documents-detail/recruitment-notice">Recruitment Page</a>
-</div>
+<article class="card notification-card" data-category="railway" data-key="Railway RRB recruitment notification official updates">
+<div class="job-head"><div class="org-logo logo-railway">RRB</div><div><span class="badge badge-gray">CHECK</span><h3>Railway / RRB Updates</h3><p class="muted">Railway recruitment notifications</p></div></div>
+<div class="job-meta"><div><small>Category</small><strong>Railway</strong></div><div><small>Posts</small><strong>Notice-wise*</strong></div><div><small>Eligibility</small><strong>Notice-wise*</strong></div><div><small>Source</small><strong>RRB</strong></div></div>
+<p class="job-note">Railway recruitment varies by RRB and notification. Verify the applicable regional RRB notice before applying.</p>
+<div class="actions"><a class="btn primary" href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener">RRB Official</a><a class="btn" href="https://indianrailways.gov.in/" target="_blank" rel="noopener">Indian Railways</a></div>
 </article>
 
 </div>
 
-<div id="noNotifications" class="card" style="display:none;margin-top:14px;text-align:center">
-<h3>No matching notifications found</h3><p>Try another exam, department or keyword.</p>
+<div id="noNotifications" class="empty-state" hidden>
+<strong>No matching notifications found</strong>
+<p>Try another keyword or select a different category.</p>
 </div>
 
-<div class="notice"><b>Important:</b> Exam dates, notices and eligibility can change. Always verify the latest information on the official recruiting authority's website before taking action.</div>
+<div class="notice-card">
+<strong>Important:</strong> ExamSathi is an independent information portal. Notification dates, eligibility, vacancies and other details can change. Always verify the latest information on the official source before taking action.
+</div>
+
+<footer class="footer">© 2026 ExamSathi • Verify every notification from the official source.</footer>
 </main>
-
-<footer class="footer"><span>© 2026 ExamSathi. Student information portal.</span><span><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></span></footer>
 </div>
 
-<nav class="bottom"><a href="index.html"><span>⌂</span>Home</a><a href="jobs.html"><span>▣</span>Jobs</a><a href="exams.html"><span>◇</span>Exams</a><a href="study.html"><span>▥</span>Study</a><a href="tools.html"><span>⚙</span>Tools</a></nav>
+<nav class="bottom-nav"><a href="index.html">Home</a><a href="jobs.html">Jobs</a><a class="active" href="notifications.html">Updates</a><a href="tools.html">Tools</a></nav>
+
 <script src="app.js"></script>
 <script>
 (function(){
  const input=document.getElementById('notificationFilter');
  const cards=[...document.querySelectorAll('.notification-card')];
  const empty=document.getElementById('noNotifications');
- input.addEventListener('input',function(){
-   const q=this.value.trim().toLowerCase(); let shown=0;
-   cards.forEach(c=>{const ok=!q || (c.dataset.key+' '+c.innerText).toLowerCase().includes(q); c.style.display=ok?'block':'none'; if(ok) shown++;});
-   empty.style.display=shown?'none':'block';
+ const buttons=[...document.querySelectorAll('#notificationFilters .filter-btn')];
+ let active='all';
+
+ function filter(){
+   const q=input.value.trim().toLowerCase();
+   let shown=0;
+   cards.forEach(card=>{
+     const text=(card.dataset.key+' '+card.innerText).toLowerCase();
+     const ok=(active==='all'||card.dataset.category===active)&&(!q||text.includes(q));
+     card.style.display=ok?'':'none';
+     if(ok) shown++;
+   });
+   empty.hidden=shown>0;
+ }
+
+ buttons.forEach(btn=>{
+   btn.addEventListener('click',()=>{
+     buttons.forEach(b=>b.classList.remove('active'));
+     btn.classList.add('active');
+     active=btn.dataset.filter;
+     filter();
+   });
  });
+ input.addEventListener('input',filter);
 })();
 </script>
 </body>

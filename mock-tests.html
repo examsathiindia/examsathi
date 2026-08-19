@@ -1,237 +1,267 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mock Tests — ExamSathi</title>
-<meta name="description" content="Practice original mock tests for SSC, Banking and Assam exams on ExamSathi.">
-<link rel="stylesheet" href="styles.css">
+<meta name="description" content="Practice SSC, Banking and Assam mock tests with a timer, scoring and negative marking on ExamSathi.">
+<link rel="icon" href="./logo.png">
+<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<aside class="sidebar">
-  <a class="brand" href="index.html"><span class="mark">E</span><span><strong>ExamSathi</strong><small>Student Portal</small></span></a>
-  <nav class="nav">
-    <a href="index.html">⌂ <span>Dashboard</span></a>
-    <a href="jobs.html">💼 <span>Latest Jobs</span></a>
-    <a href="notifications.html">🔔 <span>Notifications</span></a>
-    <a href="admit-cards.html">🎫 <span>Admit Cards</span></a>
-    <a href="results.html">🏆 <span>Results</span></a>
-    <a href="exams.html">📅 <span>Exam Directory</span></a>
-    <a href="study.html">📚 <span>Study & PYQ</span></a>
-    <a href="current-affairs.html">📰 <span>Current Affairs</span></a>
-    <a class="active" href="mock-tests.html">🧪 <span>Mock Tests</span></a>
-    <a href="tools.html">🛠️ <span>Student Tools</span></a>
-  </nav>
-  <div class="sidefoot">Free practice • Original sample questions</div>
-</aside>
 
-<main class="main">
-<header class="top">
-  <div>
-    <div class="eyebrow">ExamSathi / Practice</div>
-    <h1>Mock Tests</h1>
-  </div>
-  <div class="top-actions">
-    <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☾</button>
-  </div>
+<header class="mobile-header">
+  <a class="brand" href="./index.html">
+    <img src="./logo.png" alt="ExamSathi Logo" class="site-logo">
+    <span>ExamSathi</span>
+  </a>
+  <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">☾</button>
 </header>
 
-<div class="mobile-head">
-  <a class="brand" href="index.html"><span class="mark">E</span><span><strong>ExamSathi</strong><small>Student Portal</small></span></a>
-</div>
-<div class="mobile-search">
-  <input data-search type="search" placeholder="Search ExamSathi...">
-</div>
+<aside class="sidebar">
+  <a class="brand" href="./index.html">
+    <img src="./logo.png" alt="ExamSathi Logo" class="site-logo">
+    <span>ExamSathi</span>
+  </a>
+  <nav>
+    <a href="./index.html">🏠 Dashboard</a>
+    <a href="./jobs.html">💼 Latest Jobs</a>
+    <a href="./notifications.html">🔔 Notifications</a>
+    <a href="./admit-cards.html">🎫 Admit Cards</a>
+    <a href="./results.html">📊 Results</a>
+    <a href="./exams.html">📝 Exams</a>
+    <a href="./study.html">📚 Study</a>
+    <a href="./current-affairs.html">📰 Current Affairs</a>
+    <a class="active" href="./mock-tests.html">⏱️ Mock Tests</a>
+    <a href="./tools.html">🛠️ Tools</a>
+    <a href="./about.html">ℹ️ About</a>
+    <a href="./contact.html">✉️ Contact</a>
+  </nav>
+</aside>
 
-<section class="page">
-  <div class="hero">
+<main class="main-content">
+  <section class="page-hero">
     <div>
-      <span class="status">Practice Zone</span>
-      <h2>Test your preparation with timed MCQs.</h2>
-      <p>Choose a category, answer 10 original sample questions and get your score instantly. Each test has a 10-minute timer with +1 for correct and −0.25 for wrong answers.</p>
+      <span class="eyebrow">ExamSathi Practice Arena</span>
+      <h1>Mock Tests</h1>
+      <p>Choose a test, start the timer and check your score instantly.</p>
     </div>
-    <div class="hero-actions">
-      <a class="btn soft" href="study.html">📚 Study Resources</a>
-      <a class="btn soft" href="current-affairs.html">📰 Current Affairs</a>
-    </div>
+    <div class="hero-badge">10 Questions</div>
+  </section>
+
+  <div class="filter-row" id="testFilters">
+    <button class="filter-btn active" data-test="ssc">SSC</button>
+    <button class="filter-btn" data-test="banking">Banking</button>
+    <button class="filter-btn" data-test="assam">Assam</button>
   </div>
 
-  <div class="section-head">
-    <div><span class="eyebrow">Choose a test</span><h2>Practice Categories</h2></div>
-    <span class="soft">10 Questions • 10 Minutes</span>
-  </div>
-
-  <div class="grid">
-    <button class="card" type="button" onclick="startMock('ssc')">
-      <div class="icon">📝</div>
-      <h3>SSC Practice</h3>
-      <p>Quantitative aptitude, English, reasoning and general awareness style questions.</p>
-      <span class="btn blue">Start SSC Test →</span>
-    </button>
-    <button class="card" type="button" onclick="startMock('banking')">
-      <div class="icon">🏦</div>
-      <h3>Banking Practice</h3>
-      <p>Basic banking awareness, maths and financial aptitude sample questions.</p>
-      <span class="btn blue">Start Banking Test →</span>
-    </button>
-    <button class="card" type="button" onclick="startMock('assam')">
-      <div class="icon">🟢</div>
-      <h3>Assam Exam Practice</h3>
-      <p>Assam-focused general knowledge and state-specific sample questions.</p>
-      <span class="btn blue">Start Assam Test →</span>
-    </button>
-  </div>
-
-  <div id="mockPanel" class="card" style="display:none;margin-top:22px">
-    <div class="section-head">
-      <div><span class="eyebrow">Live Test</span><h2 id="mockTitle">Mock Test</h2><p id="mockProgress" class="soft">Question 1 of 10</p></div>
-      <div class="status" id="mockTimer">10:00</div>
+  <section class="info-card">
+    <div class="card-top">
+      <span class="org-badge" id="testCategory">SSC</span>
+      <span class="status-badge new">10 MINUTES</span>
     </div>
-    <div id="mockQuestion" style="margin-top:18px"></div>
-    <div id="mockNav" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px"></div>
-    <div class="actions" style="margin-top:20px">
-      <button class="btn soft" onclick="mockPrev()">← Previous</button>
-      <button class="btn blue" onclick="mockNext()">Next →</button>
-      <button class="btn" onclick="submitMock()">Submit Test</button>
-      <button class="btn soft" onclick="closeMock()">Close</button>
-    </div>
-    <div id="mockResult" class="soft" style="display:none;margin-top:18px"></div>
-  </div>
 
-  <div class="content" style="margin-top:24px">
-    <div class="card">
-      <h3>How scoring works</h3>
-      <div class="stats">
-        <div class="stat"><strong>+1</strong><span>Correct</span></div>
-        <div class="stat"><strong>−0.25</strong><span>Wrong</span></div>
-        <div class="stat"><strong>0</strong><span>Unanswered</span></div>
-        <div class="stat"><strong>10 min</strong><span>Timer</span></div>
-      </div>
-      <p class="soft" style="margin-top:14px">These are original practice questions created for ExamSathi and are not reproduced from copyrighted exam papers.</p>
-    </div>
-    <div class="card">
-      <h3>Official practice resource</h3>
-      <p>NTA also provides an official Mock Test page for familiarising candidates with computer-based testing processes.</p>
-      <a class="btn blue" href="https://www.nta.ac.in/Quiz" target="_blank" rel="noopener">Open NTA Mock Test ↗</a>
-    </div>
-  </div>
-</section>
+    <h2 id="testTitle">SSC Practice Test</h2>
+    <p class="muted">10 questions • 10 minutes • 1 mark per correct answer • −0.25 for each wrong answer.</p>
 
-<nav class="bottom">
-  <a href="index.html">⌂<span>Home</span></a>
-  <a href="jobs.html">💼<span>Jobs</span></a>
-  <a class="active" href="mock-tests.html">🧪<span>Mocks</span></a>
-  <a href="tools.html">🛠️<span>Tools</span></a>
-</nav>
+    <div class="meta-grid">
+      <div><strong>Questions</strong><span>10</span></div>
+      <div><strong>Time</strong><span>10 minutes</span></div>
+      <div><strong>Negative</strong><span>−0.25</span></div>
+    </div>
+
+    <div id="timer" class="quiz-result">10:00</div>
+    <div id="quiz"></div>
+
+    <div class="card-actions">
+      <button class="btn primary" id="startBtn">Start Test</button>
+      <button class="btn secondary" id="submitBtn" disabled>Submit Test</button>
+      <button class="btn secondary" id="resetBtn">Reset</button>
+    </div>
+
+    <div id="result" class="quiz-result" hidden></div>
+  </section>
+
+  <section class="notice-card">
+    <h2>Important</h2>
+    <p>These are original practice questions for learning and are not official examination papers. Always follow the latest official notification and syllabus.</p>
+  </section>
 </main>
 
-<script src="app.js"></script>
+<nav class="bottom-nav">
+  <a href="./index.html">Home</a>
+  <a href="./jobs.html">Jobs</a>
+  <a href="./notifications.html">Updates</a>
+  <a href="./results.html">Results</a>
+  <a class="active" href="./mock-tests.html">Tests</a>
+  <a href="./tools.html">Tools</a>
+</nav>
+
+<script src="./app.js"></script>
 <script>
-const MOCK_BANK = {
-  ssc: [
-    ["What is 25% of 240?", ["40","50","60","70"], 2],
-    ["If a train covers 360 km in 4 hours, its average speed is:", ["80 km/h","90 km/h","100 km/h","120 km/h"], 1],
-    ["Which word is closest in meaning to “brief”?", ["Long","Short","Difficult","Bright"], 1],
-    ["The HCF of 18 and 24 is:", ["3","6","9","12"], 1],
-    ["Which is the largest planet in our Solar System?", ["Earth","Mars","Jupiter","Venus"], 2],
-    ["A shopkeeper buys an item for ₹500 and sells it for ₹600. Profit percent is:", ["10%","15%","20%","25%"], 2],
-    ["Find the next number: 2, 4, 8, 16, ?", ["20","24","30","32"], 3],
-    ["Which fundamental right is related to equality before law?", ["Article 14","Article 19","Article 21","Article 32"], 0],
-    ["If 3 workers finish a job in 12 days, at the same rate 6 workers take:", ["3 days","6 days","12 days","24 days"], 1],
-    ["Which gas is most abundant in Earth’s atmosphere?", ["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"], 1]
-  ],
-  banking: [
-    ["What does RBI stand for?", ["Reserve Bank of India","Regional Bank of India","Rural Bank of India","Reserve Bureau of India"], 0],
-    ["If ₹1,000 earns simple interest of ₹100 in 2 years, the annual rate is:", ["2%","5%","10%","20%"], 2],
-    ["A number increased by 20% becomes 360. The original number is:", ["280","300","320","340"], 1],
-    ["Which institution regulates monetary policy in India?", ["SEBI","RBI","NITI Aayog","NABARD"], 1],
-    ["What is the square root of 144?", ["10","11","12","14"], 2],
-    ["Which of these is generally a current account feature?", ["Only fixed interest","Frequent transactions","No withdrawals","Only for minors"], 1],
-    ["If 5 pens cost ₹75, 8 pens cost:", ["₹100","₹110","₹120","₹125"], 2],
-    ["What is the full form of KYC?", ["Know Your Customer","Keep Your Cash","Know Your Credit","Key Yield Certificate"], 0],
-    ["Find 15% of 800.", ["100","120","140","160"], 1],
-    ["A ratio of 2:3 has total 25. The smaller part is:", ["8","10","12","15"], 1]
-  ],
-  assam: [
-    ["What is the capital of Assam?", ["Guwahati","Dispur","Jorhat","Dibrugarh"], 1],
-    ["Kaziranga National Park is especially known for the:", ["One-horned rhinoceros","Lion","Camel","Penguin"], 0],
-    ["Which river is closely associated with Assam’s major river system?", ["Brahmaputra","Narmada","Godavari","Tapi"], 0],
-    ["Bihu is primarily associated with which state?", ["Assam","Kerala","Punjab","Gujarat"], 0],
-    ["Majuli is famous as a large:", ["Desert","River island","Mountain pass","Coastal lagoon"], 1],
-    ["Which city is known as the “Tea City of India” in Assam?", ["Dibrugarh","Silchar","Tezpur","Barpeta"], 0],
-    ["The Assamese language is written mainly in which script?", ["Bengali-Assamese script","Roman script","Tamil script","Gujarati script"], 0],
-    ["Sivasagar is historically associated with the:", ["Ahom kingdom","Maurya empire","Chola kingdom","Mughal capital"], 0],
-    ["Which is a major wildlife sanctuary/park in Assam?", ["Manas","Gir","Periyar","Bandipur"], 0],
-    ["The Brahmaputra enters Assam near:", ["Sadiya region","Silchar","Karimganj","Dhubri only"], 0]
-  ]
-};
+(function(){
+  const banks = {
+    ssc: [
+      ["What is 25% of 240?", ["40","50","60","80"], 2],
+      ["If a train covers 120 km in 2 hours, its speed is:", ["40 km/h","50 km/h","60 km/h","80 km/h"], 2],
+      ["Choose the correctly spelled word:", ["Accomodation","Accommodation","Acommodation","Accommadation"], 1],
+      ["Find the next number: 2, 4, 8, 16, ?", ["20","24","30","32"], 3],
+      ["The capital of Assam is:", ["Guwahati","Dispur","Jorhat","Dibrugarh"], 1],
+      ["If CP is ₹500 and SP is ₹600, profit is:", ["₹50","₹80","₹100","₹120"], 2],
+      ["Which is a renewable source of energy?", ["Coal","Petroleum","Solar energy","Natural gas"], 2],
+      ["A ratio of 2:3 has total 25. The first part is:", ["8","10","12","15"], 1],
+      ["Which planet is known as the Red Planet?", ["Venus","Mars","Jupiter","Mercury"], 1],
+      ["15 × 8 = ?", ["100","110","120","130"], 2]
+    ],
+    banking: [
+      ["If ₹1000 earns 10% simple interest for 2 years, interest is:", ["₹100","₹150","₹200","₹250"], 2],
+      ["IBPS stands for:", ["Indian Banking Payment System","Institute of Banking Personnel Selection","Indian Bank Personnel Service","Institute of Banking Public Service"], 1],
+      ["A number increased by 20% becomes 120. Original number is:", ["90","100","110","115"], 1],
+      ["Find the average of 10, 20 and 30.", ["15","20","25","30"], 1],
+      ["Which is generally a liability for a bank?", ["Loans given","Deposits","Cash in hand","Investments"], 1],
+      ["If 5 workers finish a task in 12 days, total worker-days are:", ["17","50","60","72"], 2],
+      ["A 10% discount on ₹800 gives selling price:", ["₹700","₹720","₹740","₹760"], 1],
+      ["Find the next number: 3, 6, 12, 24, ?", ["36","42","48","54"], 2],
+      ["A current account is commonly associated with:", ["Frequent transactions","Only fixed deposits","Insurance claims","Pension only"], 0],
+      ["If 3/5 of a number is 30, the number is:", ["40","45","50","60"], 2]
+    ],
+    assam: [
+      ["The capital of Assam is:", ["Guwahati","Dispur","Tezpur","Silchar"], 1],
+      ["Kaziranga National Park is famous for:", ["One-horned rhinoceros","Asiatic lion","Snow leopard","Camel"], 0],
+      ["The Brahmaputra flows through:", ["Assam","Kerala","Gujarat","Punjab"], 0],
+      ["Bihu is a major festival of:", ["Assam","Goa","Bihar","Odisha"], 0],
+      ["Majuli is associated with which river?", ["Ganga","Brahmaputra","Yamuna","Narmada"], 1],
+      ["Which language is widely spoken in Assam?", ["Assamese","Tamil","Marathi","Gujarati"], 0],
+      ["Manas National Park is in:", ["Assam","Rajasthan","Sikkim","Kerala"], 0],
+      ["Tea is an important agricultural product of:", ["Assam","Haryana","Punjab","Rajasthan"], 0],
+      ["Sivasagar is historically associated with:", ["Ahom kingdom","Mughal capital","Maratha capital","Chola capital"], 0],
+      ["The Assam state animal is:", ["Indian rhinoceros","Tiger","Elephant","Gaur"], 0]
+    ]
+  };
 
-let mockState = {key:null, questions:[], answers:[], index:0, time:600, timer:null, submitted:false};
+  let key = "ssc";
+  let started = false;
+  let submitted = false;
+  let time = 600;
+  let interval = null;
 
-function startMock(key){
-  clearInterval(mockState.timer);
-  mockState = {key, questions:MOCK_BANK[key], answers:Array(10).fill(null), index:0, time:600, timer:null, submitted:false};
-  document.getElementById("mockPanel").style.display="block";
-  document.getElementById("mockResult").style.display="none";
-  document.getElementById("mockTitle").textContent =
-    key==="ssc" ? "SSC Practice Mock Test" :
-    key==="banking" ? "Banking Practice Mock Test" : "Assam Exam Practice Mock Test";
-  document.getElementById("mockPanel").scrollIntoView({behavior:"smooth",block:"start"});
-  renderMock();
-  mockState.timer=setInterval(()=>{mockState.time--; renderTimer(); if(mockState.time<=0) submitMock(true)},1000);
-}
+  const quiz = document.getElementById("quiz");
+  const timer = document.getElementById("timer");
+  const result = document.getElementById("result");
+  const startBtn = document.getElementById("startBtn");
+  const submitBtn = document.getElementById("submitBtn");
+  const resetBtn = document.getElementById("resetBtn");
 
-function renderTimer(){
-  const m=String(Math.floor(mockState.time/60)).padStart(2,"0");
-  const s=String(mockState.time%60).padStart(2,"0");
-  document.getElementById("mockTimer").textContent=m+":"+s;
-}
+  function renderTest(){
+    clearInterval(interval);
+    quiz.innerHTML = "";
 
-function renderMock(){
-  renderTimer();
-  const q=mockState.questions[mockState.index];
-  document.getElementById("mockProgress").textContent=`Question ${mockState.index+1} of ${mockState.questions.length}`;
-  document.getElementById("mockQuestion").innerHTML =
-    `<div style="font-size:18px;font-weight:800;line-height:1.5">${mockState.index+1}. ${q[0]}</div>
-     <div style="margin-top:14px">${q[1].map((o,i)=>
-       `<label style="display:block;padding:13px;border:1px solid var(--border,#dfe5ee);border-radius:12px;margin:9px 0;cursor:pointer">
-        <input type="radio" name="mockOpt" value="${i}" ${mockState.answers[mockState.index]===i?"checked":""} onchange="saveMockAnswer(${i})" style="margin-right:9px">${o}
-       </label>`).join("")}</div>`;
-  document.getElementById("mockNav").innerHTML=mockState.questions.map((_,i)=>
-    `<button class="btn ${i===mockState.index?"blue":"soft"}" style="padding:7px 11px" onclick="mockGo(${i})">${i+1}</button>`).join("");
-}
+    banks[key].forEach((item, index) => {
+      const box = document.createElement("div");
+      box.className = "quiz-question";
 
-function saveMockAnswer(i){ mockState.answers[mockState.index]=i; renderMock(); }
-function mockGo(i){ if(!mockState.submitted){mockState.index=i;renderMock();} }
-function mockNext(){ if(mockState.index<mockState.questions.length-1){mockState.index++;renderMock();}else submitMock(); }
-function mockPrev(){ if(mockState.index>0){mockState.index--;renderMock();} }
+      let options = item[1].map((option, j) =>
+        '<label><input type="radio" name="q' + index + '" value="' + j + '"> ' + option + '</label>'
+      ).join("");
 
-function submitMock(auto=false){
-  if(mockState.submitted) return;
-  mockState.submitted=true;
-  clearInterval(mockState.timer);
-  let correct=0, wrong=0, unanswered=0;
-  mockState.questions.forEach((q,i)=>{
-    if(mockState.answers[i]===null) unanswered++;
-    else if(mockState.answers[i]===q[2]) correct++;
-    else wrong++;
+      box.innerHTML = "<h3>" + (index + 1) + ". " + item[0] + "</h3>" + options;
+      quiz.appendChild(box);
+    });
+
+    document.getElementById("testCategory").textContent =
+      key === "ssc" ? "SSC" : key === "banking" ? "BANKING" : "ASSAM";
+
+    document.getElementById("testTitle").textContent =
+      (key === "ssc" ? "SSC" : key === "banking" ? "Banking" : "Assam") + " Practice Test";
+
+    resetTest();
+  }
+
+  function resetTest(){
+    clearInterval(interval);
+    started = false;
+    submitted = false;
+    time = 600;
+    timer.textContent = "10:00";
+    result.hidden = true;
+    result.innerHTML = "";
+    startBtn.disabled = false;
+    submitBtn.disabled = true;
+    quiz.querySelectorAll("input").forEach(input => input.disabled = false);
+  }
+
+  function startTest(){
+    if(started) return;
+
+    started = true;
+    submitted = false;
+    time = 600;
+    startBtn.disabled = true;
+    submitBtn.disabled = false;
+
+    interval = setInterval(() => {
+      time--;
+      timer.textContent = Math.floor(time / 60) + ":" + String(time % 60).padStart(2, "0");
+
+      if(time <= 0){
+        submitTest(true);
+      }
+    }, 1000);
+  }
+
+  function submitTest(autoSubmit){
+    if(!started || submitted) return;
+
+    submitted = true;
+    clearInterval(interval);
+
+    let correct = 0;
+    let wrong = 0;
+    let unanswered = 0;
+
+    banks[key].forEach((item, index) => {
+      const selected = quiz.querySelector('input[name="q' + index + '"]:checked');
+
+      if(!selected){
+        unanswered++;
+      } else if(Number(selected.value) === item[2]){
+        correct++;
+      } else {
+        wrong++;
+      }
+    });
+
+    const score = correct - (wrong * 0.25);
+
+    result.hidden = false;
+    result.innerHTML =
+      "<strong>" + (autoSubmit ? "Time Up! " : "") + "Score: " + score.toFixed(2) + " / 10</strong>" +
+      "<br>Correct: " + correct +
+      " • Wrong: " + wrong +
+      " • Unanswered: " + unanswered;
+
+    quiz.querySelectorAll("input").forEach(input => input.disabled = true);
+    submitBtn.disabled = true;
+    startBtn.disabled = true;
+  }
+
+  document.querySelectorAll("#testFilters .filter-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("#testFilters .filter-btn")
+        .forEach(item => item.classList.remove("active"));
+
+      button.classList.add("active");
+      key = button.dataset.test;
+      renderTest();
+    });
   });
-  let score=Math.max(0,correct-(wrong*0.25));
-  let pct=(score/mockState.questions.length*100).toFixed(1);
-  const r=document.getElementById("mockResult");
-  r.style.display="block";
-  r.innerHTML=`<strong>${auto?"⏰ Time over!":"🎉 Test submitted!"}</strong>
-    <div style="margin-top:10px">Correct: <b>${correct}</b> &nbsp; Wrong: <b>${wrong}</b> &nbsp; Unanswered: <b>${unanswered}</b></div>
-    <div style="margin-top:7px">Score: <b>${score.toFixed(2)} / ${mockState.questions.length}</b> &nbsp; Percentage: <b>${pct}%</b></div>
-    <div style="margin-top:14px"><button class="btn soft" onclick="startMock('${mockState.key}')">🔄 Retake Test</button></div>`;
-  document.getElementById("mockQuestion").innerHTML="<p style='font-weight:700'>Your test is complete. Review your result above or retake the test.</p>";
-  document.getElementById("mockNav").innerHTML="";
-}
 
-function closeMock(){
-  clearInterval(mockState.timer);
-  document.getElementById("mockPanel").style.display="none";
-}
+  startBtn.addEventListener("click", startTest);
+  submitBtn.addEventListener("click", () => submitTest(false));
+  resetBtn.addEventListener("click", resetTest);
+
+  renderTest();
+})();
 </script>
 </body>
 </html>

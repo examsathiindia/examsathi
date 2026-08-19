@@ -1,164 +1,228 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Study & PYQ — ExamSathi</title>
-<link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Resources — ExamSathi</title>
+<meta name="description" content="Study resources for SSC, Banking, Railway and Assam competitive exams on ExamSathi.">
+<link rel="icon" href="./logo.png">
+<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+
+<header class="mobile-header">
+  <a class="brand" href="./index.html">
+    <img src="./logo.png" alt="ExamSathi Logo" class="site-logo">
+    <span>ExamSathi</span>
+  </a>
+  <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+</header>
+
 <aside class="sidebar">
-<a class="brand" href="index.html"><span class="mark">ES</span><span><b>ExamSathi</b><small>Student Portal</small></span></a>
-<div class="nav-title">Main Menu</div>
-<nav class="nav">
-<a href="index.html"><span>⌂</span> Dashboard</a>
-<a href="jobs.html"><span>▣</span> Latest Jobs</a>
-<a href="notifications.html"><span>●</span> Notifications</a>
-<a href="admit-cards.html"><span>▤</span> Admit Cards</a>
-<a href="results.html"><span>✓</span> Results</a>
-<a href="exams.html"><span>◇</span> Exams</a>
-<a class="active" href="study.html"><span>▥</span> Study / PYQ</a>
-<a href="current-affairs.html"><span>★</span> Current Affairs</a>
-<a href="mock-tests.html"><span>◉</span> Mock Tests</a>
-<a href="tools.html"><span>⚙</span> Student Tools</a>
-</nav>
-<div class="sidefoot"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+  <a class="brand" href="./index.html">
+    <img src="./logo.png" alt="ExamSathi Logo" class="site-logo">
+    <span>ExamSathi</span>
+  </a>
+  <nav>
+    <a href="./index.html">🏠 Dashboard</a>
+    <a href="./jobs.html">💼 Latest Jobs</a>
+    <a href="./notifications.html">🔔 Notifications</a>
+    <a href="./admit-cards.html">🎫 Admit Cards</a>
+    <a href="./results.html">📊 Results</a>
+    <a href="./exams.html">📝 Exams</a>
+    <a class="active" href="./study.html">📚 Study</a>
+    <a href="./current-affairs.html">📰 Current Affairs</a>
+    <a href="./mock-tests.html">⏱️ Mock Tests</a>
+    <a href="./tools.html">🛠️ Tools</a>
+    <a href="./about.html">ℹ️ About</a>
+    <a href="./contact.html">✉️ Contact</a>
+  </nav>
 </aside>
 
-<div class="main">
-<header class="mobile-head">
-<a class="mobile-brand" href="index.html"><span class="mark">ES</span>ExamSathi</a>
-<button class="theme" data-theme>☾</button>
-</header>
+<main class="main-content">
+  <section class="page-hero">
+    <div>
+      <span class="eyebrow">ExamSathi Learning Hub</span>
+      <h1>Study Resources</h1>
+      <p>Organise your preparation with subjects, practice areas and useful study links.</p>
+    </div>
+    <div class="hero-badge">Study Smart</div>
+  </section>
 
-<div class="mobile-search"><input data-search placeholder="Search jobs, exams, results..."></div>
+  <section class="search-wrap">
+    <label for="studyFilter">Search study resources</label>
+    <input id="studyFilter" type="search" placeholder="Search Maths, English, Reasoning, GK..." autocomplete="off">
+  </section>
 
-<header class="top">
-<div class="search"><input data-search placeholder="Search jobs, exams, results, study resources..."></div>
-<button class="theme" data-theme>☾</button>
-</header>
+  <div class="filter-row" id="categoryFilters">
+    <button class="filter-btn active" data-category="all">All</button>
+    <button class="filter-btn" data-category="Quant">Quant</button>
+    <button class="filter-btn" data-category="English">English</button>
+    <button class="filter-btn" data-category="Reasoning">Reasoning</button>
+    <button class="filter-btn" data-category="GK">GK</button>
+  </div>
 
-<main class="page">
-<div class="section-head">
-<div>
-<h1 style="margin:0;font-size:28px">Study & PYQ</h1>
-<p>Previous year papers, syllabus and official study resources in one place.</p>
-</div>
-</div>
+  <section class="cards-grid" id="studyGrid">
 
-<div class="content" style="margin-bottom:18px">
-<input id="studyFilter" placeholder="Search by exam, subject, resource or department..." style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#f8fafc;outline:0">
-</div>
+    <article class="info-card study-card" data-category="Quant" data-key="maths quantitative aptitude arithmetic percentage profit loss ratio time work speed distance average">
+      <div class="card-top">
+        <span class="org-badge">QUANT</span>
+        <span class="status-badge new">CORE</span>
+      </div>
+      <h2>Quantitative Aptitude</h2>
+      <p class="muted">Build arithmetic fundamentals and practise common competitive-exam question types.</p>
+      <div class="meta-grid">
+        <div><strong>Topics</strong><span>Arithmetic</span></div>
+        <div><strong>Practice</strong><span>Chapter-wise</span></div>
+        <div><strong>Best for</strong><span>SSC / Banking</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="./mock-tests.html">Practice Tests →</a>
+      </div>
+    </article>
 
-<div class="content" style="margin-bottom:18px">
-<div class="stats">
-<div class="stat"><b>PYQ</b><span>Previous Papers</span></div>
-<div class="stat"><b>Syllabus</b><span>Exam Patterns</span></div>
-<div class="stat"><b>Central</b><span>National Resources</span></div>
-<div class="stat"><b>Assam</b><span>State Resources</span></div>
-</div>
-</div>
+    <article class="info-card study-card" data-category="English" data-key="english grammar vocabulary comprehension error spotting sentence improvement">
+      <div class="card-top">
+        <span class="org-badge">ENGLISH</span>
+        <span class="status-badge new">CORE</span>
+      </div>
+      <h2>English</h2>
+      <p class="muted">Improve grammar, vocabulary, comprehension and exam-focused English practice.</p>
+      <div class="meta-grid">
+        <div><strong>Topics</strong><span>Grammar + Vocab</span></div>
+        <div><strong>Practice</strong><span>MCQs</span></div>
+        <div><strong>Best for</strong><span>SSC / Banking</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="./mock-tests.html">Practice Tests →</a>
+      </div>
+    </article>
 
-<section>
-<div class="section-head"><div><h2>Popular Study Resources</h2><p>Use official sources whenever available.</p></div></div>
-<div id="studyGrid" class="grid">
+    <article class="info-card study-card" data-category="Reasoning" data-key="reasoning logical reasoning analogy series coding decoding blood relation direction syllogism">
+      <div class="card-top">
+        <span class="org-badge">REASONING</span>
+        <span class="status-badge check">CORE</span>
+      </div>
+      <h2>Reasoning</h2>
+      <p class="muted">Strengthen logical thinking with common reasoning concepts and timed practice.</p>
+      <div class="meta-grid">
+        <div><strong>Topics</strong><span>Verbal + Logic</span></div>
+        <div><strong>Practice</strong><span>MCQs</span></div>
+        <div><strong>Best for</strong><span>SSC / Banking</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="./mock-tests.html">Practice Tests →</a>
+      </div>
+    </article>
 
-<article class="card study-card" data-key="ssc syllabus previous year question paper pyq cgl chsl mts gd cpo stenographer">
-<div class="result-top"><span class="soft btn tag">SSC</span><span class="status blue">STUDY</span></div>
-<h3>SSC Syllabus & Previous Papers</h3>
-<p>Official SSC portal for examination information, notices, syllabus-related updates and candidate resources.</p>
-<div class="meta"><b>Useful for:</b> CGL, CHSL, MTS, GD, CPO, Stenographer and other SSC exams.</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://ssc.gov.in/">SSC Official</a><a class="btn soft" target="_blank" rel="noopener" href="https://ssc.gov.in/home/notice-board">Notices</a></div>
-</article>
+    <article class="info-card study-card" data-category="GK" data-key="general knowledge gk static gk history geography polity science economics">
+      <div class="card-top">
+        <span class="org-badge">GK</span>
+        <span class="status-badge check">CORE</span>
+      </div>
+      <h2>General Knowledge</h2>
+      <p class="muted">Revise static GK areas such as history, geography, polity, science and economics.</p>
+      <div class="meta-grid">
+        <div><strong>Topics</strong><span>Static GK</span></div>
+        <div><strong>Practice</strong><span>MCQs</span></div>
+        <div><strong>Best for</strong><span>SSC / Assam</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="./mock-tests.html">Practice Tests →</a>
+      </div>
+    </article>
 
-<article class="card study-card" data-key="upsc previous question papers pyq syllabus civil services nda cds capf cms">
-<div class="result-top"><span class="soft btn tag">UPSC</span><span class="status blue">PYQ</span></div>
-<h3>UPSC Previous Question Papers</h3>
-<p>Official previous question papers for UPSC examinations across multiple years and subjects.</p>
-<div class="meta"><b>Useful for:</b> CSE, NDA, CDS, CAPF, CMS and other UPSC exams.</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.upsc.gov.in/examinations/previous-question-papers">Previous Papers</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.upsc.gov.in/examinations/exam-calendar">Calendar</a></div>
-</article>
+    <article class="info-card study-card" data-category="GK" data-key="current affairs current events national international awards sports government schemes">
+      <div class="card-top">
+        <span class="org-badge">GK</span>
+        <span class="status-badge new">UPDATED</span>
+      </div>
+      <h2>Current Affairs</h2>
+      <p class="muted">Follow recent events and revise important current-affairs topics for competitive exams.</p>
+      <div class="meta-grid">
+        <div><strong>Coverage</strong><span>Recent events</span></div>
+        <div><strong>Practice</strong><span>Daily MCQs</span></div>
+        <div><strong>Best for</strong><span>All exams</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="./current-affairs.html">Open Current Affairs →</a>
+      </div>
+    </article>
 
-<article class="card study-card" data-key="assam asseb seba hslc question papers downloads previous year pyq class 10">
-<div class="result-top"><span class="soft btn tag">ASSAM</span><span class="status green">PYQ</span></div>
-<h3>Assam HSLC Question Papers</h3>
-<p>ASSEB Division-I resources and downloads for HSLC and school examination preparation.</p>
-<div class="meta"><b>Useful for:</b> HSLC students and Assam school examinations.</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://site.sebaonline.org/downloads">Downloads</a><a class="btn soft" target="_blank" rel="noopener" href="https://site.sebaonline.org/notifications/">Notifications</a></div>
-</article>
+    <article class="info-card study-card" data-category="Quant" data-key="mock test full length practice timer negative marking">
+      <div class="card-top">
+        <span class="org-badge">PRACTICE</span>
+        <span class="status-badge new">TESTS</span>
+      </div>
+      <h2>Mock Tests</h2>
+      <p class="muted">Attempt timed practice sets and review your score after submission.</p>
+      <div class="meta-grid">
+        <div><strong>Mode</strong><span>Timed</span></div>
+        <div><strong>Subjects</strong><span>Multiple</span></div>
+        <div><strong>Result</strong><span>Instant score</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="./mock-tests.html">Start Mock Test →</a>
+      </div>
+    </article>
 
-<article class="card study-card" data-key="cbse question papers previous year sample papers class 10 12 board">
-<div class="result-top"><span class="soft btn tag">CBSE</span><span class="status blue">PYQ</span></div>
-<h3>CBSE Previous Year Papers</h3>
-<p>Official CBSE question paper archive for board examination preparation.</p>
-<div class="meta"><b>Useful for:</b> Class 10 and Class 12 board preparation.</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.cbse.gov.in/cbsenew/question-paper.html">Question Papers</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.cbse.gov.in/">CBSE</a></div>
-</article>
+  </section>
 
-<article class="card study-card" data-key="nta neet jee cuet ugc net csir net syllabus question papers mock test">
-<div class="result-top"><span class="soft btn tag">NTA</span><span class="status blue">RESOURCES</span></div>
-<h3>NTA Exam Resources</h3>
-<p>Official NTA notices, examination information, candidate updates and online resources.</p>
-<div class="meta"><b>Useful for:</b> NEET-UG, JEE Main, CUET, UGC-NET and other NTA exams.</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.nta.ac.in/">NTA Official</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.nta.ac.in/NoticeBoardArchive">Notice Archive</a></div>
-</article>
+  <div id="noResults" class="empty-state" hidden>
+    <h3>No matching resource found</h3>
+    <p>Try another subject or select a different category.</p>
+  </div>
 
-<article class="card study-card" data-key="upsc recruitment test rt syllabus previous papers recruitment">
-<div class="result-top"><span class="soft btn tag">UPSC</span><span class="status blue">RECRUITMENT</span></div>
-<h3>UPSC Recruitment Test Resources</h3>
-<p>Official recruitment-test information and resources for UPSC recruitment examinations.</p>
-<div class="meta"><b>Category:</b> Recruitment Tests and specialist posts.</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.upsc.gov.in/recruitment/recruitment-test">Recruitment Test</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.upsc.gov.in/">UPSC</a></div>
-</article>
-
-<article class="card study-card" data-key="ibps banking po clerk csa so rrb syllabus exam pattern previous paper">
-<div class="result-top"><span class="soft btn tag">BANKING</span><span class="status blue">STUDY</span></div>
-<h3>IBPS Banking Resources</h3>
-<p>Official recruitment information, calendars and examination updates for IBPS banking exams.</p>
-<div class="meta"><b>Useful for:</b> PO/MT, CSA, SO and RRB examinations.</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.ibps.in/">IBPS Official</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.ibps.in/index.php/recruitment/">Recruitment</a></div>
-</article>
-
-<article class="card study-card" data-key="assam tet special tet teacher syllabus study material previous paper">
-<div class="result-top"><span class="soft btn tag">ASSAM TET</span><span class="status green">STUDY</span></div>
-<h3>Assam TET Resources</h3>
-<p>Official Assam examination notifications and resources for TET and Special TET updates.</p>
-<div class="meta"><b>Category:</b> Teacher eligibility examination resources.</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://site.sebaonline.org/notifications/">Notifications</a><a class="btn soft" target="_blank" rel="noopener" href="https://site.sebaonline.org/">ASSEB</a></div>
-</article>
-
-</div>
-</section>
-
-<div class="notice" style="margin-top:22px">
-<b>Study tip:</b> Start with the official syllabus, then solve previous year papers topic-wise and track mistakes. Always verify the latest syllabus or exam pattern from the official authority before preparing.
-</div>
+  <section class="notice-card">
+    <h2>Study Tip</h2>
+    <p>Choose a small set of topics, practise regularly, review mistakes and revise weak areas. Always match your preparation with the latest official exam syllabus and notification.</p>
+  </section>
 </main>
 
-<footer class="footer">
-<div>© 2026 ExamSathi. Student information portal.</div>
-<div><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
-</footer>
-
 <nav class="bottom-nav">
-<a href="index.html"><span>⌂</span><small>Home</small></a>
-<a href="jobs.html"><span>▣</span><small>Jobs</small></a>
-<a href="exams.html"><span>◇</span><small>Exams</small></a>
-<a class="active" href="study.html"><span>▥</span><small>Study</small></a>
-<a href="tools.html"><span>⚙</span><small>Tools</small></a>
+  <a href="./index.html">Home</a>
+  <a href="./jobs.html">Jobs</a>
+  <a href="./notifications.html">Updates</a>
+  <a href="./results.html">Results</a>
+  <a class="active" href="./study.html">Study</a>
+  <a href="./tools.html">Tools</a>
 </nav>
-</div>
 
-<script src="app.js"></script>
+<script src="./app.js"></script>
 <script>
-const filter = document.getElementById('studyFilter');
-const cards = [...document.querySelectorAll('.study-card')];
-filter.addEventListener('input', () => {
-  const q = filter.value.trim().toLowerCase();
-  cards.forEach(card => {
-    card.style.display = (!q || card.dataset.key.includes(q)) ? '' : 'none';
+(function(){
+  const input = document.getElementById('studyFilter');
+  const buttons = [...document.querySelectorAll('#categoryFilters .filter-btn')];
+  const cards = [...document.querySelectorAll('.study-card')];
+  const empty = document.getElementById('noResults');
+  let category = 'all';
+
+  function applyFilters(){
+    const query = input.value.trim().toLowerCase();
+    let visible = 0;
+
+    cards.forEach(card => {
+      const matchesCategory = category === 'all' || card.dataset.category === category;
+      const haystack = (card.dataset.key + ' ' + card.innerText).toLowerCase();
+      const matchesSearch = !query || haystack.includes(query);
+      const show = matchesCategory && matchesSearch;
+      card.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+
+    empty.hidden = visible !== 0;
+  }
+
+  input.addEventListener('input', applyFilters);
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      category = btn.dataset.category;
+      applyFilters();
+    });
   });
-});
+})();
 </script>
 </body>
 </html>

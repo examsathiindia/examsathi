@@ -4,201 +4,123 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Admit Cards — ExamSathi</title>
+<meta name="description" content="Latest government exam admit cards and official download links on ExamSathi.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="app-shell">
 <aside class="sidebar">
-<a class="brand" href="index.html"><span class="mark">ES</span><span><b>ExamSathi</b><small>Student Portal</small></span></a>
-<div class="nav-title">Main Menu</div>
-<nav class="nav">
-<a href="index.html"><span>⌂</span> Dashboard</a>
-<a href="jobs.html"><span>▣</span> Latest Jobs</a>
-<a href="notifications.html"><span>●</span> Notifications</a>
-<a class="active" href="admit-cards.html"><span>▤</span> Admit Cards</a>
-<a href="results.html"><span>✓</span> Results</a>
-<a href="exams.html"><span>◇</span> Exams</a>
-<a href="study.html"><span>▥</span> Study / PYQ</a>
-<a href="current-affairs.html"><span>★</span> Current Affairs</a>
-<a href="mock-tests.html"><span>◉</span> Mock Tests</a>
-<a href="tools.html"><span>⚙</span> Student Tools</a>
+<a class="brand" href="index.html"><span class="mark">ES</span><span>ExamSathi</span></a>
+<nav class="side-nav">
+<a href="index.html">Home</a><a href="jobs.html">Jobs</a><a href="notifications.html">Notifications</a>
+<a class="active" href="admit-cards.html">Admit Cards</a><a href="results.html">Results</a><a href="exams.html">Exams</a>
+<a href="study.html">Study</a><a href="current-affairs.html">Current Affairs</a><a href="mock-tests.html">Mock Tests</a>
+<a href="tools.html">Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a>
 </nav>
-<div class="sidefoot"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
 </aside>
 
-<div class="main">
-<header class="mobile-head">
-<a class="mobile-brand" href="index.html"><span class="mark">ES</span>ExamSathi</a>
-<button class="theme" data-theme>☾</button>
+<main class="main-content">
+<header class="topbar">
+<div><div class="eyebrow">EXAMSATHI • EXAM UPDATES</div><h1>Admit Cards</h1>
+<p class="muted">Find exam hall tickets and open the official download portal.</p></div>
+<button class="theme-toggle" id="themeToggle" type="button">◐</button>
 </header>
 
-<div class="mobile-search"><input data-search placeholder="Search jobs, exams, results..."></div>
+<section class="hero-card">
+<div><span class="badge badge-blue">ADMIT CARD</span><h2>Download your hall ticket</h2>
+<p>Search your exam below and use the official source whenever an admit card is available.</p></div>
+<div class="hero-stat"><strong>5+</strong><span>exam updates</span></div>
+</section>
 
-<header class="top">
-<div class="search"><input data-search placeholder="Search jobs, exams, results, study resources..."></div>
-<button class="theme" data-theme>☾</button>
-</header>
+<section class="toolbar">
+<div class="search-box"><span>⌕</span><input id="cardFilter" type="search" placeholder="Search SSC, CHSL, CGL, Assam..." autocomplete="off"></div>
+<div class="filter-row" id="cardFilters">
+<button class="filter-btn active" data-filter="all" type="button">All</button>
+<button class="filter-btn" data-filter="ssc" type="button">SSC</button>
+<button class="filter-btn" data-filter="banking" type="button">Banking</button>
+<button class="filter-btn" data-filter="railway" type="button">Railway</button>
+<button class="filter-btn" data-filter="assam" type="button">Assam</button>
+</div>
+</section>
 
-<main class="page">
-<div class="section-head">
-<div>
-<h1 style="margin:0;font-size:28px">Admit Cards</h1>
-<p>Official admit-card, candidate-login and exam-update links from recruiting authorities.</p>
-</div>
-</div>
+<div id="cardsGrid" class="grid">
 
-<div class="content" style="margin-bottom:18px">
-<input id="admitFilter" placeholder="Search admit cards by exam, department or keyword..." style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#f8fafc;outline:0">
-</div>
-
-<div id="admitGrid" class="grid">
-
-<article class="card admit-card" data-key="upsc civil services main 2026 e admit card mains exam august 2026">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">UPSC</span>
-<span style="font-size:11px;color:#2563eb;font-weight:750">IMPORTANT</span>
-</div>
-<h3 style="margin-top:13px">Civil Services (Main) Examination 2026</h3>
-<p>Official UPSC e-Admit Card page for candidates appearing in the Civil Services Main examination.</p>
-<div style="margin-top:13px;font-size:12px"><b>Exam begins:</b> 21 August 2026</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://www.upsc.gov.in/whats-new/Civil%20Services%20%28Main%29%20Examination%2C%202026/e%20-%20Admit%20Card">e-Admit Card</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://www.upsc.gov.in/examinations/Civil%20Services%20%28Main%29%20Examination%2C%202026">UPSC Exam Page</a>
-</div>
+<article class="card admit-card" data-category="ssc" data-key="SSC CHSL admit card hall ticket">
+<div class="job-head"><div class="org-logo logo-ssc">SSC</div><div><span class="badge badge-blue">CHECK</span><h3>SSC CHSL</h3><p class="muted">Combined Higher Secondary Level</p></div></div>
+<div class="job-meta"><div><small>Organization</small><strong>SSC</strong></div><div><small>Exam</small><strong>CHSL</strong></div><div><small>Card</small><strong>Region-wise*</strong></div><div><small>Status</small><strong>Official portal</strong></div></div>
+<p class="job-note">Admit cards are generally released through regional SSC websites. Check the official portal for your region.</p>
+<div class="actions"><a class="btn primary" href="https://ssc.gov.in/" target="_blank" rel="noopener">SSC Official</a><a class="btn" href="https://ssc.gov.in/" target="_blank" rel="noopener">Check Admit Card</a></div>
 </article>
 
-<article class="card admit-card" data-key="ssc candidate login admit card 2026 stenographer c d cgl chsl mts gd">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">SSC</span>
-<span style="font-size:11px;color:#16a34a;font-weight:750">LOGIN</span>
-</div>
-<h3 style="margin-top:13px">SSC Candidate Login / Admit Card</h3>
-<p>Use the official SSC candidate portal to log in and check available admit cards and examination information.</p>
-<div style="margin-top:13px;font-size:12px"><b>For:</b> SSC examinations and candidate services</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://ssc.gov.in/candidate-portal/admit-card">Candidate Login</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://ssc.gov.in/home/notice-board">SSC Notice Board</a>
-</div>
+<article class="card admit-card" data-category="ssc" data-key="SSC CGL admit card hall ticket">
+<div class="job-head"><div class="org-logo logo-ssc">SSC</div><div><span class="badge badge-blue">CHECK</span><h3>SSC CGL</h3><p class="muted">Combined Graduate Level</p></div></div>
+<div class="job-meta"><div><small>Organization</small><strong>SSC</strong></div><div><small>Exam</small><strong>CGL</strong></div><div><small>Card</small><strong>Region-wise*</strong></div><div><small>Status</small><strong>Official portal</strong></div></div>
+<p class="job-note">Check the latest SSC regional update for exam city, admission certificate and download instructions.</p>
+<div class="actions"><a class="btn primary" href="https://ssc.gov.in/" target="_blank" rel="noopener">SSC Official</a><a class="btn" href="https://ssc.gov.in/" target="_blank" rel="noopener">Check Admit Card</a></div>
 </article>
 
-<article class="card admit-card" data-key="ssc stenographer grade c d 2026 admit card exam august september">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">SSC</span>
-<span style="font-size:11px;color:#2563eb;font-weight:750">UPCOMING</span>
-</div>
-<h3 style="margin-top:13px">SSC Stenographer Grade C & D 2026</h3>
-<p>Official SSC notice and candidate portal for the 2026 Stenographer examination.</p>
-<div style="margin-top:13px;font-size:12px"><b>CBT:</b> August–September 2026 (tentative)</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://ssc.gov.in/candidate-portal/admit-card">Admit Card Portal</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_steno_2026.pdf">Official Notice</a>
-</div>
+<article class="card admit-card" data-category="ssc" data-key="SSC MTS Havaldar admit card">
+<div class="job-head"><div class="org-logo logo-ssc">SSC</div><div><span class="badge badge-blue">CHECK</span><h3>SSC MTS &amp; Havaldar</h3><p class="muted">Multi-Tasking Staff • Havaldar</p></div></div>
+<div class="job-meta"><div><small>Organization</small><strong>SSC</strong></div><div><small>Level</small><strong>10th pass*</strong></div><div><small>Card</small><strong>Region-wise*</strong></div><div><small>Status</small><strong>Official portal</strong></div></div>
+<p class="job-note">Use the official SSC portal and regional website to check whether your admission certificate has been released.</p>
+<div class="actions"><a class="btn primary" href="https://ssc.gov.in/" target="_blank" rel="noopener">SSC Official</a><a class="btn" href="https://ssc.gov.in/" target="_blank" rel="noopener">Check Admit Card</a></div>
 </article>
 
-<article class="card admit-card" data-key="ibps csa xvi clerical cadre 2026 login application admit card">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">IBPS</span>
-<span style="font-size:11px;color:#2563eb;font-weight:750">CANDIDATE</span>
-</div>
-<h3 style="margin-top:13px">IBPS CRP-CSA-XVI</h3>
-<p>Official IBPS portal for Customer Service Associate recruitment and candidate login.</p>
-<div style="margin-top:13px;font-size:12px"><b>Registration:</b> 1–21 August 2026</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://ibpsreg.ibps.in/csaxvijul26/">Candidate Login</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://www.ibps.in/index.php/clerical-cadre-xvi/">IBPS Details</a>
-</div>
+<article class="card admit-card" data-category="banking" data-key="IBPS banking admit card CRP CSA clerk">
+<div class="job-head"><div class="org-logo logo-ibps">IBPS</div><div><span class="badge badge-green">CHECK</span><h3>IBPS CRP Exams</h3><p class="muted">Banking recruitment examinations</p></div></div>
+<div class="job-meta"><div><small>Organization</small><strong>IBPS</strong></div><div><small>Exam</small><strong>CRP*</strong></div><div><small>Card</small><strong>Post-wise*</strong></div><div><small>Status</small><strong>Official portal</strong></div></div>
+<p class="job-note">Check the official IBPS website for call letters, exam dates and login instructions.</p>
+<div class="actions"><a class="btn primary" href="https://www.ibps.in/" target="_blank" rel="noopener">IBPS Official</a><a class="btn" href="https://www.ibps.in/" target="_blank" rel="noopener">Check Call Letter</a></div>
 </article>
 
-<article class="card admit-card" data-key="ibps po mt xvi 2026 candidate login admit card">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">IBPS</span>
-<span style="font-size:11px;color:#2563eb;font-weight:750">UPCOMING</span>
-</div>
-<h3 style="margin-top:13px">IBPS PO / MT-XVI</h3>
-<p>Official IBPS recruitment portal and candidate-services entry point for Probationary Officer / Management Trainee recruitment.</p>
-<div style="margin-top:13px;font-size:12px"><b>Official source:</b> IBPS recruitment portal</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://www.ibps.in/index.php/recruitment/">IBPS Recruitment</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://www.ibps.in/">IBPS Home</a>
-</div>
+<article class="card admit-card" data-category="assam" data-key="Assam Police SLRC admit card hall ticket">
+<div class="job-head"><div class="org-logo logo-assam">AS</div><div><span class="badge badge-orange">ASSAM</span><h3>Assam Police / SLRC</h3><p class="muted">Recruitment examination admit cards</p></div></div>
+<div class="job-meta"><div><small>Region</small><strong>Assam</strong></div><div><small>Exam</small><strong>Notice-wise*</strong></div><div><small>Card</small><strong>Notice-wise*</strong></div><div><small>Status</small><strong>Official portal</strong></div></div>
+<p class="job-note">Check official Assam Police and SLRC portals for recruitment-specific admit cards and download instructions.</p>
+<div class="actions"><a class="btn primary" href="https://police.assam.gov.in/" target="_blank" rel="noopener">Assam Police</a><a class="btn" href="https://slrcg3.sebaonline.org/" target="_blank" rel="noopener">SLRC Official</a></div>
 </article>
 
-<article class="card admit-card" data-key="nta admit card 2026 neet ug cuet ug ugc net entrance exams">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">NTA</span>
-<span style="font-size:11px;color:#16a34a;font-weight:750">OFFICIAL</span>
-</div>
-<h3 style="margin-top:13px">NTA Admit Card & Candidate Updates</h3>
-<p>Official National Testing Agency page for provisional admit cards and candidate examination updates.</p>
-<div style="margin-top:13px;font-size:12px"><b>Includes:</b> NTA examinations and candidate services</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://nta.ac.in/AdmitCard">NTA Admit Card</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://www.nta.ac.in/NoticeBoardArchive">NTA Notices</a>
-</div>
-</article>
-
-<article class="card admit-card" data-key="assam police slprb admit card call letter recruitment 2026">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">ASSAM</span>
-<span style="font-size:11px;color:#2563eb;font-weight:750">RECRUITMENT</span>
-</div>
-<h3 style="margin-top:13px">Assam Police / SLPRB</h3>
-<p>Official Assam Police recruitment notices and candidate information for admit cards and call letters.</p>
-<div style="margin-top:13px;font-size:12px"><b>Check:</b> Recruitment notices before downloading any call letter</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://police.assam.gov.in/documents-detail/recruitment-notice">Recruitment Notices</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://police.assam.gov.in/documents/notice">All Notices</a>
-</div>
-</article>
-
-<article class="card admit-card" data-key="asseb assam board admit card hslc 2026 examination notifications">
-<div style="display:flex;justify-content:space-between;gap:8px;align-items:start">
-<span class="soft btn" style="padding:6px 9px;font-size:11px">ASSEB</span>
-<span style="font-size:11px;color:#16a34a;font-weight:750">OFFICIAL</span>
-</div>
-<h3 style="margin-top:13px">ASSEB / Assam Board Updates</h3>
-<p>Official Assam State School Education Board notifications and examination-related updates.</p>
-<div style="margin-top:13px;font-size:12px"><b>Check:</b> Board notices and examination services</div>
-<div class="hero-actions" style="margin-top:15px">
-<a class="btn blue" target="_blank" rel="noopener" href="https://site.sebaonline.org/notifications/">Official Notifications</a>
-<a class="btn soft" target="_blank" rel="noopener" href="https://site.sebaonline.org/">ASSEB Website</a>
-</div>
+<article class="card admit-card" data-category="railway" data-key="Railway RRB admit card hall ticket">
+<div class="job-head"><div class="org-logo logo-railway">RRB</div><div><span class="badge badge-gray">CHECK</span><h3>Railway / RRB Exams</h3><p class="muted">Railway recruitment examinations</p></div></div>
+<div class="job-meta"><div><small>Organization</small><strong>RRB</strong></div><div><small>Exam</small><strong>Notice-wise*</strong></div><div><small>Card</small><strong>Regional*</strong></div><div><small>Status</small><strong>Official portal</strong></div></div>
+<p class="job-note">Railway admit cards and city information are released according to the relevant RRB recruitment notice.</p>
+<div class="actions"><a class="btn primary" href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener">RRB Official</a><a class="btn" href="https://indianrailways.gov.in/" target="_blank" rel="noopener">Indian Railways</a></div>
 </article>
 
 </div>
 
-<div style="margin-top:18px;padding:12px 14px;border-radius:12px;background:#fff8df;border:1px solid #f1df9a;color:#7a5a00;font-size:12px">
-<b>Important:</b> Admit-card availability can change quickly. Always verify the exam date, candidate login and download instructions on the official recruiting body's website.
-</div>
+<div id="noCards" class="empty-state" hidden><strong>No matching admit cards found</strong><p>Try another keyword or select a different category.</p></div>
+
+<div class="notice-card"><strong>Important:</strong> ExamSathi is an independent information portal. Admit-card availability can change by exam and region. Always verify the latest status on the official website.</div>
+<footer class="footer">© 2026 ExamSathi • Verify every admit-card update from the official source.</footer>
 </main>
-
-<footer class="footer">
-<div>© 2026 ExamSathi. Student information portal.</div>
-<div><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
-</footer>
-
-<div class="mobile-bottom">
-<a href="index.html"><span>⌂</span><small>Home</small></a>
-<a href="jobs.html"><span>▣</span><small>Jobs</small></a>
-<a href="exams.html"><span>◇</span><small>Exams</small></a>
-<a href="study.html"><span>▥</span><small>Study</small></a>
-<a href="tools.html"><span>⚙</span><small>Tools</small></a>
-</div>
 </div>
 
+<nav class="bottom-nav"><a href="index.html">Home</a><a href="jobs.html">Jobs</a><a href="notifications.html">Updates</a><a class="active" href="admit-cards.html">Admit Cards</a></nav>
+
+<script src="app.js"></script>
 <script>
 (function(){
-  const input=document.getElementById('admitFilter');
-  const cards=[...document.querySelectorAll('.admit-card')];
-  if(input){
-    input.addEventListener('input',function(){
-      const q=this.value.toLowerCase().trim();
-      cards.forEach(card=>{
-        card.style.display=(!q || card.dataset.key.includes(q)) ? '' : 'none';
-      });
-    });
-  }
+ const input=document.getElementById('cardFilter');
+ const cards=[...document.querySelectorAll('.admit-card')];
+ const empty=document.getElementById('noCards');
+ const buttons=[...document.querySelectorAll('#cardFilters .filter-btn')];
+ let active='all';
+ function filter(){
+   const q=input.value.trim().toLowerCase(); let shown=0;
+   cards.forEach(card=>{
+     const text=(card.dataset.key+' '+card.innerText).toLowerCase();
+     const ok=(active==='all'||card.dataset.category===active)&&(!q||text.includes(q));
+     card.style.display=ok?'':'none'; if(ok)shown++;
+   });
+   empty.hidden=shown>0;
+ }
+ buttons.forEach(btn=>btn.addEventListener('click',()=>{
+   buttons.forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+   active=btn.dataset.filter; filter();
+ }));
+ input.addEventListener('input',filter);
 })();
 </script>
-<script src="app.js"></script>
 </body>
 </html>

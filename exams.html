@@ -1,235 +1,313 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Government Exams — ExamSathi</title>
-<link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exams — ExamSathi</title>
+<meta name="description" content="Explore SSC, Banking, Railway and Assam competitive exams with ExamSathi.">
+<link rel="icon" href="./logo.png">
+<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+
+<header class="mobile-header">
+  <a class="brand" href="./index.html">
+    <img src="./logo.png" alt="ExamSathi Logo" class="site-logo">
+    <span>ExamSathi</span>
+  </a>
+  <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+</header>
+
 <aside class="sidebar">
-<a class="brand" href="index.html"><span class="mark">ES</span><span><b>ExamSathi</b><small>Student Portal</small></span></a>
-<div class="nav-title">Main Menu</div>
-<nav class="nav">
-<a href="index.html"><span>⌂</span> Dashboard</a>
-<a href="jobs.html"><span>▣</span> Latest Jobs</a>
-<a href="notifications.html"><span>●</span> Notifications</a>
-<a href="admit-cards.html"><span>▤</span> Admit Cards</a>
-<a href="results.html"><span>✓</span> Results</a>
-<a class="active" href="exams.html"><span>◇</span> Exams</a>
-<a href="study.html"><span>▥</span> Study / PYQ</a>
-<a href="current-affairs.html"><span>★</span> Current Affairs</a>
-<a href="mock-tests.html"><span>◉</span> Mock Tests</a>
-<a href="tools.html"><span>⚙</span> Student Tools</a>
-</nav>
-<div class="sidefoot"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+  <a class="brand" href="./index.html">
+    <img src="./logo.png" alt="ExamSathi Logo" class="site-logo">
+    <span>ExamSathi</span>
+  </a>
+  <nav>
+    <a href="./index.html">🏠 Dashboard</a>
+    <a href="./jobs.html">💼 Latest Jobs</a>
+    <a href="./notifications.html">🔔 Notifications</a>
+    <a href="./admit-cards.html">🎫 Admit Cards</a>
+    <a href="./results.html">📊 Results</a>
+    <a class="active" href="./exams.html">📝 Exams</a>
+    <a href="./study.html">📚 Study</a>
+    <a href="./current-affairs.html">📰 Current Affairs</a>
+    <a href="./mock-tests.html">⏱️ Mock Tests</a>
+    <a href="./tools.html">🛠️ Tools</a>
+    <a href="./about.html">ℹ️ About</a>
+    <a href="./contact.html">✉️ Contact</a>
+  </nav>
 </aside>
 
-<div class="main">
-<header class="mobile-head">
-<a class="mobile-brand" href="index.html"><span class="mark">ES</span>ExamSathi</a>
-<button class="theme" data-theme>☾</button>
-</header>
+<main class="main-content">
+  <section class="page-hero">
+    <div>
+      <span class="eyebrow">ExamSathi Exam Guide</span>
+      <h1>Competitive Exams</h1>
+      <p>Explore popular exams by category and visit the concerned official website.</p>
+    </div>
+    <div class="hero-badge">Exam Guide</div>
+  </section>
 
-<div class="mobile-search"><input data-search placeholder="Search jobs, exams, results..."></div>
+  <section class="search-wrap">
+    <label for="examFilter">Search exams</label>
+    <input id="examFilter" type="search" placeholder="Search SSC CGL, CHSL, IBPS, RRB, Assam..." autocomplete="off">
+  </section>
 
-<header class="top">
-<div class="search"><input data-search placeholder="Search jobs, exams, results, study resources..."></div>
-<button class="theme" data-theme>☾</button>
-</header>
+  <div class="filter-row" id="categoryFilters">
+    <button class="filter-btn active" data-category="all">All</button>
+    <button class="filter-btn" data-category="SSC">SSC</button>
+    <button class="filter-btn" data-category="Banking">Banking</button>
+    <button class="filter-btn" data-category="Railway">Railway</button>
+    <button class="filter-btn" data-category="Assam">Assam</button>
+  </div>
 
-<main class="page">
-<div class="section-head">
-<div>
-<h1 style="margin:0;font-size:28px">Government Exams</h1>
-<p>Central and Assam government exam directory with official recruitment websites.</p>
-</div>
-</div>
+  <section class="cards-grid" id="examsGrid">
 
-<div class="content" style="margin-bottom:18px">
-<input id="examFilter" placeholder="Search by exam, department, abbreviation or keyword..." style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#f8fafc;outline:0">
-</div>
+    <article class="info-card exam-card" data-category="SSC" data-key="ssc cgl combined graduate level">
+      <div class="card-top">
+        <span class="org-badge">SSC</span>
+        <span class="status-badge new">POPULAR</span>
+      </div>
+      <h2>SSC CGL</h2>
+      <p class="muted">Combined Graduate Level examination for various Group B and Group C posts.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>Graduate</span></div>
+        <div><strong>Organisation</strong><span>SSC</span></div>
+        <div><strong>Mode</strong><span>Computer-based</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://ssc.gov.in/" target="_blank" rel="noopener">Official SSC ↗</a>
+      </div>
+    </article>
 
-<div class="content" style="margin-bottom:18px">
-<div class="stats">
-<div class="stat"><b>50+</b><span>Exam Categories</span></div>
-<div class="stat"><b>Central</b><span>National Exams</span></div>
-<div class="stat"><b>Assam</b><span>State Exams</span></div>
-<div class="stat"><b>Official</b><span>Source Links</span></div>
-</div>
-</div>
+    <article class="info-card exam-card" data-category="SSC" data-key="ssc chsl combined higher secondary 10+2">
+      <div class="card-top">
+        <span class="org-badge">SSC</span>
+        <span class="status-badge new">POPULAR</span>
+      </div>
+      <h2>SSC CHSL</h2>
+      <p class="muted">Combined Higher Secondary (10+2) Level examination for eligible candidates.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>10+2</span></div>
+        <div><strong>Organisation</strong><span>SSC</span></div>
+        <div><strong>Mode</strong><span>Computer-based</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://ssc.gov.in/" target="_blank" rel="noopener">Official SSC ↗</a>
+      </div>
+    </article>
 
-<section>
-<div class="section-head"><div><h2>Central Government Exams</h2><p>Major national-level recruitment and entrance examinations.</p></div></div>
-<div id="examGrid" class="grid">
+    <article class="info-card exam-card" data-category="SSC" data-key="ssc mts multi tasking staff havaldar">
+      <div class="card-top">
+        <span class="org-badge">SSC</span>
+        <span class="status-badge check">POPULAR</span>
+      </div>
+      <h2>SSC MTS &amp; Havaldar</h2>
+      <p class="muted">Recruitment examination for Multi-Tasking Staff and Havaldar posts.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>10th</span></div>
+        <div><strong>Organisation</strong><span>SSC</span></div>
+        <div><strong>Mode</strong><span>Computer-based</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://ssc.gov.in/" target="_blank" rel="noopener">Official SSC ↗</a>
+      </div>
+    </article>
 
-<article class="card exam-card" data-key="upsc civil services cse ifos nda cds capf engineering cms geo scientist epfo">
-<div class="result-top"><span class="soft btn tag">UPSC</span><span class="status blue">CENTRAL</span></div>
-<h3>UPSC Examinations</h3>
-<p>Civil Services, Forest Service, NDA, CDS, CAPF, Engineering Services, CMS, Geo-Scientist and other UPSC examinations.</p>
-<div class="meta"><b>Authority:</b> Union Public Service Commission</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.upsc.gov.in/examinations">Examinations</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.upsc.gov.in/examinations/exam-calendar">Calendar</a></div>
-</article>
+    <article class="info-card exam-card" data-category="SSC" data-key="ssc stenographer grade c d">
+      <div class="card-top">
+        <span class="org-badge">SSC</span>
+        <span class="status-badge check">POPULAR</span>
+      </div>
+      <h2>SSC Stenographer</h2>
+      <p class="muted">Grade C and Grade D recruitment examination conducted by SSC.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>10+2</span></div>
+        <div><strong>Organisation</strong><span>SSC</span></div>
+        <div><strong>Mode</strong><span>Computer-based</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://ssc.gov.in/" target="_blank" rel="noopener">Official SSC ↗</a>
+      </div>
+    </article>
 
-<article class="card exam-card" data-key="ssc cgl chsl mts gd cpo je stenographer selection post jht">
-<div class="result-top"><span class="soft btn tag">SSC</span><span class="status blue">CENTRAL</span></div>
-<h3>SSC Examinations</h3>
-<p>CGL, CHSL, MTS, GD Constable, CPO, JE, Stenographer, Selection Post and other SSC exams.</p>
-<div class="meta"><b>Authority:</b> Staff Selection Commission</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://ssc.gov.in/">SSC Official</a><a class="btn soft" target="_blank" rel="noopener" href="https://ssc.gov.in/home/notice-board">Notices</a></div>
-</article>
+    <article class="info-card exam-card" data-category="Banking" data-key="ibps po probationary officer">
+      <div class="card-top">
+        <span class="org-badge">BANKING</span>
+        <span class="status-badge new">POPULAR</span>
+      </div>
+      <h2>IBPS PO</h2>
+      <p class="muted">Probationary Officer / Management Trainee recruitment through IBPS.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>Graduate</span></div>
+        <div><strong>Organisation</strong><span>IBPS</span></div>
+        <div><strong>Stages</strong><span>As notified</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://www.ibps.in/" target="_blank" rel="noopener">Official IBPS ↗</a>
+      </div>
+    </article>
 
-<article class="card exam-card" data-key="railway rrb rrc ntpc group d alp technician je paramedical rpf ministerial">
-<div class="result-top"><span class="soft btn tag">RAILWAY</span><span class="status blue">CENTRAL</span></div>
-<h3>Railway Recruitment</h3>
-<p>RRB/RRC NTPC, Group D, ALP, Technician, JE, Paramedical, Ministerial and RPF recruitment.</p>
-<div class="meta"><b>Authority:</b> Railway Recruitment Boards / RRCs</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.rrbapply.gov.in/">RRB Apply</a><a class="btn soft" target="_blank" rel="noopener" href="https://indianrailways.gov.in/">Railways</a></div>
-</article>
+    <article class="info-card exam-card" data-category="Banking" data-key="ibps clerk customer service associate csa">
+      <div class="card-top">
+        <span class="org-badge">BANKING</span>
+        <span class="status-badge check">POPULAR</span>
+      </div>
+      <h2>IBPS Clerk / CSA</h2>
+      <p class="muted">Customer Service Associate recruitment in participating public sector banks.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>Graduate</span></div>
+        <div><strong>Organisation</strong><span>IBPS</span></div>
+        <div><strong>Stages</strong><span>As notified</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://www.ibps.in/" target="_blank" rel="noopener">Official IBPS ↗</a>
+      </div>
+    </article>
 
-<article class="card exam-card" data-key="ibps po clerk csa so rrb bank sbi po clerk so rbi grade b assistant nabard">
-<div class="result-top"><span class="soft btn tag">BANKING</span><span class="status blue">CENTRAL</span></div>
-<h3>Banking Examinations</h3>
-<p>IBPS PO, CSA/Clerk, SO, RRB; SBI PO, Clerk, SO; RBI and NABARD examinations.</p>
-<div class="meta"><b>Authorities:</b> IBPS, SBI, RBI, NABARD</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.ibps.in/">IBPS</a><a class="btn soft" target="_blank" rel="noopener" href="https://sbi.co.in/web/careers">SBI Careers</a></div>
-</article>
+    <article class="info-card exam-card" data-category="Railway" data-key="rrb ntpc non technical popular categories">
+      <div class="card-top">
+        <span class="org-badge">RAILWAY</span>
+        <span class="status-badge new">POPULAR</span>
+      </div>
+      <h2>RRB NTPC</h2>
+      <p class="muted">Non-Technical Popular Categories recruitment conducted through Railway Recruitment Boards.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>Varies by post</span></div>
+        <div><strong>Organisation</strong><span>RRB</span></div>
+        <div><strong>Mode</strong><span>As notified</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener">Official RRB ↗</a>
+      </div>
+    </article>
 
-<article class="card exam-card" data-key="nta jee neet ug cuet ug ugc net csir net entrance education">
-<div class="result-top"><span class="soft btn tag">NTA</span><span class="status blue">CENTRAL</span></div>
-<h3>NTA Examinations</h3>
-<p>NEET-UG, JEE Main, CUET-UG, UGC-NET, Joint CSIR-UGC NET and other NTA examinations.</p>
-<div class="meta"><b>Authority:</b> National Testing Agency</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.nta.ac.in/">NTA Official</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.nta.ac.in/NoticeBoardArchive">Updates</a></div>
-</article>
+    <article class="info-card exam-card" data-category="Railway" data-key="rrb group d level 1 railway">
+      <div class="card-top">
+        <span class="org-badge">RAILWAY</span>
+        <span class="status-badge check">POPULAR</span>
+      </div>
+      <h2>RRB Group D</h2>
+      <p class="muted">Level-1 railway recruitment examination and related selection updates.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>As notified</span></div>
+        <div><strong>Organisation</strong><span>RRB</span></div>
+        <div><strong>Mode</strong><span>As notified</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener">Official RRB ↗</a>
+      </div>
+    </article>
 
-<article class="card exam-card" data-key="defence army navy air force coast guard nda cds afcat recruitment">
-<div class="result-top"><span class="soft btn tag">DEFENCE</span><span class="status blue">CENTRAL</span></div>
-<h3>Defence Examinations</h3>
-<p>Army, Navy, Air Force, Coast Guard, NDA, CDS and AFCAT recruitment opportunities.</p>
-<div class="meta"><b>Category:</b> Defence recruitment and entrance exams</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://joinindianarmy.nic.in/">Army</a><a class="btn soft" target="_blank" rel="noopener" href="https://www.joinindiannavy.gov.in/">Navy</a></div>
-</article>
+    <article class="info-card exam-card" data-category="Assam" data-key="apsc combined competitive examination assam">
+      <div class="card-top">
+        <span class="org-badge">ASSAM</span>
+        <span class="status-badge new">POPULAR</span>
+      </div>
+      <h2>APSC CCE</h2>
+      <p class="muted">Assam Public Service Commission Combined Competitive Examination.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>Graduate</span></div>
+        <div><strong>Organisation</strong><span>APSC</span></div>
+        <div><strong>Stages</strong><span>As notified</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://apsc.nic.in/" target="_blank" rel="noopener">Official APSC ↗</a>
+      </div>
+    </article>
 
-<article class="card exam-card" data-key="teaching ctet tet kvs nvs teacher recruitment">
-<div class="result-top"><span class="soft btn tag">TEACHING</span><span class="status blue">CENTRAL</span></div>
-<h3>Teaching Examinations</h3>
-<p>CTET and major central-school recruitment pathways including KVS and NVS.</p>
-<div class="meta"><b>Authorities:</b> CBSE / KVS / NVS</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://ctet.nic.in/">CTET</a><a class="btn soft" target="_blank" rel="noopener" href="https://kvsangathan.nic.in/">KVS</a></div>
-</article>
+    <article class="info-card exam-card" data-category="Assam" data-key="assam police recruitment examination">
+      <div class="card-top">
+        <span class="org-badge">ASSAM</span>
+        <span class="status-badge check">POPULAR</span>
+      </div>
+      <h2>Assam Police Recruitment</h2>
+      <p class="muted">Recruitment examinations and selection processes conducted through the Assam Police recruitment system.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>Post-wise</span></div>
+        <div><strong>Organisation</strong><span>Assam Police</span></div>
+        <div><strong>Stages</strong><span>As notified</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://police.assam.gov.in/" target="_blank" rel="noopener">Official Assam Police ↗</a>
+      </div>
+    </article>
 
-<article class="card exam-card" data-key="insurance lic uiic niacl insurance recruitment">
-<div class="result-top"><span class="soft btn tag">INSURANCE</span><span class="status blue">CENTRAL</span></div>
-<h3>Insurance Examinations</h3>
-<p>Recruitment examinations and opportunities from major public-sector insurance organisations.</p>
-<div class="meta"><b>Examples:</b> LIC, UIIC, NIACL and others</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://licindia.in/careers">LIC Careers</a><a class="btn soft" target="_blank" rel="noopener" href="https://uiic.co.in/recruitment">UIIC Recruitment</a></div>
-</article>
+    <article class="info-card exam-card" data-category="Assam" data-key="slrc grade 3 grade 4 assam direct recruitment">
+      <div class="card-top">
+        <span class="org-badge">ASSAM</span>
+        <span class="status-badge check">POPULAR</span>
+      </div>
+      <h2>Assam Direct Recruitment</h2>
+      <p class="muted">State-level direct recruitment information for Grade III and Grade IV related processes.</p>
+      <div class="meta-grid">
+        <div><strong>Level</strong><span>Post-wise</span></div>
+        <div><strong>Organisation</strong><span>SLRC</span></div>
+        <div><strong>Stages</strong><span>As notified</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="https://slrcg3.sebaonline.org/" target="_blank" rel="noopener">Official SLRC ↗</a>
+      </div>
+    </article>
 
-</div>
-</section>
+  </section>
 
-<section style="margin-top:28px">
-<div class="section-head"><div><h2>Assam Government Exams</h2><p>Important state-level recruitment and education examinations.</p></div></div>
-<div id="assamGrid" class="grid">
+  <div id="noResults" class="empty-state" hidden>
+    <h3>No matching exam found</h3>
+    <p>Try another exam name or select a different category.</p>
+  </div>
 
-<article class="card exam-card" data-key="assam apsc civil service combined competitive examination acs">
-<div class="result-top"><span class="soft btn tag">ASSAM</span><span class="status green">STATE</span></div>
-<h3>APSC Examinations</h3>
-<p>Assam Public Service Commission recruitment including Combined Competitive Examination and specialist posts.</p>
-<div class="meta"><b>Authority:</b> Assam Public Service Commission</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://apscrecruitment.in/">APSC Recruitment</a><a class="btn soft" target="_blank" rel="noopener" href="https://apsc.nic.in/">APSC</a></div>
-</article>
-
-<article class="card exam-card" data-key="assam direct recruitment adre slrc class iii class iv">
-<div class="result-top"><span class="soft btn tag">ASSAM</span><span class="status green">STATE</span></div>
-<h3>Assam Direct Recruitment / SLRC</h3>
-<p>Class III and Class IV direct recruitment updates, notices and candidate information.</p>
-<div class="meta"><b>Category:</b> State-level direct recruitment</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://site.sebaonline.org/">Official Updates</a><a class="btn soft" target="_blank" rel="noopener" href="https://assam.gov.in/">Assam Govt</a></div>
-</article>
-
-<article class="card exam-card" data-key="assam police constable sub inspector si recruitment">
-<div class="result-top"><span class="soft btn tag">ASSAM POLICE</span><span class="status green">STATE</span></div>
-<h3>Assam Police Recruitment</h3>
-<p>Constable, Sub-Inspector and other Assam Police recruitment notices and updates.</p>
-<div class="meta"><b>Authority:</b> Assam Police</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://police.assam.gov.in/documents-detail/recruitment-notice">Recruitment Notices</a><a class="btn soft" target="_blank" rel="noopener" href="https://police.assam.gov.in/">Police Portal</a></div>
-</article>
-
-<article class="card exam-card" data-key="assam tet special tet teacher tet">
-<div class="result-top"><span class="soft btn tag">ASSAM</span><span class="status green">STATE</span></div>
-<h3>Assam TET / Special TET</h3>
-<p>Teacher Eligibility Test notifications, applications and examination updates for Assam.</p>
-<div class="meta"><b>Category:</b> Teacher eligibility examinations</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://site.sebaonline.org/notifications/">Notifications</a><a class="btn soft" target="_blank" rel="noopener" href="https://site.sebaonline.org/">ASSEB</a></div>
-</article>
-
-<article class="card exam-card" data-key="assam hslc hs final examination asseb seba class 10">
-<div class="result-top"><span class="soft btn tag">ASSEB</span><span class="status green">STATE</span></div>
-<h3>ASSEB / HSLC Examinations</h3>
-<p>HSLC and school-level examination notifications, schedules, downloads and results.</p>
-<div class="meta"><b>Authority:</b> Assam State School Education Board</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://site.sebaonline.org/notifications/">Notifications</a><a class="btn soft" target="_blank" rel="noopener" href="https://site.sebaonline.org/downloads">Downloads</a></div>
-</article>
-
-<article class="card exam-card" data-key="dhs assam health nursing gnm paramedical recruitment">
-<div class="result-top"><span class="soft btn tag">HEALTH</span><span class="status green">STATE</span></div>
-<h3>Assam Health / DHS Recruitment</h3>
-<p>Health Department recruitment notices and examination-related updates for Assam.</p>
-<div class="meta"><b>Category:</b> Directorate of Health Services</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://dhs.assam.gov.in/">DHS Assam</a><a class="btn soft" target="_blank" rel="noopener" href="https://assam.gov.in/">Assam Govt</a></div>
-</article>
-
-<article class="card exam-card" data-key="aesrb engineering assistant professor lecturer recruitment assam">
-<div class="result-top"><span class="soft btn tag">ASSAM</span><span class="status green">STATE</span></div>
-<h3>Assam Engineering Service Recruitment Board</h3>
-<p>Engineering education and recruitment-related notifications under the Assam engineering recruitment system.</p>
-<div class="meta"><b>Authority:</b> AESRB Assam</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://www.aesrb.in/">AESRB Official</a></div>
-</article>
-
-<article class="card exam-card" data-key="gauhati high court assam court recruitment judicial assistant ldc stenographer">
-<div class="result-top"><span class="soft btn tag">JUDICIARY</span><span class="status green">ASSAM</span></div>
-<h3>Gauhati High Court Recruitment</h3>
-<p>Recruitment and examination notices for posts under the Gauhati High Court.</p>
-<div class="meta"><b>Authority:</b> Gauhati High Court</div>
-<div class="hero-actions"><a class="btn blue" target="_blank" rel="noopener" href="https://ghconline.gov.in/">Official Website</a></div>
-</article>
-
-</div>
-</section>
-
-<div class="notice" style="margin-top:22px">
-<b>Important:</b> Exam dates, eligibility, vacancies and application rules can change. Always verify the latest details on the official recruiting authority website before applying.
-</div>
+  <section class="notice-card">
+    <h2>Important</h2>
+    <p>Eligibility, age limits, vacancies, syllabus and selection stages can change by notification. Always read the latest official notification before applying.</p>
+  </section>
 </main>
 
-<footer class="footer">
-<div>© 2026 ExamSathi. Student information portal.</div>
-<div><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
-</footer>
-
 <nav class="bottom-nav">
-<a href="index.html"><span>⌂</span><small>Home</small></a>
-<a href="jobs.html"><span>▣</span><small>Jobs</small></a>
-<a class="active" href="exams.html"><span>◇</span><small>Exams</small></a>
-<a href="study.html"><span>▥</span><small>Study</small></a>
-<a href="tools.html"><span>⚙</span><small>Tools</small></a>
+  <a href="./index.html">Home</a>
+  <a href="./jobs.html">Jobs</a>
+  <a href="./notifications.html">Updates</a>
+  <a href="./results.html">Results</a>
+  <a class="active" href="./exams.html">Exams</a>
+  <a href="./tools.html">Tools</a>
 </nav>
-</div>
 
-<script src="app.js"></script>
+<script src="./app.js"></script>
 <script>
-const filter = document.getElementById('examFilter');
-const cards = [...document.querySelectorAll('.exam-card')];
-filter.addEventListener('input', () => {
-  const q = filter.value.trim().toLowerCase();
-  cards.forEach(card => {
-    card.style.display = (!q || card.dataset.key.includes(q)) ? '' : 'none';
+(function(){
+  const input = document.getElementById('examFilter');
+  const buttons = [...document.querySelectorAll('#categoryFilters .filter-btn')];
+  const cards = [...document.querySelectorAll('.exam-card')];
+  const empty = document.getElementById('noResults');
+  let category = 'all';
+
+  function applyFilters(){
+    const query = input.value.trim().toLowerCase();
+    let visible = 0;
+
+    cards.forEach(card => {
+      const matchesCategory = category === 'all' || card.dataset.category === category;
+      const haystack = (card.dataset.key + ' ' + card.innerText).toLowerCase();
+      const matchesSearch = !query || haystack.includes(query);
+      const show = matchesCategory && matchesSearch;
+      card.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+
+    empty.hidden = visible !== 0;
+  }
+
+  input.addEventListener('input', applyFilters);
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      category = btn.dataset.category;
+      applyFilters();
+    });
   });
-});
+})();
 </script>
 </body>
 </html>
