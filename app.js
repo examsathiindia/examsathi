@@ -1,86 +1,42 @@
-// ExamSathi shared app.js
-(function () {
-  "use strict";
+(() => {
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const data=window.EXAMSATHI_DATA||{};
+function date(v){try{return new Date(v).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"})}catch{return v}}
+function card(x,type){
+ const href=x.url||"#";
+ return `<article class="item-card">
+  <div class="item-top"><span class="badge">${x.status||x.category||"Update"}</span><span class="date">${date(x.date)}</span></div>
+  <h3>${x.title}</h3><p>${x.org||x.category||"ExamSathi"}</p>
+  <div class="item-bottom"><span>${x.category||type}</span><a class="btn btn-sm" href="${href}">View Details →</a></div>
+ </article>`;
+}
+function renderList(id,items,type,limit=6){
+ const el=$("#"+id); if(!el)return;
+ el.innerHTML=items.slice(0,limit).map(x=>card(x,type)).join("")||`<div class="empty">No updates available.</div>`;
+}
+renderList("latestJobs",data.jobs||[],"Jobs");
+renderList("latestNotifications",data.notifications||[],"Notifications");
+renderList("latestResults",data.results||[],"Results");
+renderList("latestAdmit",data.admitCards||[],"Admit Cards");
 
-  /* Google Analytics 4 */
-  const GA_ID = "G-NE39V76SVK";
+const nav=$(".sidebar"), overlay=$(".nav-overlay");
+$("#menuBtn")?.addEventListener("click",()=>{nav?.classList.toggle("open");overlay?.classList.toggle("show")});
+overlay?.addEventListener("click",()=>{nav?.classList.remove("open");overlay?.classList.remove("show")});
+$$(".theme-toggle").forEach(b=>b.addEventListener("click",()=>{
+ const dark=document.documentElement.classList.toggle("dark");localStorage.setItem("es-theme",dark?"dark":"light");
+ $$(".theme-toggle").forEach(x=>x.textContent=dark?"☀️":"🌙");
+}));
+if(localStorage.getItem("es-theme")==="dark"){document.documentElement.classList.add("dark");$$(".theme-toggle").forEach(x=>x.textContent="☀️")}
 
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function () {
-    window.dataLayer.push(arguments);
-  };
-
-  if (!window.__EXAMSATHI_GA_LOADED__) {
-    window.__EXAMSATHI_GA_LOADED__ = true;
-
-    window.gtag("js", new Date());
-    window.gtag("config", GA_ID, { send_page_view: true });
-
-    const gaScript = document.createElement("script");
-    gaScript.async = true;
-    gaScript.src =
-      "https://www.googletagmanager.com/gtag/js?id=" +
-      encodeURIComponent(GA_ID);
-    document.head.appendChild(gaScript);
-  }
-
-  /* ExamSathi theme */
-  const KEY = "examsathi-theme";
-
-  function theme() {
-    document.documentElement.classList.toggle(
-      "dark",
-      localStorage.getItem(KEY) === "dark"
-    );
-  }
-
-  theme();
-
-  document.addEventListener("click", function (e) {
-    const t = e.target.closest("[data-theme]");
-    if (t) {
-      localStorage.setItem(
-        KEY,
-        localStorage.getItem(KEY) === "dark" ? "light" : "dark"
-      );
-      theme();
-    }
-  });
-
-  /* ExamSathi global search */
-  function route(v) {
-    v = (v || "").trim().toLowerCase();
-    if (!v) return;
-
-    const map = [
-      ["job", "jobs.html"],
-      ["vacancy", "jobs.html"],
-      ["notification", "notifications.html"],
-      ["admit", "admit-cards.html"],
-      ["result", "results.html"],
-      ["exam", "exams.html"],
-      ["syllabus", "study.html"],
-      ["pyq", "study.html"],
-      ["current", "current-affairs.html"],
-      ["quiz", "current-affairs.html"],
-      ["mock", "mock-tests.html"],
-      ["tool", "tools.html"],
-      ["photo", "tools.html"],
-      ["pdf", "tools.html"]
-    ];
-
-    const hit = map.find(function (x) {
-      return v.includes(x[0]);
-    });
-
-    if (hit) {
-      location.href = hit[1] + "?q=" + encodeURIComponent(v);
-    }
-  }
-
-  document.querySelectorAll("[data-search]").forEach(function (input) {
-    input.addEventListener("keydown", function (e) {
-      if (e.key === "Enter") route(input.value);
-    });
-  });
+const all=[...(data.jobs||[]).map(x=>({...x,type:"Jobs"})),...(data.notifications||[]).map(x=>({...x,type:"Notifications"})),...(data.results||[]).map(x=>({...x,type:"Results"})),...(data.admitCards||[]).map(x=>({...x,type:"Admit Cards"})),...(data.exams||[]).map(x=>({...x,type:"Exams"}))];
+function search(q){
+ const box=$("#searchResults"); if(!box)return;
+ q=q.trim().toLowerCase();
+ if(!q){box.classList.remove("show");return}
+ const hits=all.filter(x=>(x.title+" "+(x.org||"")+" "+(x.category||"")+" "+x.type).toLowerCase().includes(q)).slice(0,10);
+ box.innerHTML=hits.length?hits.map(x=>`<a href="${x.url||"#"}"><b>${x.title}</b><small>${x.type} · ${x.category||""}</small></a>`).join(""):`<div class="empty">No results found.</div>`;
+ box.classList.add("show");
+}
+$$(".global-search").forEach(i=>i.addEventListener("input",e=>search(e.target.value)));
+document.addEventListener("click",e=>{if(!e.target.closest(".search-wrap"))$$(".search-results").forEach(x=>x.classList.remove("show"))});
 })();
