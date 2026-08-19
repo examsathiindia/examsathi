@@ -1,33 +1,14 @@
-ExamSathi Integrated Final Package
-================================
+ExamSathi CSS Fix
 
-Central data:
-- data.js
+Replace your existing repository root styles.css with the included styles.css.
 
-Data-driven pages:
-- index.html
-- jobs.html
-- notifications.html
-- results.html
-- admit-cards.html
+This fix targets:
+- Important notice spacing
+- Study tip spacing
+- Privacy note spacing
+- Large blank areas
+- Footer spacing
+- Mobile bottom navigation consistency
+- Raw/unformatted bottom navigation on some pages
 
-Other final pages:
-- exams.html
-- study.html
-- current-affairs.html
-- mock-tests.html
-- tools.html
-- about.html
-- contact.html
-- privacy.html
-- disclaimer.html
-
-Shared:
-- styles.css
-- app.js
-- logo.png
-- robots.txt
-- sitemap.xml
-
-Upload all files to the repository root and replace matching existing files.
-Do not delete the repository or GitHub Pages settings.
+Do not replace index.html, data.js, or the other HTML pages for this fix.

@@ -11,3 +11,217 @@
 /* ExamSathi logo */
 .mark{background-image:url('logo.png');background-size:cover;background-position:center;font-size:0;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;flex:0 0 auto}
 .site-logo{width:48px;height:48px;object-fit:contain;border-radius:12px}
+
+
+/* =========================================================
+   ExamSathi Mobile/Layout Compatibility Fix
+   Fixes oversized blank spaces, raw bottom navigation,
+   notice/privacy cards and inconsistent mobile pages.
+   ========================================================= */
+
+/* Prevent accidental large vertical gaps */
+html, body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+main,
+.main,
+.main-content {
+  min-height: 0;
+}
+
+/* Common content containers */
+.main-content,
+.main,
+.page-content {
+  padding-bottom: 32px;
+}
+
+/* Notice / tip / privacy cards */
+.notice,
+.notice-card,
+.info-card,
+.tip-card,
+.privacy-note,
+.alert,
+.warning {
+  box-sizing: border-box;
+  margin-top: 18px;
+  margin-bottom: 22px;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+}
+
+.notice p,
+.notice-card p,
+.info-card p,
+.tip-card p,
+.privacy-note p,
+.alert p,
+.warning p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Remove accidental spacer elements/classes */
+.spacer,
+.vertical-spacer,
+.empty-space {
+  display: none !important;
+}
+
+/* Footer should follow content naturally */
+footer,
+.site-footer {
+  position: relative;
+  height: auto;
+  min-height: 0;
+  margin-top: 28px;
+  padding: 24px 0 96px;
+  box-sizing: border-box;
+}
+
+/* Footer links */
+footer a,
+.site-footer a {
+  margin-right: 14px;
+}
+
+/* Mobile bottom navigation */
+.bottom-nav,
+.mobile-bottom-nav,
+.bottom-navigation {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  background: rgba(255,255,255,.98);
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -4px 16px rgba(15,23,42,.06);
+  padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+}
+
+.bottom-nav a,
+.mobile-bottom-nav a,
+.bottom-navigation a {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 5px 2px;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+/* Don't let page content hide behind fixed navigation */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 82px;
+  }
+
+  .main-content,
+  .main,
+  .page-content {
+    padding-bottom: 18px;
+  }
+
+  footer,
+  .site-footer {
+    margin-bottom: 0;
+    padding-bottom: 22px;
+  }
+
+  .notice,
+  .notice-card,
+  .info-card,
+  .tip-card,
+  .privacy-note,
+  .alert,
+  .warning {
+    margin-top: 16px;
+    margin-bottom: 18px;
+    padding: 18px !important;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 420px) {
+  .bottom-nav,
+  .mobile-bottom-nav,
+  .bottom-navigation {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+  .bottom-nav a,
+  .mobile-bottom-nav a,
+  .bottom-navigation a {
+    font-size: 11px;
+  }
+
+  footer,
+  .site-footer {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+/* Desktop: bottom navigation should not appear */
+@media (min-width: 769px) {
+  .bottom-nav,
+  .mobile-bottom-nav,
+  .bottom-navigation {
+    display: none !important;
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+}
+
+/* Fix raw/unformatted nav lists that may be used by older pages */
+.bottom-nav ul,
+.mobile-bottom-nav ul,
+.bottom-navigation ul {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bottom-nav li,
+.mobile-bottom-nav li,
+.bottom-navigation li {
+  flex: 1 1 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Avoid images/icons creating unexpected oversized boxes */
+img {
+  max-width: 100%;
+}
+
+.notice-card,
+.info-card,
+.privacy-note {
+  overflow: hidden;
+}
