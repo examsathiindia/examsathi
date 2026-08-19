@@ -2,112 +2,120 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="ExamSathi — government jobs, exam notifications, admit cards, results, study resources, current affairs, mock tests and student tools.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ExamSathi — government jobs, exam notifications, admit cards, results, study resources, current affairs, mock tests and useful student tools.">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#2563eb">
+<meta name="theme-color" content="#0b1f3a">
 <link rel="canonical" href="https://examsathiindia.github.io/examsathi/">
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"ExamSathi",
-  "alternateName":"Exam Sathi",
-  "url":"https://examsathiindia.github.io/examsathi/"
-}
-</script>
-<title>ExamSathi — Government Jobs, Exams, Results & Study Resources</title>
-<link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/png" href="./logo.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"ExamSathi","alternateName":"Exam Sathi","url":"https://examsathiindia.github.io/examsathi/"}
+</script>
+<title>ExamSathi | Government Jobs, Exams, Results & Study</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <aside class="sidebar">
   <a class="brand" href="index.html">
-    <img src="./logo.png" alt="ExamSathi Logo" class="site-logo">
+    <img src="./logo.png" alt="ExamSathi" class="site-logo">
     <span><b>ExamSathi</b><small>Student Portal</small></span>
   </a>
-  <div class="nav-title">Main Menu</div>
+  <div class="nav-title">Explore</div>
   <nav class="nav">
-    <a href="index.html"><span>⌂</span> Dashboard</a>
-    <a href="jobs.html"><span>▣</span> Latest Jobs</a>
-    <a href="notifications.html"><span>●</span> Notifications</a>
-    <a href="admit-cards.html"><span>▤</span> Admit Cards</a>
-    <a href="results.html"><span>✓</span> Results</a>
-    <a href="exams.html"><span>◇</span> Exams</a>
-    <a href="study.html"><span>▥</span> Study / PYQ</a>
-    <a href="current-affairs.html"><span>★</span> Current Affairs</a>
-    <a href="mock-tests.html"><span>◉</span> Mock Tests</a>
-    <a href="tools.html"><span>⚙</span> Student Tools</a>
+    <a class="active" href="index.html"><span>⌂</span>Dashboard</a>
+    <a href="jobs.html"><span>▣</span>Latest Jobs</a>
+    <a href="notifications.html"><span>●</span>Notifications</a>
+    <a href="admit-cards.html"><span>▤</span>Admit Cards</a>
+    <a href="results.html"><span>✓</span>Results</a>
+    <a href="exams.html"><span>◇</span>Exams</a>
+    <a href="study.html"><span>▥</span>Study & PYQ</a>
+    <a href="current-affairs.html"><span>★</span>Current Affairs</a>
+    <a href="mock-tests.html"><span>◉</span>Mock Tests</a>
+    <a href="tools.html"><span>⚙</span>Student Tools</a>
   </nav>
-  <div class="sidefoot">
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-  </div>
+  <div class="sidefoot"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
 </aside>
 
 <div class="main">
   <header class="mobile-head">
-    <a class="mobile-brand" href="index.html">
-      <img src="./logo.png" alt="ExamSathi Logo" class="site-logo">ExamSathi
-    </a>
-    <button class="theme" data-theme>☾</button>
+    <a class="mobile-brand" href="index.html"><img src="./logo.png" alt="ExamSathi" class="site-logo"><span>ExamSathi</span></a>
+    <button class="theme" data-theme aria-label="Toggle dark mode">☾</button>
   </header>
 
-  <div class="mobile-search">
-    <input data-search placeholder="Search jobs, exams, results...">
-  </div>
-
   <header class="top">
-    <div class="search">
-      <input data-search placeholder="Search jobs, exams, results, study resources...">
-    </div>
-    <button class="theme" data-theme>☾</button>
+    <div class="top-title"><span class="eyebrow">EXAMSATHI</span><strong>Student Dashboard</strong></div>
+    <div class="search"><span>⌕</span><input data-search aria-label="Search" placeholder="Search jobs, exams, results, tools..."></div>
+    <button class="theme" data-theme aria-label="Toggle dark mode">☾</button>
   </header>
 
   <main class="page">
+
     <section class="hero">
-      <div>
-        <b>STUDENT-FIRST PLATFORM</b>
-        <h1>Your exam journey, organized.</h1>
-        <p>Government jobs, notifications, admit cards, results, exams, study resources, current affairs, mock tests and student tools — in one clean dashboard.</p>
+      <div class="hero-copy">
+        <span class="hero-kicker">ALL-IN-ONE EXAM PORTAL</span>
+        <h1>Prepare smarter.<br><span>Stay updated.</span></h1>
+        <p>Government jobs, notifications, admit cards, results, study resources, current affairs, mock tests and practical student tools — organized in one place.</p>
         <div class="hero-actions">
-          <a class="btn white" href="jobs.html">Explore Latest Jobs →</a>
-          <a class="btn" style="background:rgba(255,255,255,.13);color:#fff" href="tools.html">Open Student Tools</a>
+          <a class="btn primary" href="jobs.html">Explore Latest Jobs <b>→</b></a>
+          <a class="btn ghost" href="mock-tests.html">Start Mock Test</a>
         </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-panel-top"><span>Today on ExamSathi</span><span class="live-dot">● LIVE</span></div>
+        <div class="hero-number" id="heroJobCount">6+</div>
+        <div class="hero-label">job & recruitment updates</div>
+        <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <a href="notifications.html">View latest alerts →</a>
       </div>
     </section>
 
-    <div class="stats">
-      <a class="stat" href="jobs.html"><div class="label">Latest Jobs</div><div class="num">6+</div><div class="hint">Official updates</div></a>
-      <a class="stat" href="notifications.html"><div class="label">Notifications</div><div class="num">6+</div><div class="hint">Exam alerts</div></a>
-      <a class="stat" href="results.html"><div class="label">Results</div><div class="num">8+</div><div class="hint">Result links</div></a>
-      <a class="stat" href="mock-tests.html"><div class="label">Mock Tests</div><div class="num">30+</div><div class="hint">Practice questions</div></a>
-    </div>
+    <section class="stats">
+      <a class="stat stat-blue" href="jobs.html"><span class="stat-icon">▣</span><div><div class="label">Latest Jobs</div><div class="num" id="jobStat">6+</div><div class="hint">Recruitment updates</div></div></a>
+      <a class="stat stat-purple" href="notifications.html"><span class="stat-icon">●</span><div><div class="label">Notifications</div><div class="num" id="notificationStat">6+</div><div class="hint">Important alerts</div></div></a>
+      <a class="stat stat-green" href="results.html"><span class="stat-icon">✓</span><div><div class="label">Results</div><div class="num">8+</div><div class="hint">Official result links</div></div></a>
+      <a class="stat stat-orange" href="mock-tests.html"><span class="stat-icon">◉</span><div><div class="label">Mock Tests</div><div class="num">30+</div><div class="hint">Practice questions</div></div></a>
+    </section>
 
-    <div class="section-head"><div><h2>Quick Access</h2><p>Everything important, separated into clean pages.</p></div></div>
-    <div class="grid">
-      <a class="card" href="jobs.html"><h3>💼 Latest Government Jobs</h3><p>Current recruitment updates and official application links.</p></a>
-      <a class="card" href="notifications.html"><h3>🔔 Exam Notifications</h3><p>Important notices from central and Assam recruiting bodies.</p></a>
-      <a class="card" href="admit-cards.html"><h3>🎫 Admit Cards</h3><p>Official admit-card and candidate-login links.</p></a>
-      <a class="card" href="results.html"><h3>🏆 Results</h3><p>Official result pages and PDFs.</p></a>
-      <a class="card" href="study.html"><h3>📚 Syllabus &amp; PYQ</h3><p>Previous papers and study resources.</p></a>
-      <a class="card" href="current-affairs.html"><h3>📰 Current Affairs</h3><p>Daily current affairs and quiz practice.</p></a>
-      <a class="card" href="mock-tests.html"><h3>📝 Mock Tests</h3><p>Timed original practice tests with scoring.</p></a>
-      <a class="card" href="tools.html"><h3>🛠️ Student Tools</h3><p>Photo, PDF, resize, compressor and conversion tools.</p></a>
-      <a class="card" href="exams.html"><h3>🎯 Government Exams</h3><p>Central and Assam exam directory.</p></a>
-    </div>
+    <section class="section-head">
+      <div><span class="section-kicker">QUICK ACCESS</span><h2>Everything you need, one click away.</h2><p>Jump directly to the section you use most.</p></div>
+    </section>
 
-    <div class="notice">Always verify eligibility, dates and application details on the official recruiting body's website before applying.</div>
+    <section class="feature-grid">
+      <a class="feature feature-wide" href="jobs.html"><div class="feature-icon blue-icon">▣</div><div><span>CAREER</span><h3>Latest Government Jobs</h3><p>Find recruitment updates and open the official application or notice.</p></div><b>→</b></a>
+      <a class="feature" href="notifications.html"><div class="feature-icon purple-icon">●</div><div><span>ALERTS</span><h3>Exam Notifications</h3><p>Important notices from SSC, Banking, Railway and Assam.</p></div><b>→</b></a>
+      <a class="feature" href="admit-cards.html"><div class="feature-icon orange-icon">▤</div><div><span>EXAM DAY</span><h3>Admit Cards</h3><p>Quick access to official admit-card pages.</p></div><b>→</b></a>
+      <a class="feature" href="results.html"><div class="feature-icon green-icon">✓</div><div><span>RESULTS</span><h3>Results</h3><p>Check official result portals and links.</p></div><b>→</b></a>
+      <a class="feature" href="study.html"><div class="feature-icon blue-icon">▥</div><div><span>PREPARE</span><h3>Study & PYQ</h3><p>Syllabus, previous papers and preparation resources.</p></div><b>→</b></a>
+      <a class="feature" href="current-affairs.html"><div class="feature-icon purple-icon">★</div><div><span>GK</span><h3>Current Affairs</h3><p>Read updates and test yourself with quick quizzes.</p></div><b>→</b></a>
+      <a class="feature feature-highlight" href="tools.html"><div class="feature-icon dark-icon">⚙</div><div><span>FREE TOOLS</span><h3>Student Tools</h3><p>Passport photo, signature, resize, compress, convert and PDF tools.</p></div><b>→</b></a>
+      <a class="feature" href="mock-tests.html"><div class="feature-icon orange-icon">◉</div><div><span>PRACTICE</span><h3>Mock Tests</h3><p>Timed practice with score and negative marking.</p></div><b>→</b></a>
+      <a class="feature" href="exams.html"><div class="feature-icon green-icon">◇</div><div><span>DIRECTORY</span><h3>Government Exams</h3><p>Explore major central and Assam exams.</p></div><b>→</b></a>
+    </section>
+
+    <section class="updates-shell">
+      <div class="section-head compact">
+        <div><span class="section-kicker">LATEST UPDATES</span><h2>Fresh from ExamSathi</h2><p>Updates loaded from the central ExamSathi data system.</p></div>
+        <a class="outline-btn" href="jobs.html">View all jobs →</a>
+      </div>
+      <div class="updates-grid" id="latestUpdates">
+        <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+      </div>
+    </section>
+
+    <section class="notice">
+      <strong>⚠ Important:</strong> ExamSathi is an independent information portal. Always verify eligibility, dates, fees and application details on the official recruiting body's website before applying.
+    </section>
   </main>
 
   <footer class="footer">
-    <span>© 2026 ExamSathi. Student information portal.</span>
-    <span><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></span>
+    <div><strong>ExamSathi</strong><p>Government exam information, preparation and useful student tools.</p></div>
+    <div class="footer-links"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
   </footer>
 </div>
 
 <nav class="bottom">
-  <a href="index.html"><span>⌂</span>Home</a>
+  <a class="active" href="index.html"><span>⌂</span>Home</a>
   <a href="jobs.html"><span>▣</span>Jobs</a>
   <a href="exams.html"><span>◇</span>Exams</a>
   <a href="study.html"><span>▥</span>Study</a>
@@ -115,26 +123,29 @@
 </nav>
 
 <script src="app.js"></script>
-
 <script src="./data.js"></script>
 <script>
 (function(){
-  const d=window.EXAMSATHI_DATA;
-  const jobs=(d.jobs||[]).slice(0,4), notes=(d.notifications||[]).slice(0,4);
-  const marker=document.createElement("section");
-  marker.className="content";
-  marker.innerHTML=`<div class="section-head"><div><h2>Latest Updates</h2><p>Automatically loaded from ExamSathi central data.</p></div><a class="btn" href="jobs.html">View Jobs</a></div>
-  <div class="grid">
-    ${jobs.map(x=>`<a class="card" href="jobs.html"><h3>💼 ${String(x.title).replace(/</g,"&lt;")}</h3><p>${String(x.category).replace(/</g,"&lt;")} • ${String(x.status).replace(/</g,"&lt;")}</p></a>`).join("")}
-    ${notes.map(x=>`<a class="card" href="notifications.html"><h3>🔔 ${String(x.title).replace(/</g,"&lt;")}</h3><p>${String(x.badge).replace(/</g,"&lt;")} • ${String(x.category).replace(/</g,"&lt;")}</p></a>`).join("")}
-  </div>`;
-  const main=document.querySelector("main.page") || document.querySelector("main");
-  if(main){
-    const footer=main.querySelector("footer");
-    main.insertBefore(marker, footer || null);
-  }
+  const d=window.EXAMSATHI_DATA||{};
+  const jobs=d.jobs||[], notes=d.notifications||[];
+  const set=(id,val)=>{const e=document.getElementById(id);if(e)e.textContent=val;};
+  set("jobStat", jobs.length ? jobs.length+"+" : "6+");
+  set("notificationStat", notes.length ? notes.length+"+" : "6+");
+  set("heroJobCount", jobs.length ? jobs.length+"+" : "6+");
+
+  const items=[
+    ...jobs.slice(0,3).map(x=>({type:"JOB",title:x.title,meta:(x.category||"Government Jobs")+" • "+(x.status||"Update"),href:"jobs.html",icon:"▣",cls:"blue"})),
+    ...notes.slice(0,3).map(x=>({type:"ALERT",title:x.title,meta:(x.category||"Exam")+" • "+(x.badge||"Notice"),href:"notifications.html",icon:"●",cls:"purple"}))
+  ];
+  const box=document.getElementById("latestUpdates");
+  if(!box)return;
+  box.innerHTML=items.slice(0,6).map(x=>`
+    <a class="update-card" href="${x.href}">
+      <div class="update-icon ${x.cls}">${x.icon}</div>
+      <div><span>${x.type}</span><h3>${String(x.title).replace(/</g,"&lt;")}</h3><p>${String(x.meta).replace(/</g,"&lt;")}</p></div>
+      <b>→</b>
+    </a>`).join("") || '<div class="empty-state">No latest updates available right now.</div>';
 })();
 </script>
-
 </body>
 </html>
