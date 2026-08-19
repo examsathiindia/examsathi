@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock Tests — ExamSathi</title>
+<meta name="description" content="Practice SSC, Banking and Assam mock tests with a timer, scoring and negative marking on ExamSathi.">
+<link rel="icon" href="./logo.png">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<header class="mobile-header">
+  <a class="brand" href="./index.html">
+    <img src="./logo.png" alt="ExamSathi Logo" class="site-logo">
+    <span>ExamSathi</span>
+  </a>
+  <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+</header>
+
+<aside class="sidebar">
+  <a class="brand" href="./index.html">
+    <img src="./logo.png" alt="ExamSathi Logo" class="site-logo">
+    <span>ExamSathi</span>
+  </a>
+  <nav>
+    <a href="./index.html">🏠 Dashboard</a>
+    <a href="./jobs.html">💼 Latest Jobs</a>
+    <a href="./notifications.html">🔔 Notifications</a>
+    <a href="./admit-cards.html">🎫 Admit Cards</a>
+    <a href="./results.html">📊 Results</a>
+    <a href="./exams.html">📝 Exams</a>
+    <a href="./study.html">📚 Study</a>
+    <a href="./current-affairs.html">📰 Current Affairs</a>
+    <a class="active" href="./mock-tests.html">⏱️ Mock Tests</a>
+    <a href="./tools.html">🛠️ Tools</a>
+    <a href="./about.html">ℹ️ About</a>
+    <a href="./contact.html">✉️ Contact</a>
+  </nav>
+</aside>
+
+<main class="main-content">
+  <section class="page-hero">
+    <div>
+      <span class="eyebrow">ExamSathi Practice Arena</span>
+      <h1>Mock Tests</h1>
+      <p>Choose a test, start the timer and check your score instantly.</p>
+    </div>
+    <div class="hero-badge">10 Questions</div>
+  </section>
+
+  <div class="filter-row" id="testFilters">
+    <button class="filter-btn active" data-test="ssc">SSC</button>
+    <button class="filter-btn" data-test="banking">Banking</button>
+    <button class="filter-btn" data-test="assam">Assam</button>
+  </div>
+
+  <section class="info-card">
+    <div class="card-top">
+      <span class="org-badge" id="testCategory">SSC</span>
+      <span class="status-badge new">10 MINUTES</span>
+    </div>
+
+    <h2 id="testTitle">SSC Practice Test</h2>
+    <p class="muted">10 questions • 10 minutes • 1 mark per correct answer • −0.25 for each wrong answer.</p>
+
+    <div class="meta-grid">
+      <div><strong>Questions</strong><span>10</span></div>
+      <div><strong>Time</strong><span>10 minutes</span></div>
+      <div><strong>Negative</strong><span>−0.25</span></div>
+    </div>
+
+    <div id="timer" class="quiz-result">10:00</div>
+    <div id="quiz"></div>
+
+    <div class="card-actions">
+      <button class="btn primary" id="startBtn">Start Test</button>
+      <button class="btn secondary" id="submitBtn" disabled>Submit Test</button>
+      <button class="btn secondary" id="resetBtn">Reset</button>
+    </div>
+
+    <div id="result" class="quiz-result" hidden></div>
+  </section>
+
+  <section class="notice-card">
+    <h2>Important</h2>
+    <p>These are original practice questions for learning and are not official examination papers. Always follow the latest official notification and syllabus.</p>
+  </section>
+</main>
+
+<nav class="bottom-nav">
+  <a href="./index.html">Home</a>
+  <a href="./jobs.html">Jobs</a>
+  <a href="./notifications.html">Updates</a>
+  <a href="./results.html">Results</a>
+  <a class="active" href="./mock-tests.html">Tests</a>
+  <a href="./tools.html">Tools</a>
+</nav>
+
+<script src="./app.js"></script>
+<script>
+(function(){
+  const banks = {
+    ssc: [
+      ["What is 25% of 240?", ["40","50","60","80"], 2],
+      ["If a train covers 120 km in 2 hours, its speed is:", ["40 km/h","50 km/h","60 km/h","80 km/h"], 2],
+      ["Choose the correctly spelled word:", ["Accomodation","Accommodation","Acommodation","Accommadation"], 1],
+      ["Find the next number: 2, 4, 8, 16, ?", ["20","24","30","32"], 3],
+      ["The capital of Assam is:", ["Guwahati","Dispur","Jorhat","Dibrugarh"], 1],
+      ["If CP is ₹500 and SP is ₹600, profit is:", ["₹50","₹80","₹100","₹120"], 2],
+      ["Which is a renewable source of energy?", ["Coal","Petroleum","Solar energy","Natural gas"], 2],
+      ["A ratio of 2:3 has total 25. The first part is:", ["8","10","12","15"], 1],
+      ["Which planet is known as the Red Planet?", ["Venus","Mars","Jupiter","Mercury"], 1],
+      ["15 × 8 = ?", ["100","110","120","130"], 2]
+    ],
+    banking: [
+      ["If ₹1000 earns 10% simple interest for 2 years, interest is:", ["₹100","₹150","₹200","₹250"], 2],
+      ["IBPS stands for:", ["Indian Banking Payment System","Institute of Banking Personnel Selection","Indian Bank Personnel Service","Institute of Banking Public Service"], 1],
+      ["A number increased by 20% becomes 120. Original number is:", ["90","100","110","115"], 1],
+      ["Find the average of 10, 20 and 30.", ["15","20","25","30"], 1],
+      ["Which is generally a liability for a bank?", ["Loans given","Deposits","Cash in hand","Investments"], 1],
+      ["If 5 workers finish a task in 12 days, total worker-days are:", ["17","50","60","72"], 2],
+      ["A 10% discount on ₹800 gives selling price:", ["₹700","₹720","₹740","₹760"], 1],
+      ["Find the next number: 3, 6, 12, 24, ?", ["36","42","48","54"], 2],
+      ["A current account is commonly associated with:", ["Frequent transactions","Only fixed deposits","Insurance claims","Pension only"], 0],
+      ["If 3/5 of a number is 30, the number is:", ["40","45","50","60"], 2]
+    ],
+    assam: [
+      ["The capital of Assam is:", ["Guwahati","Dispur","Tezpur","Silchar"], 1],
+      ["Kaziranga National Park is famous for:", ["One-horned rhinoceros","Asiatic lion","Snow leopard","Camel"], 0],
+      ["The Brahmaputra flows through:", ["Assam","Kerala","Gujarat","Punjab"], 0],
+      ["Bihu is a major festival of:", ["Assam","Goa","Bihar","Odisha"], 0],
+      ["Majuli is associated with which river?", ["Ganga","Brahmaputra","Yamuna","Narmada"], 1],
+      ["Which language is widely spoken in Assam?", ["Assamese","Tamil","Marathi","Gujarati"], 0],
+      ["Manas National Park is in:", ["Assam","Rajasthan","Sikkim","Kerala"], 0],
+      ["Tea is an important agricultural product of:", ["Assam","Haryana","Punjab","Rajasthan"], 0],
+      ["Sivasagar is historically associated with:", ["Ahom kingdom","Mughal capital","Maratha capital","Chola capital"], 0],
+      ["The Assam state animal is:", ["Indian rhinoceros","Tiger","Elephant","Gaur"], 0]
+    ]
+  };
+
+  let key = "ssc";
+  let started = false;
+  let submitted = false;
+  let time = 600;
+  let interval = null;
+
+  const quiz = document.getElementById("quiz");
+  const timer = document.getElementById("timer");
+  const result = document.getElementById("result");
+  const startBtn = document.getElementById("startBtn");
+  const submitBtn = document.getElementById("submitBtn");
+  const resetBtn = document.getElementById("resetBtn");
+
+  function renderTest(){
+    clearInterval(interval);
+    quiz.innerHTML = "";
+
+    banks[key].forEach((item, index) => {
+      const box = document.createElement("div");
+      box.className = "quiz-question";
+
+      let options = item[1].map((option, j) =>
+        '<label><input type="radio" name="q' + index + '" value="' + j + '"> ' + option + '</label>'
+      ).join("");
+
+      box.innerHTML = "<h3>" + (index + 1) + ". " + item[0] + "</h3>" + options;
+      quiz.appendChild(box);
+    });
+
+    document.getElementById("testCategory").textContent =
+      key === "ssc" ? "SSC" : key === "banking" ? "BANKING" : "ASSAM";
+
+    document.getElementById("testTitle").textContent =
+      (key === "ssc" ? "SSC" : key === "banking" ? "Banking" : "Assam") + " Practice Test";
+
+    resetTest();
+  }
+
+  function resetTest(){
+    clearInterval(interval);
+    started = false;
+    submitted = false;
+    time = 600;
+    timer.textContent = "10:00";
+    result.hidden = true;
+    result.innerHTML = "";
+    startBtn.disabled = false;
+    submitBtn.disabled = true;
+    quiz.querySelectorAll("input").forEach(input => input.disabled = false);
+  }
+
+  function startTest(){
+    if(started) return;
+
+    started = true;
+    submitted = false;
+    time = 600;
+    startBtn.disabled = true;
+    submitBtn.disabled = false;
+
+    interval = setInterval(() => {
+      time--;
+      timer.textContent = Math.floor(time / 60) + ":" + String(time % 60).padStart(2, "0");
+
+      if(time <= 0){
+        submitTest(true);
+      }
+    }, 1000);
+  }
+
+  function submitTest(autoSubmit){
+    if(!started || submitted) return;
+
+    submitted = true;
+    clearInterval(interval);
+
+    let correct = 0;
+    let wrong = 0;
+    let unanswered = 0;
+
+    banks[key].forEach((item, index) => {
+      const selected = quiz.querySelector('input[name="q' + index + '"]:checked');
+
+      if(!selected){
+        unanswered++;
+      } else if(Number(selected.value) === item[2]){
+        correct++;
+      } else {
+        wrong++;
+      }
+    });
+
+    const score = correct - (wrong * 0.25);
+
+    result.hidden = false;
+    result.innerHTML =
+      "<strong>" + (autoSubmit ? "Time Up! " : "") + "Score: " + score.toFixed(2) + " / 10</strong>" +
+      "<br>Correct: " + correct +
+      " • Wrong: " + wrong +
+      " • Unanswered: " + unanswered;
+
+    quiz.querySelectorAll("input").forEach(input => input.disabled = true);
+    submitBtn.disabled = true;
+    startBtn.disabled = true;
+  }
+
+  document.querySelectorAll("#testFilters .filter-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("#testFilters .filter-btn")
+        .forEach(item => item.classList.remove("active"));
+
+      button.classList.add("active");
+      key = button.dataset.test;
+      renderTest();
+    });
+  });
+
+  startBtn.addEventListener("click", startTest);
+  submitBtn.addEventListener("click", () => submitTest(false));
+  resetBtn.addEventListener("click", resetTest);
+
+  renderTest();
+})();
+</script>
+</body>
+</html>
